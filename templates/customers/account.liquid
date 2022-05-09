@@ -3,12 +3,12 @@
 <div class="customer account">
   <div>
     <h1>{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ routes.account_logout_url }}">
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 18 19">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M6 4.5a3 3 0 116 0 3 3 0 01-6 0zm3-4a4 4 0 100 8 4 4 0 000-8zm5.58 12.15c1.12.82 1.83 2.24 1.91 4.85H1.51c.08-2.6.79-4.03 1.9-4.85C4.66 11.75 6.5 11.5 9 11.5s4.35.26 5.58 1.15zM9 10.5c-2.5 0-4.65.24-6.17 1.35C1.27 12.98.5 14.93.5 18v.5h17V18c0-3.07-.77-5.02-2.33-6.15-1.52-1.1-3.67-1.35-6.17-1.35z" fill="currentColor">
-      </svg>
-      {{ 'customer.log_out' | t }}
-    </a>
+    <a href="/account">Order History</a> | 
+    <a href="/pages/subscriptions">Subscriptions</a> | 
+    <a href="/pages/upcoming-deliveries">Upcoming Deliveries</a> | 
+    <a href="/pages/payment-methods">Payment Methods</a> | 
+    <a href="/account/addresses">Addresses</a> | 
+    <a href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
   </div>
 
   <div>
@@ -102,8 +102,53 @@
           {%- endif -%}
         {%- endif -%}
       {% endpaginate %}
-    </div>
+<br />
+ <h2>Subscriptions</h2>
 
+          <table role="table" class="order-history">
+            <caption class="visually-hidden">Wine Club Subscriptions</caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
+                <th id="ColumnDate" scope="col" role="columnheader">Started</th>
+                <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
+                <th id="ColumnFulfillment" scope="col" role="columnheader">Fulfullment</th>
+                <th id="ColumnTotal" scope="col" role="columnheader">Total</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+                <tr role="row">
+                  <td
+                    id="RowOrder"
+                    role="cell"
+                    headers="ColumnOrder"
+                    data-label="{{ 'customer.orders.order_number' | t }}"
+                  >
+                    <a href="#" class="open-modal" data-open="modal1">
+                      Quarterly Subscription - Reds
+                    </a>
+                  </td>
+                  <td headers="RowOrder ColumnDate" role="cell">
+                    1st February 2022
+                  </td>
+                  <td headers="RowOrder ColumnPayment" role="cell">
+                    1st May 2022
+                  </td>
+                  <td headers="RowOrder ColumnFulfillment" role="cell">
+                    Pending
+                  </td>
+                  <td headers="RowOrder ColumnTotal" role="cell">
+                    &pound;200.00 GBP</td>
+                </tr>
+            </tbody>
+          </table>   
+      
+      <br />
+      <h2>Referal Code</h2>
+      <p>To recieve discounts on your future shipments get your friends to sign up with the referal code "matt_munro_k323j42"</p>
+    
+    </div>
+  
     <div>
       <h2>{{ 'customer.account.details' | t }}</h2>
 
@@ -116,3 +161,227 @@
 
   </div>
 </div>
+ 
+  
+
+<div class="modal" id="modal1" data-animation="slideInOutLeft">
+  <div class="modal-dialog">
+    <header class="modal-header">
+      Update your subscription
+      <button class="close-modal" aria-label="close modal" data-close>
+        ✕  
+      </button>
+    </header>
+    <section class="modal-content">
+      <div>
+        Update Delivery Date:
+        <input type="text">
+      </div>
+      <table border="2">
+      
+          <tbody><tr>
+            <td width="250" height="250" align="center">
+              <div id="wine1"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Freshco_2020_51f0a3fb-a1f7-41c7-93a3-66376f9895d8.png?v=1644526363" width="50"><br>Freshco?</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine1');">Choose</button>
+              </modal-opener>
+            </td>
+            <td width="250" height="250" align="center">
+              <div id="wine2"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Tr_C3_AAs__C3_82nforas_2019_750ml.png?v=1644526556" width="50"><br>Três Ânforas</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine2');">Choose</button>
+              </modal-opener>
+            </td>
+            <td width="250" height="250" align="center">
+              <div id="wine3"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Dirk_Niepoort_750ml.png?v=1644525942" width="50"><br>Edição Especial Dirk Niepoort</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine3');">Choose</button>
+              </modal-opener>
+            </td>
+          </tr>
+          <tr>
+            <td width="250" height="250" align="center">
+              <div id="wine4"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Alvarinho_2017_67070dc4-cf09-4349-bb5f-27a2497b1d07.png?v=1644526101" width="50"><br>Alvarinho</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine4');">Choose</button>
+              </modal-opener>
+            </td>
+            <td width="250" height="250" align="center">
+              <div id="wine5"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Howard_E2_80_99s_Folly_Sonhador_2011.png?v=1644526001" width="50"><br>Sonhador</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine5');">Choose</button>
+              </modal-opener>
+            </td>
+            <td width="250" height="250" align="center">
+              <div id="wine6"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Reserva_Branco_2019_750ml.png?v=1644525983" width="50"><br>Reserva Branco</div>
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+                <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine6');">Choose</button>
+              </modal-opener>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="modal2">
+  <div class="modal-dialog">
+    <header class="modal-header">
+      The header of the second modal
+      <button class="close-modal" aria-label="close modal" data-close>
+        ✕  
+      </button>
+    </header>
+    <section class="modal-content">
+      <p><strong>Press ✕, ESC, or click outside of the modal to close it</strong></p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo repellendus reprehenderit accusamus totam ratione! Nesciunt, nemo dolorum recusandae ad ex nam similique dolorem ab perspiciatis qui. Facere, dignissimos. Nemo, ea.</p>
+      <p>Nullam vitae enim vel diam elementum tincidunt a eget metus. Curabitur finibus vestibulum rutrum. Vestibulum semper tellus vitae tortor condimentum porta. Sed id ex arcu. Vestibulum eleifend tortor non purus porta dapibus</p>
+    </section>
+    <footer class="modal-footer">
+      The footer of the second modal
+    </footer>
+  </div>
+</div>
+
+
+
+<style>
+  
+.btn-group {
+  text-align: center;
+}
+/*
+.open-modal {
+  font-weight: bold;
+  background: blue;
+  color: white;
+  padding: 0.75rem 1.75rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+*/
+
+/* MODAL
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: black;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
+  z-index: 1000;
+}
+
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-dialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: white;
+  overflow: auto;
+  cursor: default;
+}
+
+.modal-dialog > * {
+  padding: 1rem;
+}
+
+.modal-header,
+.modal-footer {
+  background: lightgray;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header .close-modal {
+  font-size: 1.5rem;
+}
+
+.modal p + p {
+  margin-top: 1rem;
+}
+
+
+/* SLIDE LEFT ANIMATION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[data-animation="slideInOutLeft"] .modal-dialog {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s bounceEasing;
+}
+
+[data-animation="slideInOutLeft"].is-visible .modal-dialog {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+}
+
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.page-footer span {
+  color: #e31b23;
+}
+
+
+</style>
+  
+<script>
+const openEls = document.querySelectorAll("[data-open]");
+const closeEls = document.querySelectorAll("[data-close]");
+const isVisible = "is-visible";
+
+for (const el of openEls) {
+  el.addEventListener("click", function() {
+    const modalId = this.dataset.open;
+    document.getElementById(modalId).classList.add(isVisible);
+  });
+}
+
+for (const el of closeEls) {
+  el.addEventListener("click", function() {
+    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+  });
+}
+
+document.addEventListener("click", e => {
+  if (e.target == document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible [data-close]").click();
+  }
+});
+
+document.addEventListener("keyup", e => {
+  // if we press the ESC
+  if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible [data-close]").click();
+  }
+});
+ 
+</script>  
+  

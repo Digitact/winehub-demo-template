@@ -1123,13 +1123,20 @@ summary::-webkit-details-marker {
   height: 100%;
   width: 100%;
 }
-
+  
 .media > img {
   object-fit: cover;
   object-position: center center;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+.media--square > img, .product-recommendations .media > img, .collection .media > img {
+  object-fit: contain;
+  object-position: center center;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
+  
+  
 .media--square {
   padding-bottom: 100%;
 }

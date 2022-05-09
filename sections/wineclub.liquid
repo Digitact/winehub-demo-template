@@ -1,0 +1,726 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width page-width--narrow">
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte">
+    {{ page.content }}
+  </div>
+  
+  <h3>Select a 
+    {% if cart.currency.iso_code=='GBP' %}
+    UK
+    {% elsif cart.currency.iso_code=='HKD' %}
+    Hong Kong
+    {% elsif cart.currency.iso_code=='EUR' %}
+    EU
+    {% endif %}
+    subscription type</h3>
+  
+<script>
+  {% if cart.currency.iso_code=='GBP' %}
+  let wine_ids = {
+    red: {
+      case6: 42569380823252,
+      case12:42569380856020
+    },
+    white: {
+      case6: 42580859912404,
+      case12:42580859945172
+    },
+    mixed: {
+      case6: 42580863779028,
+      case12:42580863811796
+    }    
+  }
+  {% elsif cart.currency.iso_code=='HKD' %}
+  let wine_ids = {
+    red: {
+      case6: 42569380954324,
+      case12:42569380987092
+    },
+    white: {
+      case6: 42580860043476,
+      case12:42580860076244
+    },
+    mixed: {
+      case6: 42580863910100,
+      case12:42580863942868
+    }    
+  }
+  {% elsif cart.currency.iso_code=='EUR' %}
+  let wine_ids = {
+    red: {
+      case6: 42569380888788,
+      case12:42569380921556
+    },
+    white: {
+      case6: 42580859977940,
+      case12:42580860010708
+    },
+    mixed: {
+      case6: 42580863844564,
+      case12:42580863877332
+    }    
+  }
+  {% endif %}  
+  var current_type = "";
+</script>
+
+  <div id="select-subscription">
+    <ul class="grid grid--2-col negative-margin product-grid grid--4-col-desktop">
+      <li class="grid__item">
+        <div class="card-wrapper">
+          <div class="card-information">
+            <div class="card-information__wrapper">
+              <h3 class="card-information__text h5">
+                <a onclick="current_type='red';$('#select-subscription').hide();$('#select-size').show();$('#subscription-selected').html('Subscription Type: Red Wines');" class="full-unstyled-link">
+                  Red Wines</a>
+              </h3>
+              <span class="caption-large light">
+              </span>
+              <div class="price ">
+                <div>
+                  <div class="price__regular">
+                    <span class="visually-hidden visually-hidden--inline">
+                      Regular price</span>
+                    <span class="price-item price-item--regular">
+                      From <br />
+                      {% if cart.currency.iso_code=='GBP' %}
+                      &pound;96.00 GBP for 6<br /> &pound;192.00 GBP for 12
+                      {% elsif cart.currency.iso_code=='HKD' %}
+                      $960.00 HKD for 6<br /> $1920.00 HKD for 12
+                      {% elsif cart.currency.iso_code=='EUR' %}
+                      &euro;57.50 EUR for 6<br /> &euro;115.00 EUR for 12
+                      {% endif %}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--product card--outline" tabindex="-1">
+            <div class="card__inner">
+              <div class="card__media-full-spacer">
+                <div class="media media--transparent media--square media--hover-effect">
+                  <img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Tr_C3_AAs__C3_82nforas_2019_750ml.png?v=1644526556" sizes="(min-width: 1600px) 367px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)" alt="Três Ânforas" loading="lazy" class="motion-reduce" width="362" height="1354">
+                </div>
+              </div>
+              <div class="card__badge">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="grid__item">
+        <div class="card-wrapper">
+          <div class="card-information">
+            <div class="card-information__wrapper">
+              <h3 class="card-information__text h5">
+                <a onclick="current_type='white';$('#select-subscription').hide();$('#select-size').show();$('#subscription-selected').html('Subscription Type: White Wines');" class="full-unstyled-link">
+                  White Wines</a>
+              </h3>
+              <span class="caption-large light">
+              </span>
+              <div class="price ">
+                <div>
+                  <div class="price__regular">
+                    <span class="visually-hidden visually-hidden--inline">
+                      Regular price</span>
+                    <span class="price-item price-item--regular">
+                      From <br />
+                      {% if cart.currency.iso_code=='GBP' %}
+                      &pound;96.00 GBP for 6<br /> &pound;192.00 GBP for 12
+                      {% elsif cart.currency.iso_code=='HKD' %}
+                      $960.00 HKD for 6<br /> $1920.00 HKD for 12
+                      {% elsif cart.currency.iso_code=='EUR' %}
+                      &euro;57.50 EUR for 6<br /> &euro;115.00 EUR for 12
+                      {% endif %}
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--product card--outline" tabindex="-1">
+            <div class="card__inner">
+              <div class="card__media-full-spacer">
+                <div class="media media--transparent media--square media--hover-effect">
+                  <img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Alvarinho_2017_67070dc4-cf09-4349-bb5f-27a2497b1d07_533x.png?v=1644526101" sizes="(min-width: 1600px) 367px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)" alt="Três Ânforas" loading="lazy" class="motion-reduce" width="362" height="1354">
+                </div>
+              </div>
+              <div class="card__badge">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="grid__item">
+        <div class="card-wrapper">
+          <div class="card-information">
+            <div class="card-information__wrapper">
+              <h3 class="card-information__text h5">
+                <a onclick="current_type='mixed';$('#select-subscription').hide();$('#select-size').show();$('#subscription-selected').html('Subscription Type: Mixed Wines');" class="full-unstyled-link">
+                  Mixed Wines</a>
+              </h3>
+              <span class="caption-large light">
+              </span>
+              <div class="price ">
+                <div>
+                  <div class="price__regular">
+                    <span class="visually-hidden visually-hidden--inline">
+                      Regular price</span>
+                    <span class="price-item price-item--regular">
+                      From <br />
+                      {% if cart.currency.iso_code=='GBP' %}
+                      &pound;96.00 GBP for 6<br /> &pound;192.00 GBP for 12
+                      {% elsif cart.currency.iso_code=='HKD' %}
+                      $960.00 HKD for 6<br /> $1920.00 HKD for 12
+                      {% elsif cart.currency.iso_code=='EUR' %}
+                      &euro;57.50 EUR for 6<br /> &euro;115.00 EUR for 12
+                      {% endif %}
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--product card--outline" tabindex="-1">
+            <div class="card__inner">
+              <div class="card__media-full-spacer">
+                <div class="media media--transparent media--square media--hover-effect">
+                  <img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF-Mixed-Pack-Oct19_33992801-9d45-40ea-819a-ca021119eb1c_533x.png?v=1644526369" sizes="(min-width: 1600px) 367px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)" alt="Três Ânforas" loading="lazy" class="motion-reduce" width="362" height="1354">
+                </div>
+              </div>
+              <div class="card__badge">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+  
+  <div id="subscription-selected">
+  </div>
+
+  <div id="select-size" style="display:none;">
+    <h3>Select a subscription size</h3>
+    <div p-color-scheme="light">
+      <div class="Polaris-Stack Polaris-Stack--vertical">
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="case6">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="case6" name="size" type="radio" class="Polaris-RadioButton__Input" aria-describedby="disabledHelpText" value="" 
+                         onChange="setProduct('case6');$('#size-selected').html('Size: A case of 6 wines');$('#select-size').hide();$('#select-frequency').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Case of 6 wines</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="case12">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="case12" name="size" type="radio" class="Polaris-RadioButton__Input" aria-describedby="optionalHelpText" value="" 
+                         onChange="setProduct('case12');$('#size-selected').html('Size: A case of 12 wines');$('#select-size').hide();$('#select-frequency').show();$('.case12').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Case of 12 wines</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div id="size-selected">
+  </div>  
+  
+  <div id="select-frequency" style="display:none;">
+    <h3>Select a subscription frequency</h3>
+    <div p-color-scheme="light">
+      <div class="Polaris-Stack Polaris-Stack--vertical">
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="monthly">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="monthly" name="frequency" type="radio" class="Polaris-RadioButton__Input" aria-describedby="disabledHelpText" value="" 
+                         onChange="setPlan('monthly');$('#frequency-selected').html('Frequency: Delivered monthly');$('#select-frequency').hide();$('#current-wines').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Delivered monthly</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="quarterly">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="quarterly" name="frequency" type="radio" class="Polaris-RadioButton__Input" aria-describedby="optionalHelpText" value="" 
+                         onChange="setPlan('quarterly');$('#frequency-selected').html('Frequency: Delivered quarterly');$('#select-frequency').hide();$('#current-wines').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Delivered quarterly</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="biannually">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="biannually" name="frequency" type="radio" class="Polaris-RadioButton__Input" aria-describedby="optionalHelpText" value="" 
+                         onChange="setPlan('biannually');$('#frequency-selected').html('Frequency: Delivered bi-annually');$('#select-frequency').hide();$('#current-wines').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Delivered bi-annually</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+        <div class="Polaris-Stack__Item">
+          <div>
+            <label class="Polaris-Choice" for="annually">
+              <span class="Polaris-Choice__Control">
+                <span class="Polaris-RadioButton">
+                  <input id="annually" name="frequency" type="radio" class="Polaris-RadioButton__Input" aria-describedby="optionalHelpText" value="" 
+                         onChange="setPlan('annually');$('#frequency-selected').html('Frequency: Delivered annually');$('#select-frequency').hide();$('#current-wines').show();">
+                  <span class="Polaris-RadioButton__Backdrop">
+                  </span>
+                </span>
+              </span>
+              <span class="Polaris-Choice__Label">Delivered annually</span>
+            </label>
+            <div class="Polaris-Choice__Descriptions">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div id="frequency-selected">
+  </div>
+
+  <div id="current-wines" style="display:none;">  
+    <h3>Current Wines</h3>
+    
+    <button class="product-form__submit button button--full-width button--secondary" onclick="$('#current-wines').hide();$('#buy-form').hide();$('#select-wines').show();">Customise</button>
+    <table border="2">
+      <tbody><tr>
+        <td width="250" height="250" align="center">
+          <div id="wine1"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Dirk_Niepoort_1.5L.png?v=1644526343" width="50"><br>Edição Especial Dirk Niepoort Magnum</div>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="wine2"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Tr_C3_AAs__C3_82nforas_2019_750ml.png?v=1644526556" width="50"><br>Três Ânforas</div>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="wine3"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Freshco_2020_51f0a3fb-a1f7-41c7-93a3-66376f9895d8.png?v=1644526363" width="50"><br>Freshco?</div>
+        </td>
+        </tr>
+        <tr>
+          <td width="250" height="250" align="center">
+            <div id="wine4"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Howard_E2_80_99s_Folly_Sonhador_2011.png?v=1644526001" width="50"><br>Sonhador</div>
+          </td>
+          <td width="250" height="250" align="center">
+            <div id="wine5"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Alvarinho_2017_67070dc4-cf09-4349-bb5f-27a2497b1d07.png?v=1644526101" width="50"><br>Alvarinho</div>
+          </td>
+          <td width="250" height="250" align="center">
+            <div id="wine6"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Reserva_Branco_2019_750ml.png?v=1644525983" width="50"><br>Reserva Branco</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+  </div>  
+  
+  <div id="select-wines" style="display:none;">  
+    <h3>Customise Wines</h3>
+    <table border="2">
+      <tbody><tr>
+        <td width="250" height="250" align="center">
+          <div id="wine1c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Dirk_Niepoort_1.5L.png?v=1644526343" width="50"><br>Edição Especial Dirk Niepoort Magnum</div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine1');">Change</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="wine2c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Tr_C3_AAs__C3_82nforas_2019_750ml.png?v=1644526556" width="50"><br>Três Ânforas</div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine2');">Change</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="wine3c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Freshco_2020_51f0a3fb-a1f7-41c7-93a3-66376f9895d8.png?v=1644526363" width="50"><br>Freshco?</div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine3');">Change</button>
+          </modal-opener>
+        </td>
+        </tr>
+        <tr>
+          <td width="250" height="250" align="center">
+            <div id="wine4c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/Howard_E2_80_99s_Folly_Sonhador_2011.png?v=1644526001" width="50"><br>Sonhador</div>
+            <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+              <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine4');">Change</button>
+            </modal-opener>
+          </td>
+          <td width="250" height="250" align="center">
+            <div id="wine5c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Alvarinho_2017_67070dc4-cf09-4349-bb5f-27a2497b1d07.png?v=1644526101" width="50"><br>Alvarinho</div>
+            <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+              <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine5');">Change</button>
+            </modal-opener>
+          </td>
+          <td width="250" height="250" align="center">
+            <div id="wine6c"><img src="https://cdn.shopify.com/s/files/1/0608/9428/1940/products/HF_Reserva_Branco_2019_750ml.png?v=1644525983" width="50"><br>Reserva Branco</div>
+            <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+              <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onclick="loadJSONcollection('#wine6');">Change</button>
+            </modal-opener>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="product-form__buttons">
+      <button type="submit" name="add" class="product-form__submit button button--full-width button--primary" onclick="$('#select-wines').hide();$('#current-wines').show();$('#buy-form').show();">
+        <span>Next</span>
+      </button>
+    </div> 
+    
+  </div>
+  
+  <div id="select-wines-alt" style="display:none;">
+    <h3>Choose Wines</h3>
+    <table border="2">
+      <tr>
+        <td width="250" height="250" align="center">
+          <div id="awine1">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine1');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="awine2">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine2');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="awine3">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine3');">Choose</button>
+          </modal-opener>
+        </td>
+      </tr>
+      <tr>
+        <td width="250" height="250" align="center">
+          <div id="awine4">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine4');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="awine5">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine5');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="awine6">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine6');">Choose</button>
+          </modal-opener>
+        </td>
+      </tr>
+      <tr class="case12" style="display: none;">
+        <td width="250" height="250" align="center">
+          <div id="aawine1">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine1');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="aawine2">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine2');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="aawine3">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine3');">Choose</button>
+          </modal-opener>
+        </td>
+      </tr>
+      <tr class="case12" style="display: none;">
+        <td width="250" height="250" align="center">
+          <div id="aawine4">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine4');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="aawine5">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine5');">Choose</button>
+          </modal-opener>
+        </td>
+        <td width="250" height="250" align="center">
+          <div id="aawine6">
+            No Wine Selected
+          </div>
+          <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-customize">
+            <button id="ProductPopup-customize" class="product-form__submit button button--full-width" type="button" aria-haspopup="dialog" onClick="loadJSONcollection('#wine6');">Choose</button>
+          </modal-opener>
+        </td>
+      </tr>      
+    </table>   
+    <!-- Link to open the modal -->
+	<p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+
+  </div>
+
+  <div id="buy-form" style="display:none;">
+    <form style="padding-top:20px;" method="post" action="/cart/add" id="product-form-template--15632088465620__main" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+      <input type="hidden" name="form_type" value="product">
+      <input type="hidden" name="utf8" value="✓">
+      <input id="formProductVariation" type="hidden" name="id" value="">
+      <input id="formSellingPlan" type="hidden" name="selling_plan" value="">
+      <input id="wine1f" type="hidden" name="properties[Wine 1]" value="Edição Especial Dirk Niepoort Magnum">
+      <input id="wine2f" type="hidden" name="properties[Wine 2]" value="Três Ânforas">
+      <input id="wine3f" type="hidden" name="properties[Wine 3]" value="Freshco?">
+      <input id="wine4f" type="hidden" name="properties[Wine 4]" value="Sonhador">
+      <input id="wine5f" type="hidden" name="properties[Wine 5]" value="Alvarinho">
+      <input id="wine6f" type="hidden" name="properties[Wine 6]" value="Reserva Branco">
+      <div class="product-form__buttons">
+        <button type="submit" name="add" class="product-form__submit button button--full-width button--primary">
+          <span>Add to cart</span>
+        </button>
+      </div>      
+    </form>
+  </div>
+
+
+</div>
+
+
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal" style="max-width:none;">
+  <div class="product-media-modal__content" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
+    <div style="padding: 20px;">
+      <h3>Choose Wine</h3>
+      <link href="//cdn.shopify.com/s/files/1/0608/9428/1940/t/2/assets/component-rating.css?v=2457308526394124043" rel="stylesheet" type="text/css" media="all">
+      <div class="collection page-width">
+        <div class="loading-overlay gradient"></div>
+        <ul id="product-grid" data-id="template--15632088432852__product-grid" class="grid grid--2-col negative-margin product-grid grid--4-col-desktop"></ul>
+      </div>          
+    </div>
+  </div>
+</div>
+
+
+    <script>
+      function setProduct(casetype) {
+		product_id = 0;        
+      	if (current_type=='red' && casetype=='case6') product_id = wine_ids.red.case6;
+        if (current_type=='red' && casetype=='case12') product_id = wine_ids.red.case12;
+        if (current_type=='white' && casetype=='case6') product_id = wine_ids.white.case6;
+        if (current_type=='white' && casetype=='case12') product_id = wine_ids.white.case12;
+        if (current_type=='mixed' && casetype=='case6') product_id = wine_ids.mixed.case6;
+        if (current_type=='mixed' && casetype=='case12') product_id = wine_ids.mixed.case12;
+        $('#formProductVariation').val(product_id)
+      }
+      
+      function setPlan(plan) {
+		selling_plan = 0;
+        {% if cart.currency.iso_code=='GBP' %}
+        if (plan=='monthly') selling_plan = 2443870420;
+        if (plan=='quarterly') selling_plan = 2443903188;
+        if (plan=='biannually') selling_plan = 2443935956;
+        if (plan=='annually') selling_plan = 2443968724;
+		{% elsif cart.currency.iso_code=='HKD' %}
+		if (plan=='monthly') selling_plan = 2444132564;
+        if (plan=='quarterly') selling_plan = 2444165332;
+        if (plan=='biannually') selling_plan = 2444198100;
+        if (plan=='annually') selling_plan = 2444230868;		
+  		{% elsif cart.currency.iso_code=='EUR' %}
+        if (plan=='monthly') selling_plan = 2444001492;
+        if (plan=='quarterly') selling_plan = 2444034260;
+        if (plan=='biannually') selling_plan = 2444067028;
+        if (plan=='annually') selling_plan = 2444099796;
+        {% endif %}                  
+        $('#formSellingPlan').val(selling_plan)
+      }
+      
+      function updateProduct(position,image,title) {
+		$(position).html('<img width=50 src=\''+image+'\' /><br />'+title);
+        $(position+"c").html('<img width=50 src=\''+image+'\' /><br />'+title);
+        $(position+"f").val(title);
+        console.log(position+": "+title);
+        $.modal.close();
+      }      
+      
+        function loadJSONcollection(position) {
+          //$("#PopupModal-customize").show();
+          $('#ex1').modal();
+            console.log("loadJSONcollection triggered");
+          	$('#product-grid').html("");
+            var searchurl = "/search/suggest.json?q=red&resources[type]=product&resources[options][fields]=tag";
+          	if (position=="#wine4" || position=="#wine5" || position=="#wine6")
+            searchurl = "/search/suggest.json?q=white&resources[type]=product&resources[options][fields]=tag";
+            $.ajax({
+                url:	searchurl, //"/search/suggest.json?q=red&resources[type]=product&resources[options][fields]=tag",
+                type:	'GET'
+            })
+            .done(function(data) {
+                var products = data.resources.results.products;//JSON.parse(data);
+                $(products).each(function(index){
+                    console.log(this.title);
+                  	var row = '';
+                  row+='<li class="grid__item">';
+                  row+='<div class="card-wrapper">';
+                  row+='<div class="card-information">';
+                  row+='<div class="card-information__wrapper"><h3 class="card-information__text h5">';
+                  row+='<a onclick="updateProduct(\''+position+'\',\''+this.image+'\',\''+this.title+'\')" class="full-unstyled-link">';
+                  row+=this.title;
+                  row+='</a>';
+                  row+='</h3>';
+                  row+='<span class="caption-large light"></span>';
+                  row+='<div class="price ">';
+                  row+='<div><div class="price__regular">';
+                  row+='<span class="visually-hidden visually-hidden--inline">Regular price</span>';
+                  row+='<span class="price-item price-item--regular">';
+                  //row+='From £'+this.price_min+' GBP';
+                  row+='</span>';
+                  row+='</div>';
+                  row+='<div class="price__sale">';
+                  row+='<span class="visually-hidden visually-hidden--inline">Regular price</span>';
+                  row+='<span>';
+                  row+='<s class="price-item price-item--regular"></s>';
+                  row+='</span><span class="visually-hidden visually-hidden--inline">Sale price</span>';
+                  row+='<span class="price-item price-item--sale price-item--last">';
+                  //row+='From £'+this.price_min+' GBP';
+                  row+='</span>';
+                  row+='</div>';
+                  row+='<small class="unit-price caption hidden">';
+                  row+='<span class="visually-hidden">Unit price</span>';
+                  row+='<span class="price-item price-item--last">';
+                  row+='<span></span>';
+                  row+='<span aria-hidden="true">/</span>';
+                  row+='<span class="visually-hidden">&nbsp;per&nbsp;</span>';
+                  row+='<span>';
+                  row+='</span>';
+                  row+='</span>';
+                  row+='</small>';
+                  row+='</div></div>';
+                  row+='</div>';
+                  row+='</div>';
+                  row+='<div class="card card--product card--outline" tabindex="-1">';
+                  row+='<div class="card__inner"><div class="card__media-full-spacer">';
+                  row+='<div class="media media--transparent media--square media--hover-effect">';
+                  row+='<img src="'+this.image+'" sizes="(min-width: 1600px) 367px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)" alt="Três Ânforas" loading="lazy" class="motion-reduce" width="362" height="1354"></div>';
+                  row+='</div><div class="card__badge"></div>';
+                  row+='</div>';
+                  row+='</div>';
+                  row+='</div>';
+                  row+='</li>';
+                  $('#product-grid').append(row);
+                  
+                  
+                });
+            })
+            .fail(function(data) {})
+            .always(function(data) {});
+        }        
+    </script>                
+             
+              
+
+<script>
+$(document).ready(function(){
+  $.ajax({ url: "https://howards-folly-wine.digitact.co.uk/api/subscription_packages",
+        context: document.body,
+        success: function(){
+           alert("done");
+        }
+    });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Wine Club",
+  "tag": "section",
+  "class": "spaced-section"
+}
+{% endschema %}
