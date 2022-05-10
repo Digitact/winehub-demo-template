@@ -15,8 +15,18 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "blocks": {
+          "b9d9028f-f1b4-4467-a87b-040545c13ae9": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "Welcome to our store",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
           "announcement-bar-0": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "",
               "color_scheme": "background-1",
@@ -25,6 +35,7 @@
           }
         },
         "block_order": [
+          "b9d9028f-f1b4-4467-a87b-040545c13ae9",
           "announcement-bar-0"
         ],
         "settings": {
