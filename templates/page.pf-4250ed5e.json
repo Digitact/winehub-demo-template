@@ -2,11 +2,11 @@
   "sections": {
     "pf-4250ed5e": {
       "type": "pf-4250ed5e",
-      "settings": {}
+      "settings": {
+      }
     }
   },
   "order": [
     "pf-4250ed5e"
-  ],
-  "layout": "theme.pagefly"
+  ]
 }
