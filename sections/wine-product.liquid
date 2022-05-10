@@ -48,6 +48,11 @@
               <div style="font-weight: bold">{{ product.metafields.wine_fields.vintage.value }}</div>
             {% endif %}
           {%- when 'characteristics' -%}
+            {% if product.metafields.wine_fields.varieties.value %}
+              <div style="margin-bottom: 0.3rem">
+                {{ product.metafields.wine_fields.varieties.value }}
+              </div>
+            {% endif %}
             <div class="line-separated-elements">
               {% if product.metafields.wine_fields.alcohol.value %}
                 <div>
@@ -363,11 +368,67 @@
       </div>
     </div>
   </section>
+  <section class="wine-product-page-metadata">
+    <div class="wine-metadata-list page-width">
+      {%- assign valid_fields = 'winemaking_notes,growing_conditions,body,mouth,nose' | split: ',' -%}
+      {%- for field in product.metafields.wine_fields -%}
+        {%- if valid_fields contains field[0] -%}
+          <div class="wine-metadata-item">
+            {%- case field[0] -%}
+            {%- when 'winemaking_notes' -%}
+              <div class="wine-metadata-item-icon" style="background: #114c67">&nbsp;</div>
+              <h3>Ageing process</h3>
+              <p>{{ field[1] }}</p>
+            {%- when 'growing_conditions' -%}
+              <div class="wine-metadata-item-icon" style="background: #398011;">&nbsp;</div>
+              <h3>Growing conditions</h3>
+              <p>{{ field[1] }}</p>
+            {%- when 'body' -%}
+              <h3>Body</h3>
+              <p>{{ field[1] }}</p>
+            {%- when 'mouth' -%}
+              <div class="wine-metadata-item-icon" style="background: #6d895d">&nbsp;</div>
+              <h3>Flavour</h3>
+              <p>{{ field[1] }}</p>
+            {%- when 'nose' -%}
+              <div class="wine-metadata-item-icon" style="background: #6c2131">&nbsp;</div>
+              <h3>Aroma</h3>
+              <p>{{ field[1] }}</p>
+            {%- endcase -%}
+          </div>
+        {%- endif -%}
+      {%- endfor - %}
+    </div>
+  </section>
 </section>
 
 {% style %}
-.wine-product-page {
-
+.wine-metadata-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 0;
+}
+.wine-metadata-item {
+  text-align: center;
+  padding: 0 3rem;
+  color: #000;
+}
+.wine-metadata-item h3 {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.wine-metadata-item p {
+  margin-top: .5rem
+}
+.wine-metadata-item-icon {
+  display: inline-block;
+  margin: 0 auto;
+  height: 75px;
+  width: 75px;
+  border-radius: 100%;
+}
+.wine-product-page-metadata {
+  background: #eee;
 }
 .wine-product-page-header {
   background: #114C67;
@@ -389,6 +450,9 @@
   .quantity-buy-buttons > *:not(:last-child) {
     padding-bottom: 0.4em;
   }
+  .wine-metadata-item {
+    flex-basis: 50%;
+  }
 }
 @media (min-width: 769px) {
   .wine-product-page-header-image {
@@ -399,6 +463,9 @@
   }
   .quantity-buy-buttons > *:not(:last-child) {
     padding-right: 0.4em;
+  }
+  .wine-metadata-item {
+    flex-basis: 25%;
   }
 }
 .wine-product-page-header > div {
@@ -438,6 +505,10 @@
 }
 .quantity-buy-buttons {
   display: flex;
+}
+.shopify-payment-button__button {
+  height: 4.5rem;
+  min-height: 4.5rem;
 }
 {% endstyle %}
 
@@ -481,7 +552,7 @@
     {%- if product.selected_or_first_available_variant.featured_media -%}
       {%- assign media_size = product.selected_or_first_available_variant.featured_media.preview_image.width | append: 'x' -%}
       "image": [
-        {{ product.selected_or_first_available_variant.featured_media | image_url: media_size | prepend: "https:" | json }}
+        {{ product.selected_or_first_available_variant.featured_media | img_url: media_size | prepend: "https:" | json }}
       ],
     {%- endif -%}
     "description": {{ product.description | strip_html | json }},
