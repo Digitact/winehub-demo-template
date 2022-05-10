@@ -2,6 +2,7 @@
   "sections": {
     "image_banner": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -15,7 +16,7 @@
         "heading"
       ],
       "settings": {
-        "image": "shopify://shop_images/EDIMG_8611-e1550776252723.jpg",
+        "image": "shopify:\/\/shop_images\/EDIMG_8611-e1550776252723.jpg",
         "image_height": "medium",
         "adapt_height_first_image": false,
         "desktop_text_box_position": "flex-end",
@@ -28,6 +29,7 @@
     },
     "rich_text": {
       "type": "rich-text",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -39,7 +41,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>We love the diversity of Portugal's grape varietals and aim to make the best wine from each vintage. This approach and the skill and passion of our team has resulted in consistent production of award winning wines.</p>"
+            "text": "<p>We love the diversity of Portugal's grape varietals and aim to make the best wine from each vintage. This approach and the skill and passion of our team has resulted in consistent production of award winning wines.<\/p>"
           }
         }
       },
@@ -54,6 +56,7 @@
     },
     "featured_products": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "collection": "all",
@@ -70,6 +73,7 @@
     },
     "16371342804476305f": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "1637134280fd53d2c4-0": {
           "type": "heading",
@@ -102,7 +106,7 @@
         "ac882478-d59d-4a54-a76f-569633ff93de"
       ],
       "settings": {
-        "image": "shopify://shop_images/ourwinery.jpg",
+        "image": "shopify:\/\/shop_images\/ourwinery.jpg",
         "image_height": "medium",
         "adapt_height_first_image": false,
         "desktop_text_box_position": "center",
@@ -115,6 +119,7 @@
     },
     "1637134656e2ed707c": {
       "type": "rich-text",
+      "disabled": true,
       "blocks": {
         "16371346550ab9a1d7-0": {
           "type": "heading",
@@ -126,7 +131,7 @@
         "16371346550ab9a1d7-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Howard’s Folly is an inspiring blend of three key ingredients: an <em>innovative</em> partnership between Chief Winemaker, David Baverstock, and entrepreneur, Howard Bilton; their joint <em>passion</em> to unlock the best of Portugal’s grape varietals; and, a <em>mission</em> to give something back through sponsorship of an arts-based charity for underprivileged children, the Sovereign Art Foundation.</p><p><em>Innovation</em>, <em>passion</em> and <em>mission</em> drive everything we do, resulting in consistent production of delicious award-winning wines.</p>"
+            "text": "<p>Howard’s Folly is an inspiring blend of three key ingredients: an <em>innovative<\/em> partnership between Chief Winemaker, David Baverstock, and entrepreneur, Howard Bilton; their joint <em>passion<\/em> to unlock the best of Portugal’s grape varietals; and, a <em>mission<\/em> to give something back through sponsorship of an arts-based charity for underprivileged children, the Sovereign Art Foundation.<\/p><p><em>Innovation<\/em>, <em>passion<\/em> and <em>mission<\/em> drive everything we do, resulting in consistent production of delicious award-winning wines.<\/p>"
           }
         }
       },
@@ -141,6 +146,7 @@
     },
     "1637134659447da194": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "1637134659ecd9f156-0": {
           "type": "heading",
@@ -173,7 +179,7 @@
         "1637134659ecd9f156-2"
       ],
       "settings": {
-        "image": "shopify://shop_images/ourvinyard.jpg",
+        "image": "shopify:\/\/shop_images\/ourvinyard.jpg",
         "image_height": "small",
         "adapt_height_first_image": false,
         "desktop_text_box_position": "center",
@@ -186,21 +192,22 @@
     },
     "163713495016105ee9": {
       "type": "multicolumn",
+      "disabled": true,
       "blocks": {
         "1637134950f5294aab-0": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/label1.jpg",
+            "image": "shopify:\/\/shop_images\/label1.jpg",
             "title": "Art",
-            "text": "<p>Inspired by the visual arts</p>"
+            "text": "<p>Inspired by the visual arts<\/p>"
           }
         },
         "1637134950f5294aab-1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/ourpeople.jpg",
+            "image": "shopify:\/\/shop_images\/ourpeople.jpg",
             "title": "Our People",
-            "text": "<p>Passionate about winemaking</p>"
+            "text": "<p>Passionate about winemaking<\/p>"
           }
         }
       },
@@ -221,7 +228,8 @@
     },
     "pagefly-home": {
       "type": "pagefly-home",
-      "settings": {}
+      "settings": {
+      }
     }
   },
   "order": [
