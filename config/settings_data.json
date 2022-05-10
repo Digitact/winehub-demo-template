@@ -7,8 +7,8 @@
     "colors_outline_button_labels": "#121212",
     "colors_background_1": "#FFFFFF",
     "colors_background_2": "#F3F3F3",
-    "type_header_font": "assistant_n4",
-    "type_body_font": "assistant_n4",
+    "type_header_font": "garamond_n4",
+    "type_body_font": "garamond_n4",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -22,14 +22,17 @@
             }
           }
         },
-        "block_order": ["announcement-bar-0"],
-        "settings": {}
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
       },
       "header": {
         "type": "header",
         "settings": {
           "color_scheme": "accent-1",
-          "logo": "shopify://shop_images/logo.png",
+          "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_width": 100,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -51,11 +54,14 @@
             "type": "text",
             "settings": {
               "heading": "You must be of legal drinking age to purchase alcohol.",
-              "subtext": "<p>Share store details, promotions, or brand content with your customers.</p>"
+              "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
             }
           }
         },
-        "block_order": ["footer-0", "footer-1"],
+        "block_order": [
+          "footer-0",
+          "footer-1"
+        ],
         "settings": {
           "color_scheme": "background-1",
           "newsletter_enable": true,
@@ -67,7 +73,9 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {
@@ -91,8 +99,11 @@
               }
             }
           },
-          "block_order": ["announcement-bar-0"],
-          "settings": {}
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {
+          }
         }
       }
     },
@@ -112,14 +123,19 @@
           "blocks": {
             "menu": {
               "type": "link_list",
-              "settings": {}
+              "settings": {
+              }
             },
             "text": {
               "type": "text",
-              "settings": {}
+              "settings": {
+              }
             }
           },
-          "block_order": ["menu", "text"],
+          "block_order": [
+            "menu",
+            "text"
+          ],
           "settings": {
             "color_scheme": "accent-1"
           }
