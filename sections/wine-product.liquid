@@ -19,7 +19,14 @@
 {%- endif -%}
 
 <section class="wine-product-page">
-  <section class="wine-product-page-header">
+  {%- assign coll_handles = product.collections | map: 'handle' -%}
+  <section class="wine-product-page-header"
+    {% if coll_handles contains 'white' %}
+      style="background-color: #114C67;"
+    {% elsif coll_handles contains 'red' %}
+      style="background-color: #6C2131;"
+    {% endif %}
+    >
     <div class="page-width" style="padding: 2.5rem 1.5rem">
       <div class="wine-product-page-header-image">
         {%- assign wine_picture = product.media | first -%}
@@ -289,7 +296,7 @@
                     <button
                       type="submit"
                       name="add"
-                      style="margin: 0"
+                      style="margin: 0; color: #fff; border-color: #232323"
                       class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
                     {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                     >
@@ -397,7 +404,7 @@
             {%- endcase -%}
           </div>
         {%- endif -%}
-      {%- endfor - %}
+      {%- endfor -%}
     </div>
   </section>
 </section>
@@ -410,15 +417,15 @@
 }
 .wine-metadata-item {
   text-align: center;
-  padding: 0 3rem;
   color: #000;
 }
 .wine-metadata-item h3 {
-  font-weight: 600;
+  font-size: 15pt;
   margin-bottom: 0;
 }
 .wine-metadata-item p {
-  margin-top: .5rem
+  margin-top: .5rem;
+  font-size: 11pt;
 }
 .wine-metadata-item-icon {
   display: inline-block;
@@ -431,7 +438,7 @@
   background: #eee;
 }
 .wine-product-page-header {
-  background: #114C67;
+  background: #6D895D;;
 }
 @media (max-width: 768px) {
   .wine-product-page-header > div {
@@ -451,6 +458,7 @@
     padding-bottom: 0.4em;
   }
   .wine-metadata-item {
+    padding: 0 2rem;
     flex-basis: 50%;
   }
 }
@@ -465,6 +473,7 @@
     padding-right: 0.4em;
   }
   .wine-metadata-item {
+    padding: 0 3rem;
     flex-basis: 25%;
   }
 }
@@ -487,6 +496,7 @@
   display: flex;
   flex-direction: row;
   line-height: 1;
+  flex-wrap: wrap;
 }
 .line-separated-elements > div {
   padding-top: 3px;
