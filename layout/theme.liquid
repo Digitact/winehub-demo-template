@@ -174,7 +174,11 @@
       window.addEventListener('DOMContentLoaded', (event) => {
         window.goCartInstance = new GoCart({
           cartMode: 'drawer',
-          moneyFormat: '{{ shop.money_format }}'
+          moneyFormat: '{{ shop.money_format }}',
+          labelAddedToCart: '{{ 'general.cart.item_added' | t }}'.split(' ').slice(1).join(' '),
+          labelCartIsEmpty: '{{ 'sections.cart.empty' | t }}',
+          labelQuantity: '{{ 'sections.cart.headings.quantity' | t }}:',
+          labelRemove: '{{ 'sections.cart.remove_title' | t }}'.split(' ')[0],
         });
       });
     </script>

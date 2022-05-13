@@ -15,7 +15,7 @@
 
         <!--go cart modal content-->
         <div class="go-cart-modal__content js-go-cart-modal-fail-content">
-            Something went wrong, please contact us!
+            {{ 'sections.cart.cart_error' | t }}
         </div>
         <!--end go cart modal content-->
 
@@ -47,11 +47,12 @@
         <div class="go-cart-modal__buttons">
 
             <a class="go-cart__button js-go-cart-modal-close">
-                Continue shopping
+                {{ 'general.continue_shopping' | t }}
             </a>
 
             <a href="/cart/" class="go-cart__button">
-                View cart
+                {% assign count_brackets = "({,{ count },})" | split: ',' | join: '' %}
+                {{ 'general.cart.view' | t | replace: count_brackets, '' }}
             </a>
 
         </div>
@@ -87,7 +88,7 @@
 
         <!--go cart drawer subtotal-->
         <div class="go-cart-drawer__subtotal">
-            <span>Subtotal: </span>
+            <span>{{ 'sections.cart.subtotal' | t }}: </span>
             <span class="go-cart-drawer__subtotal-price js-go-cart-drawer-subtotal"></span>
         </div>
         <!--end go cart drawer subtotal-->
@@ -96,11 +97,11 @@
         <div class="go-cart-drawer__footer js-go-cart-drawer-footer">
 
             <a href="/checkout/" class="button button--primary">
-                Proceed to checkout
+                {{ 'sections.cart.checkout' | t }}
             </a>
 
             <a href="/cart/" class="button button--secondary">
-                View cart
+                {{ 'general.cart.view' | t | replace: count_brackets, '' }}
             </a>
 
         </div>
