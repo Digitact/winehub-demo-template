@@ -52,8 +52,8 @@
                         src="{{ item.image | img_url: '300x' }}"
                         alt="{{ item.image.alt | escape }}"
                         loading="lazy"
-                        width="150"
-                        height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                        width="{{ 150 | times: item.image.aspect_ratio | ceil }}"
+                        height="150"
                       >
                     {% endif %}
                   </td>
@@ -169,7 +169,7 @@
                     <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                       {{ 'products.product.quantity.label' | t }}
                     </label>
-                    <quantity-input class="quantity">
+                    <quantity-input class="quantity small-on-mobile">
                       <button class="quantity__button no-js-hidden" name="minus" type="button">
                         <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
                         {% render 'icon-minus' %}
@@ -189,7 +189,7 @@
                       </button>
                     </quantity-input>
 
-                    <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                    <cart-remove-button class="small-on-mobile" id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
                       <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                         {% render 'icon-remove' %}
                       </a>

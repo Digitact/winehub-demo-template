@@ -50,6 +50,7 @@
 
 .cart-item__media {
   position: relative;
+  text-align: center;
 }
 
 .cart-item__link {
@@ -241,6 +242,20 @@ cart-remove-button .icon-remove {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+  }
+
+  .quantity.small-on-mobile {
+    height: 3rem;
+    width: calc(10rem / var(--font-body-scale));
+  }
+  .quantity.small-on-mobile .quantity__button {
+    width: calc(3rem / var(--font-body-scale));
+  }
+
+  cart-remove-button.small-on-mobile,
+  cart-remove-button.small-on-mobile > .button {
+    min-width: calc(3rem / var(--font-body-scale));
+    min-height: 3rem;
   }
 }
 
