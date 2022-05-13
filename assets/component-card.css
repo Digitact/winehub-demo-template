@@ -169,6 +169,7 @@
 
 .card-information__wrapper {
   width: 100%;
+  min-height: 90px;
 }
 
 .card-information__wrapper > * {

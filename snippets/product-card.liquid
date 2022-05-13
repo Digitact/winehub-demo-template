@@ -27,7 +27,14 @@
         {%- endif -%}
 
         {%- if product_card_product.featured_media -%}
-          <h3 class="card-information__text h4">
+          <h3 class="h5" style="margin-bottom: 0; text-align: center">
+            {% if product_card_product.metafields.wine_fields.vintage.value %}
+              {{ product_card_product.metafields.wine_fields.vintage.value }}
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </h3>
+          <h3 class="card-information__text h4" style="margin-top: 0">
             <a href="{{ product_card_product.url | default: '#' }}" class="full-unstyled-link">
               {{ product_card_product.title | escape }}
             </a>
