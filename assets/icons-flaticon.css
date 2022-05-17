@@ -1,0 +1,194 @@
+/*
+Flaticon icon font: Flaticon
+Creation date: 21/09/2018 11:57
+*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./icons-flaticon.eot");
+  src: url("./icons-flaticon.eot?#iefix") format("embedded-opentype"),
+    url("./icons-flaticon.woff") format("woff"),
+    url("./icons-flaticon.ttf") format("truetype"),
+    url("./icons-flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./icons-flaticon.svg#Flaticon") format("svg");
+  }
+}
+[class^="flaticon-"],
+[class*=" flaticon-"] {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-size: unset;
+  font-style: normal;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.flaticon-001-wine:before {
+  content: "\f100";
+}
+.flaticon-002-pin:before {
+  content: "\f101";
+}
+.flaticon-003-barrel:before {
+  content: "\f102";
+}
+.flaticon-004-toast:before {
+  content: "\f103";
+}
+.flaticon-005-wine-1:before {
+  content: "\f104";
+}
+.flaticon-006-menu:before {
+  content: "\f105";
+}
+.flaticon-007-grape:before {
+  content: "\f106";
+}
+.flaticon-008-wine-2:before {
+  content: "\f107";
+}
+.flaticon-009-wine-3:before {
+  content: "\f108";
+}
+.flaticon-010-wine-4:before {
+  content: "\f109";
+}
+.flaticon-011-toast-1:before {
+  content: "\f10a";
+}
+.flaticon-012-wine-5:before {
+  content: "\f10b";
+}
+.flaticon-013-wine-6:before {
+  content: "\f10c";
+}
+.flaticon-014-corkscrew:before {
+  content: "\f10d";
+}
+.flaticon-015-wine-7:before {
+  content: "\f10e";
+}
+.flaticon-016-wine-8:before {
+  content: "\f10f";
+}
+.flaticon-017-wine-press:before {
+  content: "\f110";
+}
+.flaticon-018-wine-9:before {
+  content: "\f111";
+}
+.flaticon-019-winery:before {
+  content: "\f112";
+}
+.flaticon-020-thermometer:before {
+  content: "\f113";
+}
+.flaticon-021-wine-10:before {
+  content: "\f114";
+}
+.flaticon-022-wine-11:before {
+  content: "\f115";
+}
+.flaticon-023-wine-bottle:before {
+  content: "\f116";
+}
+.flaticon-024-winery-1:before {
+  content: "\f117";
+}
+.flaticon-025-wine-bottle-1:before {
+  content: "\f118";
+}
+.flaticon-026-wine-12:before {
+  content: "\f119";
+}
+.flaticon-027-label:before {
+  content: "\f11a";
+}
+.flaticon-028-cocktail:before {
+  content: "\f11b";
+}
+.flaticon-029-wine-13:before {
+  content: "\f11c";
+}
+.flaticon-030-waiter:before {
+  content: "\f11d";
+}
+.flaticon-031-barrel-1:before {
+  content: "\f11e";
+}
+.flaticon-032-wine-14:before {
+  content: "\f11f";
+}
+.flaticon-033-wine-tasting:before {
+  content: "\f120";
+}
+.flaticon-034-wine-15:before {
+  content: "\f121";
+  margin-left: 33px;
+}
+.flaticon-035-wine-16:before {
+  content: "\f122";
+}
+.flaticon-036-bar:before {
+  content: "\f123";
+}
+.flaticon-037-grapes:before {
+  content: "\f124";
+}
+.flaticon-038-wine-17:before {
+  content: "\f125";
+}
+.flaticon-039-wine-18:before {
+  content: "\f126";
+}
+.flaticon-040-corkscrew-1:before {
+  content: "\f127";
+}
+.flaticon-041-wine-19:before {
+  content: "\f128";
+}
+.flaticon-042-filtering:before {
+  content: "\f129";
+}
+.flaticon-043-wine-tasting-1:before {
+  content: "\f12a";
+}
+.flaticon-044-wine-tasting-2:before {
+  content: "\f12b";
+}
+.flaticon-045-corkscrew-2:before {
+  content: "\f12c";
+  margin-left: 15px;
+  margin-top: 10px;
+  transform: rotate(15deg);
+}
+.flaticon-046-grapes-1:before {
+  content: "\f12d";
+}
+.flaticon-047-cork:before {
+  content: "\f12e";
+}
+.flaticon-048-field:before {
+  content: "\f12f";
+}
+.flaticon-049-wine-20:before {
+  content: "\f130";
+}
+.flaticon-050-wine-21:before {
+  content: "\f131";
+}

@@ -6,6 +6,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'icons-flaticon.css' | asset_url | stylesheet_tag }}
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -383,22 +384,30 @@
           <div class="wine-metadata-item">
             {%- case field[0] -%}
             {%- when 'winemaking_notes' -%}
-              <div class="wine-metadata-item-icon" style="background: #114c67">&nbsp;</div>
+              <div class="wine-metadata-item-icon" style="background: #114c67">
+                <i class="flaticon-012-wine-5"></i>
+              </div>
               <h3>Ageing process</h3>
               <p>{{ field[1] }}</p>
             {%- when 'growing_conditions' -%}
-              <div class="wine-metadata-item-icon" style="background: #398011;">&nbsp;</div>
+              <div class="wine-metadata-item-icon" style="background: #398011;">
+                <i class="flaticon-048-field"></i>
+              </div>
               <h3>Growing conditions</h3>
               <p>{{ field[1] }}</p>
             {%- when 'body' -%}
               <h3>Body</h3>
               <p>{{ field[1] }}</p>
             {%- when 'mouth' -%}
-              <div class="wine-metadata-item-icon" style="background: #6d895d">&nbsp;</div>
+              <div class="wine-metadata-item-icon" style="background: #6d895d">
+                <i class="flaticon-008-wine-2"></i>
+              </div>
               <h3>Flavour</h3>
               <p>{{ field[1] }}</p>
             {%- when 'nose' -%}
-              <div class="wine-metadata-item-icon" style="background: #6c2131">&nbsp;</div>
+              <div class="wine-metadata-item-icon" style="background: #6c2131">
+                <i class="flaticon-033-wine-tasting"></i>
+              </div>
               <h3>Aroma</h3>
               <p>{{ field[1] }}</p>
             {%- endcase -%}
@@ -414,6 +423,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 4rem 0;
+  justify-content: center;
 }
 .wine-metadata-item {
   text-align: center;
@@ -433,6 +443,9 @@
   height: 75px;
   width: 75px;
   border-radius: 100%;
+  color: #fff;
+  line-height: 75px;
+  font-size: 45px;
 }
 .wine-product-page-metadata {
   background: #eee;
