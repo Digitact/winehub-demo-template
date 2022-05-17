@@ -47,7 +47,8 @@
                 show_vendor: section.settings.show_vendor,
                 show_image_outline: section.settings.show_image_outline,
                 show_rating: section.settings.show_rating,
-                show_buy_button: true
+                show_buy_button: true,
+                show_quantity_picker: true
 
               %}
             </li>
@@ -61,6 +62,61 @@
     {%- endif -%}
   {%- endpaginate -%}
 </div>
+
+<script>
+  document.querySelectorAll('.hover-quantity-picker').forEach(el => {
+    Array.from(el.children).forEach(child => {
+      if (child.tagName === 'INPUT') {
+        child.addEventListener('input', () => {
+          if (el.classList.contains('dirty'))
+            return
+          el.classList.add('dirty')
+        })
+      }
+    })
+  })
+</script>
+
+<style>
+.hover-quantity-picker {
+  display: flex;
+}
+.hover-quantity-picker > input {
+  width: 20%;
+  border: 1px solid black;
+  margin: -1px 0;
+  padding: 0.4rem;
+  -webkit-transition: width 150ms ease;
+  transition: width 150ms ease;
+}
+.hover-quantity-picker > button {
+  flex-grow: 1;
+}
+.hover-quantity-picker input[type=number] { 
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.hover-quantity-picker input[type=number]::-webkit-inner-spin-button,
+.hover-quantity-picker input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+@media (hover: hover) {
+  .hover-quantity-picker:not(:hover, .dirty) > input:not(:active, :hover, :focus) {
+    width: 0%;
+    padding: 0%;
+    border: 0;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .hover-quantity-picker > input {
+    width: 25%;
+  }
+  .hover-quantity-picker > button {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+</style>
 
 {% schema %}
 {

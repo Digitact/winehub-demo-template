@@ -10,6 +10,7 @@
     - show_image_outline: {Boolean} Show card outline. Default: true (optional)
     - show_rating: {Boolean} Show the product rating. Default: false
     - show_buy_button: {Boolean}
+    - show_quantity_picker: {Boolean}
 
     Usage:
     {% render 'product-card', show_vendor: section.settings.show_vendor %}
@@ -153,27 +154,36 @@
 
       {%- form 'product', product_card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
         <input type="hidden" name="id" value="{{ product_card_product.first_available_variant.id }}">
-        <input type="hidden" name="quantity" value="1">
-        <button
-          type="submit"
-          name="add"
-          style="margin: 0; color: #fff; border-color: #232323"
-          class="product-form__submit button button--primary"
-          {% if product_card_product.first_available_variant.available == false %}disabled{% endif %}
-        >
-            <span>
-              {%- if product_card_product.first_available_variant.available -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- else -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- endif -%}
-            </span>
-            <div class="loading-overlay__spinner hidden">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-        </button>
+
+        {% if show_quantity_picker %}
+          <div class="hover-quantity-picker">
+            <input type="number" name="quantity" value="1" step="1" min="1" placeholder="Qnt." title="Quantity">
+        {% else %}
+          <input type="hidden" name="quantity" value="1">
+        {% endif %}
+            <button
+              type="submit"
+              name="add"
+              style="margin: 0; color: #fff; border-color: #232323"
+              class="product-form__submit button button--primary"
+              {% if product_card_product.first_available_variant.available == false %}disabled{% endif %}
+            >
+                <span>
+                  {%- if product_card_product.first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+            </button>
+        {% if show_quantity_picker %}
+        </div>
+        {% endif %}
       {%- endform -%}
     </product-form>
   </div>
