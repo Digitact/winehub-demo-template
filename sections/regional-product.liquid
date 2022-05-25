@@ -203,7 +203,8 @@
                   {%- for option in product.options_with_values -%}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
-                        {%- for value in option.values -%}
+                        {%- for value in option.values -%}                       
+                        {% if cart.currency.iso_code==value %}
                           <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
@@ -213,6 +214,7 @@
                           <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
                             {{ value }}
                           </label>
+					    {% endif %}
                         {%- endfor -%}
                       </fieldset>
                   {%- endfor -%}
