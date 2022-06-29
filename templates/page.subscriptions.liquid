@@ -117,6 +117,9 @@
             row += '<td headers="RowOrder ColumnTotal" role="cell">';
             row += formatter.format(data[index].deliveryPriceAmount);
         	row += '</td>';
+      		row += '<td headers="RowOrder" role="cell">';
+            row += '<a class="open-modal" href="/cancel">Cancel</a>';
+        	row += '</td>';
             row += '</tr>';
         	$('#subscription_tbody').append(row);
         	/*
