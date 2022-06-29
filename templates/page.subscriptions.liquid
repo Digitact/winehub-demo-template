@@ -80,7 +80,7 @@
           $(data).each(function (index, item) {
         	console.log(data[index].shopifyId);
         
-            var formatter = new Intl.NumberFormat(undefined, {
+            var formatter = new Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: data[index].deliveryPriceCurrency,
               // These options are needed to round to whole numbers if that's what you want.
