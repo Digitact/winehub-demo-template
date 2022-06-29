@@ -58,4 +58,47 @@
   </div>
 </div>
 
+<script>
+    $(function () {
+      alert("Loading content");  
+      $.ajax({
+        url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+          alert(data);
+          /*
+          var json = JSON.parse(data.d);
+          $(json).each(function (index, item) {
+            var questionId = json[index].id;
+            var question = json[index].question;
+            var course = json[index].course;
+            for (var option = 0; option < json[index].answerEntities.length; option++) {
+              var ans = json[index].answerEntities[option].ans;
+              var ansId = json[index].answerEntities[option].id;
+              var ansStatus = json[index].answerEntities[option].status;
+              $('tbody#emp').append(
+                '<tr><td>'
+                + questionId
+                + '</td><td>'
+                + question
+                + '</td><td>'
+                + course
+                + '</td><td>'
+                + ansId
+                + '</td><td>'
+                + ans
+                + '</td><td>'
+                + ansStatus
+                + '</td></tr>')
+            }
+          });
+          */
+        },
+        error: function (data) { alert(data.responseText); }
+      });
+
+    });  
+</script>
 
