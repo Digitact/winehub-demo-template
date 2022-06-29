@@ -71,10 +71,12 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
+          alert("success");
+          alert(data[0].shopifyId);
           alert(data);
-		  var json = JSON.parse(data);
-          $(json).each(function (index, item) {
-        	console.log(json[index].shopifyId);
+		  //var json = JSON.parse(data);
+          $(data).each(function (index, item) {
+        	console.log(data[index].shopifyId);
         	/*
             var questionId = json[index].id;
             var question = json[index].question;
