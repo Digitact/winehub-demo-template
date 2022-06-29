@@ -82,7 +82,7 @@
       		  row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/deletepaymentmethod/'+data[index].shopifyId+'">Delete</a>';
               row += '</td>';
               row += '</tr>';
-              $('#subscription_tbody').append(row);     
+              $('#payment_methods_tbody').append(row);     
             });           
 
           } else {
@@ -90,7 +90,7 @@
               row += '<tr role="row">';
               row += '<td colspan="10" style="text-align: left;">No payment method records found</td>';
               row += '</tr>';
-              $('#subscription_tbody').append(row);               
+              $('#payment_methods_tbody').append(row);               
           }         
         },
         error: function (data) { alert(data.responseText); }
