@@ -27,7 +27,7 @@
             <th id="ColumnTotal" scope="col" role="columnheader">Total</th>
           </tr>
         </thead>
-        <tbody role="rowgroup">
+        <tbody id="subscription_tbody" role="rowgroup">
           <tr role="row">
             <td
                 id="RowOrder"
@@ -64,19 +64,45 @@
 
 <script>
     $(function () {
-      alert("Loading content");  
+      //alert("Loading content");  
+      $('#subscription_tbody').html("");
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-          alert("success");
-          alert(data[0].shopifyId);
-          alert(data);
+          //alert("success");
+          //alert(data[0].shopifyId);
+          //alert(data);
 		  //var json = JSON.parse(data);
           $(data).each(function (index, item) {
         	console.log(data[index].shopifyId);
+        	var row = '';
+            row += '<tr role="row">';
+            row += '<td';
+            row += '    id="RowOrder"';
+            row += '    role="cell"';
+            row += '    headers="ColumnOrder"';
+            row += '    data-label=""';
+            row += '    >';
+            row += '  <a href="#" class="open-modal" data-open="modal1">';
+            row += '    Quarterly Subscription - Reds';
+            row += '  </a>';
+            row += '</td>';
+            row += '<td headers="RowOrder ColumnDate" role="cell">';
+            row += '  1st February 2022';
+            row += '</td>';
+            row += '<td headers="RowOrder ColumnPayment" role="cell">';
+            row += '  1st May 2022';
+            row += '</td>';
+            row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+            row += '  Pending';
+            row += '</td>';
+            row += '<td headers="RowOrder ColumnTotal" role="cell">';
+            row += '  &pound;200.00 GBP</td>';
+            row += '</tr>';
+        	$('#subscription_tbody').append(row);
         	/*
             var questionId = json[index].id;
             var question = json[index].question;
