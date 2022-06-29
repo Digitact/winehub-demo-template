@@ -45,7 +45,6 @@
 <script>
     $(function () {
       //alert("Loading content");  
-      //
          
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/customer_payment_methods?page=1&customer.shopifyId={{customer.id}}',
@@ -53,9 +52,11 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
+          console.log("success");
           $('#payment_methods_tbody').html("");
           if (data.length) {
             $(data).each(function (index, item) {
+        	  console.log(data[index].shopifyId);
               var row = '';
               row += '<tr role="row">';
               row += '<td';
