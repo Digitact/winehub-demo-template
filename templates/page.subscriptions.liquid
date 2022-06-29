@@ -96,7 +96,7 @@
             row += '  </a>';
             row += '</td>';
             row += '<td headers="RowOrder ColumnDate" role="cell">';
-            row += '  1st February 2022';
+            row += data[index].created;
             row += '</td>';
             row += '<td headers="RowOrder ColumnPayment" role="cell">';
             row += data[index].nextBillingDate;
@@ -105,7 +105,8 @@
             row += data[index].status;
             row += '</td>';
             row += '<td headers="RowOrder ColumnTotal" role="cell">';
-            row += '  &pound;200.00 GBP</td>';
+            row += data[index].deliveryPriceAmount;
+        	row += '</td>';
             row += '</tr>';
         	$('#subscription_tbody').append(row);
         	/*
