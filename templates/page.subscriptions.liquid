@@ -66,6 +66,7 @@
     $(function () {
       //alert("Loading content");  
       $('#subscription_tbody').html("");
+         
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
         type: "GET",
@@ -78,6 +79,15 @@
 		  //var json = JSON.parse(data);
           $(data).each(function (index, item) {
         	console.log(data[index].shopifyId);
+        
+            var formatter = new Intl.NumberFormat(undefined, {
+              style: 'currency',
+              currency: data[index].deliveryPriceCurrency,
+              // These options are needed to round to whole numbers if that's what you want.
+              //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+              //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+            });         
+        
         	var row = '';
             row += '<tr role="row">';
             row += '<td';
@@ -105,7 +115,7 @@
             row += data[index].status;
             row += '</td>';
             row += '<td headers="RowOrder ColumnTotal" role="cell">';
-            row += data[index].deliveryPriceAmount;
+            row += formatter.format(data[index].deliveryPriceAmount);
         	row += '</td>';
             row += '</tr>';
         	$('#subscription_tbody').append(row);
