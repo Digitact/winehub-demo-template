@@ -106,10 +106,10 @@
             row += '  </a>';
             row += '</td>';
             row += '<td headers="RowOrder ColumnDate" role="cell">';
-            row += data[index].created;
+            row += Date.parse(data[index].created).toDateString();
             row += '</td>';
             row += '<td headers="RowOrder ColumnPayment" role="cell">';
-            row += data[index].nextBillingDate;
+            row += Date.parse(data[index].nextBillingDate).toDateString();
             row += '</td>';
             row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
             row += data[index].status;
