@@ -30,27 +30,7 @@
         </thead>
         <tbody id="subscription_tbody" role="rowgroup">
           <tr role="row">
-            <td
-                id="RowOrder"
-                role="cell"
-                headers="ColumnOrder"
-                data-label="{{ 'customer.orders.order_number' | t }}"
-                >
-              <a href="#" class="open-modal" data-open="modal1">
-                Quarterly Subscription - Reds
-              </a>
-            </td>
-            <td headers="RowOrder ColumnDate" role="cell">
-              1st February 2022
-            </td>
-            <td headers="RowOrder ColumnPayment" role="cell">
-              1st May 2022
-            </td>
-            <td headers="RowOrder ColumnFulfillment" role="cell">
-              Pending
-            </td>
-            <td headers="RowOrder ColumnTotal" role="cell">
-              &pound;200.00 GBP</td>
+            <td colspan="10">Loading...</td>
           </tr>
         </tbody>
       </table>   
@@ -66,7 +46,7 @@
 <script>
     $(function () {
       //alert("Loading content");  
-      $('#subscription_tbody').html("");
+      //$('#subscription_tbody').html("");
          
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
