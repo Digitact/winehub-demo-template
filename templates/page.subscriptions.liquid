@@ -46,7 +46,7 @@
 <script>
     $(function () {
       //alert("Loading content");  
-      //$('#subscription_tbody').html("");
+      //
          
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
@@ -54,107 +54,61 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-          //alert("success");
-          //alert(data[0].shopifyId);
-          //alert(data);
-		  //var json = JSON.parse(data);
-          $(data).each(function (index, item) {
-        	console.log(data[index].shopifyId);
-        
-            var formatter = new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: data[index].deliveryPriceCurrencyCode,
-              // These options are needed to round to whole numbers if that's what you want.
-              //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-              //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-            });         
-        
-        	var row = '';
-            row += '<tr role="row">';
-            row += '<td';
-            row += '    id="RowOrder"';
-            row += '    role="cell"';
-            row += '    headers="ColumnOrder"';
-            row += '    data-label=""';
-            row += '    >';
-            row += '  <a href="#" class="open-modal" data-open="modal1">';
-            row += data[index].productName;
-        	row += '  <br />';
-        	row += data[index].sellingPlanGroupName;
-        	row += '  <br />';
-        	row += data[index].sellingPlanName;
-        	row += '  <br />';
-            row += '  </a>';
-            row += '</td>';
-            row += '<td headers="RowOrder ColumnDate" role="cell">';
-            row += new Date(data[index].created).toDateString();
-            row += '</td>';
-            row += '<td headers="RowOrder ColumnPayment" role="cell">';
-            row += new Date(data[index].nextBillingDate).toDateString();
-            row += '</td>';
-            row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-            row += data[index].status;
-            row += '</td>';
-            row += '<td headers="RowOrder ColumnTotal" role="cell">';
-            row += formatter.format(data[index].deliveryPriceAmount);
-        	row += '</td>';
-      		row += '<td headers="RowOrder ColumnAction" role="cell">';
-            row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+data[index].shopifyId+'">Cancel Subscription</a>';
-        	row += '</td>';
-            row += '</tr>';
-        	$('#subscription_tbody').append(row);
-        	/*
-            var questionId = json[index].id;
-            var question = json[index].question;
-            var course = json[index].course;
-            for (var option = 0; option < json[index].answerEntities.length; option++) {
-              var ans = json[index].answerEntities[option].ans;
-              var ansId = json[index].answerEntities[option].id;
-              var ansStatus = json[index].answerEntities[option].status;
-              $('tbody#emp').append(
-                '<tr><td>'
-                + questionId
-                + '</td><td>'
-                + question
-                + '</td><td>'
-                + course
-                + '</td><td>'
-                + ansId
-                + '</td><td>'
-                + ans
-                + '</td><td>'
-                + ansStatus
-                + '</td></tr>')
-            }
-            */
-          });          
-          /*
-          var json = JSON.parse(data.d);
-          $(json).each(function (index, item) {
-            var questionId = json[index].id;
-            var question = json[index].question;
-            var course = json[index].course;
-            for (var option = 0; option < json[index].answerEntities.length; option++) {
-              var ans = json[index].answerEntities[option].ans;
-              var ansId = json[index].answerEntities[option].id;
-              var ansStatus = json[index].answerEntities[option].status;
-              $('tbody#emp').append(
-                '<tr><td>'
-                + questionId
-                + '</td><td>'
-                + question
-                + '</td><td>'
-                + course
-                + '</td><td>'
-                + ansId
-                + '</td><td>'
-                + ans
-                + '</td><td>'
-                + ansStatus
-                + '</td></tr>')
-            }
-          });
-          */
+          $('#subscription_tbody').html("");
+          if (data.length) {
+            $(data).each(function (index, item) {
+              //console.log(data[index].shopifyId);
+              var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: data[index].deliveryPriceCurrencyCode,
+                // These options are needed to round to whole numbers if that's what you want.
+                //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+                //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+              });         
+
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td';
+              row += '    id="RowOrder"';
+              row += '    role="cell"';
+              row += '    headers="ColumnOrder"';
+              row += '    data-label=""';
+              row += '    >';
+              row += '  <a href="#" class="open-modal" data-open="modal1">';
+              row += data[index].productName;
+              row += '  <br />';
+              row += data[index].sellingPlanGroupName;
+              row += '  <br />';
+              row += data[index].sellingPlanName;
+              row += '  <br />';
+              row += '  </a>';
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnDate" role="cell">';
+              row += new Date(data[index].created).toDateString();
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnPayment" role="cell">';
+              row += new Date(data[index].nextBillingDate).toDateString();
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += data[index].status;
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnTotal" role="cell">';
+              row += formatter.format(data[index].deliveryPriceAmount);
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnAction" role="cell">';
+              row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+data[index].shopifyId+'">Cancel Subscription</a>';
+              row += '</td>';
+              row += '</tr>';
+              $('#subscription_tbody').append(row);     
+            });           
+
+          } else {
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td colspan="10">No subscription records found</td>';
+              row += '</tr>';
+              $('#subscription_tbody').append(row);               
+          }         
         },
         error: function (data) { alert(data.responseText); }
       });
