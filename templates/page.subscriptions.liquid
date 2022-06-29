@@ -25,6 +25,7 @@
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
             <th id="ColumnFulfillment" scope="col" role="columnheader">Fulfullment</th>
             <th id="ColumnTotal" scope="col" role="columnheader">Total</th>
+            <th id="ColumnAction" scope="col" role="columnheader"></th>
           </tr>
         </thead>
         <tbody id="subscription_tbody" role="rowgroup">
@@ -117,7 +118,7 @@
             row += '<td headers="RowOrder ColumnTotal" role="cell">';
             row += formatter.format(data[index].deliveryPriceAmount);
         	row += '</td>';
-      		row += '<td headers="RowOrder" role="cell">';
+      		row += '<td headers="RowOrder ColumnAction" role="cell">';
             row += '<a class="button button--full-width button--secondary" href="/cancel">Cancel</a>';
         	row += '</td>';
             row += '</tr>';
