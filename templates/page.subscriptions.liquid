@@ -95,7 +95,7 @@
               row += new Date(data[index].nextBillingDate).toDateString();
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-              row += data[index].status;
+              row += data[index].status.toUpperCase();
               row += '</td>';
               row += '<td headers="RowOrder ColumnTotal" role="cell">';
               row += formatter.format(data[index].deliveryPriceAmount);
