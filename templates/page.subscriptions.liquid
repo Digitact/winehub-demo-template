@@ -101,7 +101,7 @@
               row += formatter.format(data[index].deliveryPriceAmount);
               row += '</td>';
               row += '<td headers="RowOrder ColumnAction" role="cell">';
-              row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+data[index].shopifyId+'">Cancel Subscription</a>';
+              row += '<button class="button button--primary" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
