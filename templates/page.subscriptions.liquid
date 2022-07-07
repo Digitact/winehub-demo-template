@@ -101,7 +101,7 @@
               row += formatter.format(data[index].deliveryPriceAmount);
               row += '</td>';
               row += '<td headers="RowOrder ColumnAction" role="cell">';
-              row += '<button class="button button--primary" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
+    		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
