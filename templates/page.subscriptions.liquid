@@ -100,7 +100,7 @@
               row += '<td headers="RowOrder ColumnTotal" role="cell">';
               row += formatter.format(data[index].deliveryPriceAmount);
               row += '</td>';
-              row += '<td headers="RowOrder ColumnAction" role="cell">';
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:0;">';
     		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
