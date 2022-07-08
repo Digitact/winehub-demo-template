@@ -22,7 +22,7 @@
             <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
             <th id="ColumnDate" scope="col" role="columnheader">Started</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
-            <th id="ColumnFulfillment" scope="col" role="columnheader">Fulfullment</th>
+            <th id="ColumnFulfillment" scope="col" role="columnheader">Status</th>
             
             <th id="ColumnAction" scope="col" role="columnheader"></th>
           </tr>
@@ -82,14 +82,14 @@
               row += '    headers="ColumnOrder"';
               row += '    data-label=""';
               row += '    >';
-              row += '  <a href="#" class="open-modal" data-open="modal1">';
+              //row += '  <a href="#" class="open-modal" data-open="modal1">';
               row += data[index].productName;
               row += '  <br />';
               //row += data[index].sellingPlanGroupName;
               //row += '  <br />';
               row += data[index].sellingPlanName;
-              row += '  <br />';
-              row += '  </a>';
+              //row += '  <br />';
+              //row += '  </a>';
               row += '</td>';
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].created).toDateString();
