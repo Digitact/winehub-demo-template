@@ -23,7 +23,7 @@
             <th id="ColumnDate" scope="col" role="columnheader">Started</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
             <th id="ColumnFulfillment" scope="col" role="columnheader">Fulfullment</th>
-            <th id="ColumnTotal" scope="col" role="columnheader">Total</th>
+            
             <th id="ColumnAction" scope="col" role="columnheader"></th>
           </tr>
         </thead>
@@ -43,6 +43,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <script>
+  //<th id="ColumnTotal" scope="col" role="columnheader">Total</th>
+  
+  
     $(function () {
       //alert("Loading content");  
       updateList();        
@@ -62,6 +65,7 @@
               //console.log(data[index].shopifyId);
         	  currencyCode = data[index].deliveryPriceCurrencyCode;
         	  if (currencyCode===undefined) currencyCode = 'EUR';
+/*
               var formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: currencyCode,
@@ -69,7 +73,7 @@
                 //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
                 //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
               });         
-
+*/
               var row = '';
               row += '<tr role="row">';
               row += '<td';
@@ -96,9 +100,9 @@
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += data[index].status.toUpperCase();
               row += '</td>';
-              row += '<td headers="RowOrder ColumnTotal" role="cell">';
-              row += formatter.format(data[index].deliveryPriceAmount);
-              row += '</td>';
+              //row += '<td headers="RowOrder ColumnTotal" role="cell">';
+              //row += formatter.format(data[index].deliveryPriceAmount);
+              //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
     		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
               row += '</td>';
