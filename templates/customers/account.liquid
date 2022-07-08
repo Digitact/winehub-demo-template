@@ -101,51 +101,7 @@
           {%- endif -%}
         {%- endif -%}
       {% endpaginate %}
-<br />
- <h2>Subscriptions</h2>
 
-          <table role="table" class="order-history">
-            <caption class="visually-hidden">Wine Club Subscriptions</caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
-                <th id="ColumnDate" scope="col" role="columnheader">Started</th>
-                <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">Fulfullment</th>
-                <th id="ColumnTotal" scope="col" role="columnheader">Total</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-                <tr role="row">
-                  <td
-                    id="RowOrder"
-                    role="cell"
-                    headers="ColumnOrder"
-                    data-label="{{ 'customer.orders.order_number' | t }}"
-                  >
-                    <a href="#" class="open-modal" data-open="modal1">
-                      Quarterly Subscription - Reds
-                    </a>
-                  </td>
-                  <td headers="RowOrder ColumnDate" role="cell">
-                    1st February 2022
-                  </td>
-                  <td headers="RowOrder ColumnPayment" role="cell">
-                    1st May 2022
-                  </td>
-                  <td headers="RowOrder ColumnFulfillment" role="cell">
-                    Pending
-                  </td>
-                  <td headers="RowOrder ColumnTotal" role="cell">
-                    &pound;200.00 GBP</td>
-                </tr>
-            </tbody>
-          </table>   
-      
-      <br />
-      <h2>Referal Code</h2>
-      <p>To recieve discounts on your future shipments get your friends to sign up with the referal code "matt_munro_k323j42"</p>
-    
     </div>
   
     <div>
