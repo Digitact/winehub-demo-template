@@ -104,20 +104,14 @@
   
   function updatePayment(id) {
     if (confirm("Send an email with a link to update your payment details?") == true) {
-
-      var row = '';
-      row += '<tr role="row">';
-      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
-      row += '</tr>';
-      $('#subscription_tbody').html(row);
-      
+     
 	  $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/updatepaymentmethod/'+id,
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-          $('#subscription_tbody').html("");
+          //$('#subscription_tbody').html("");
 		  //updateList();            
         },
         error: function (data) { alert(data.responseText); }
