@@ -15,8 +15,7 @@
     <div>
 
       <h2>Payment Methods</h2>
-      <a href="">Add New Payment Method</a>
-	  <br /><br />
+	  <br />
       <table role="table" class="order-history">
         <thead role="rowgroup">
           <tr role="row">
@@ -43,9 +42,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <script>
+  
     $(function () {
       //alert("Loading content");  
-         
+      updateList();        
+    }); 
+  
+  function updateList() {
+   
       $.ajax({
         url: 'https://howards-folly-wine.digitact.co.uk/api/customer_payment_methods?page=1&customer.shopifyId={{customer.id}}',
         type: "GET",
@@ -78,8 +82,9 @@
       		  row += data[index].cardYear;
               row += '</td>';
               row += '<td headers="RowOrder ColumnAction" role="cell">';
-              row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/updatepaymentmethod/'+data[index].shopifyId+'">Update</a> ';
-      		  row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/deletepaymentmethod/'+data[index].shopifyId+'">Delete</a>';
+        	  row += '<button class="button button--primary" style="margin:0;" onClick="updatePayment(\''+data[index].shopifyId+'\');">Update</button>';              
+              //row += '<button class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/updatepaymentmethod/'+data[index].shopifyId+'">Update</button> ';
+      		  //row += '<a class="button button--primary" href="https://howards-folly-wine.digitact.co.uk/deletepaymentmethod/'+data[index].shopifyId+'">Delete</a>';
               row += '</td>';
               row += '</tr>';
               $('#payment_methods_tbody').append(row);     
@@ -95,8 +100,35 @@
         },
         error: function (data) { alert(data.responseText); }
       });
+    
+    
+  }  
+  
+  
+  function updatePayment(id) {
+    if (confirm("Send an email with a link to update your payment details?") == true) {
 
-    });  
+      var row = '';
+      row += '<tr role="row">';
+      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
+      row += '</tr>';
+      $('#subscription_tbody').html(row);
+      
+	  $.ajax({
+        url: 'https://howards-folly-wine.digitact.co.uk/updatepaymentmethod/'+id,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+          $('#subscription_tbody').html("");
+		  updateList();            
+        },
+        error: function (data) { alert(data.responseText); }
+      });      
+      
+    }   
+  }
+  
 </script>
 
 
