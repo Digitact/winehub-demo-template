@@ -86,11 +86,6 @@
           "enable_language_selector": true,
           "payment_enable": true
         }
-      },
-      "go-cart": {
-        "type": "go-cart",
-        "settings": {
-        }
       }
     },
     "content_for_index": [

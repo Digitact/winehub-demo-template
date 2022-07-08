@@ -226,6 +226,30 @@
         "swipe_on_mobile": false
       }
     },
+    "165728617522ad3ab5": {
+      "type": "apps",
+      "blocks": {
+        "9f2c98ea-22c7-4f5d-8854-75762c9ccb11": {
+          "type": "shopify:\/\/apps\/stamped-loyalty-referrals\/blocks\/page-referral\/1dca3c9b-31b1-4bfb-a09a-c23c1a3c8fb6",
+          "settings": {
+            "label_subtitle": "Refer a Friend",
+            "label_title": "Give {0}, Get {1}",
+            "label_description": "",
+            "label_button": "Start referring now",
+            "label_send": "Send",
+            "label_email_customer": "Enter your email address:",
+            "label_email_friend": "Enter your friend's email address:",
+            "label_thank_you": "Your referral has been sent to your friend, thank you!"
+          }
+        }
+      },
+      "block_order": [
+        "9f2c98ea-22c7-4f5d-8854-75762c9ccb11"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "pagefly-home": {
       "type": "pagefly-home",
       "settings": {
@@ -240,6 +264,7 @@
     "1637134656e2ed707c",
     "1637134659447da194",
     "163713495016105ee9",
+    "165728617522ad3ab5",
     "pagefly-home"
   ]
 }
