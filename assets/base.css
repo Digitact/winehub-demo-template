@@ -2337,20 +2337,3 @@ details-disclosure > details {
     stroke: CanvasText;
   }
 }
-
-.product_listing__main .product_img {
-position: relative;
-height: 260px;
-}
-.product_listing__main .product_info {
-padding: 15px 0;
-height: 70px;
-}
-
-
-.product_listing__main .product_name {
-font-size: 10px;
-letter-spacing: .3em;
-text-align: center;
-text-transform: uppercase;
-} 
