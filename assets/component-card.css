@@ -165,6 +165,7 @@
   display: block;
   margin: 0;
   text-align: center;
+  height: 80px;
 }
 
 .card-information__wrapper {
