@@ -437,7 +437,13 @@
   {% if product.tags contains 'customisable' %}
   <section id="customiser" class="wine-product-page-casebuilder">
     <div class="wine-casebuilder page-width">
-      Case builder here
+      <script>
+        window.permanent_domain="{{ shop.permanent_domain }}";
+      </script>
+      <script defer="defer" src="https://howards-folly-wine.digitact.co.uk/case-builder/static/js/main.428061ce.js"></script>
+      <link href="https://howards-folly-wine.digitact.co.uk/case-builder/static/css/main.5fb02312.css" rel="stylesheet">
+      <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+      <div id="root"></div>
     </div>
   </section>  
   {% endif %}
