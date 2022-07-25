@@ -302,10 +302,16 @@
                     {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                     >
                         <span>
+                          {%- if product.tags contains 'customisable' -%}
+                          Customise Case
+                          {%- else -%}                            
+                
                           {%- if product.selected_or_first_available_variant.available -%}
                             {{ 'products.product.add_to_cart' | t }}
                           {%- else -%}
                             {{ 'products.product.sold_out' | t }}
+                          {%- endif -%}
+
                           {%- endif -%}
                         </span>
                         <div class="loading-overlay__spinner hidden">
@@ -416,6 +422,13 @@
       {%- endfor -%}
     </div>
   </section>
+  {% if product.tags contains 'customisable' %}
+  <section id="customiser" class="wine-product-page-casebuilder">
+    <div class="wine-casebuilder page-width">
+      Case builder here
+    </div>
+  </section>  
+  {% endif %}
 </section>
 
 {% style %}
