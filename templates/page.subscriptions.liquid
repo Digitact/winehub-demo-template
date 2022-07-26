@@ -67,6 +67,8 @@
         contentType: "application/json; charset=utf-8",
         success: function (data) {
           $('#subscription_tbody').html("");
+          console.log(data);
+          console.log(data.length);
           if (data.length) {
             $(data).each(function (index, item) {
               //console.log(data[index].shopifyId);
