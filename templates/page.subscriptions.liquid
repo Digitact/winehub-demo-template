@@ -19,6 +19,7 @@
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
         <thead role="rowgroup">
           <tr role="row">
+            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>
             <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
             <th id="ColumnDate" scope="col" role="columnheader">Started</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
@@ -82,6 +83,9 @@
 */
               var row = '';
               row += '<tr role="row">';
+              row += '<td headers="RowOrder ColumnImage" role="cell">';
+              row += '<img src="'+data[index].image+'" style="max-width:100px; max-height:100px;" />';
+              row += '</td>';    
               row += '<td';
               row += '    id="RowOrder"';
               row += '    role="cell"';
