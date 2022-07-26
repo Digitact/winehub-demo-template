@@ -70,9 +70,10 @@
           if (data.length) {
             $(data).each(function (index, item) {
               //console.log(data[index].shopifyId);
-        	  currencyCode = data[index].deliveryPriceCurrencyCode;
-        	  if (currencyCode===undefined) currencyCode = 'EUR';
 /*
+              currencyCode = data[index].deliveryPriceCurrencyCode;
+        	  if (currencyCode===undefined) currencyCode = 'EUR';
+
               var formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: currencyCode,
