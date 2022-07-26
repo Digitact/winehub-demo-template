@@ -16,7 +16,7 @@
 
       <h2>Upcoming Deliveries</h2>
       
-      <h3>Next Dispatch Date: Sunday, May 1st 2022 <a href="" style="font-weight:normal; font-size:12px;">Change Date</a></h3>
+      <h3>Next Dispatch Date: {next_date} <a href="" style="font-weight:normal; font-size:12px;">Change Date</a></h3>
       
       <table role="table" class="order-history">
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
@@ -37,39 +37,18 @@
                 data-label="{{ 'customer.orders.order_number' | t }}"
                 >
               <a href="#" class="open-modal" data-open="modal1">
-                Quarterly Subscription - Reds
+                {subscription}
               </a>
             </td>
             <td headers="RowOrder ColumnPayment" role="cell">
-              1st May 2022
+              {date}
             </td>
             <td headers="RowOrder ColumnFulfillment" role="cell">
-              3 x Freshco?<br />
-              3 x Três Ânforas
+              {winelist}
             </td>
             <td headers="RowOrder ColumnTotal" role="cell">
-              &pound;200.00 GBP</td>
-          </tr>
-          <tr role="row">
-            <td
-                id="RowOrder"
-                role="cell"
-                headers="ColumnOrder"
-                data-label="{{ 'customer.orders.order_number' | t }}"
-                >
-              <a href="#" class="open-modal" data-open="modal1">
-                Quarterly Subscription - Whites
-              </a>
+              {price}
             </td>
-            <td headers="RowOrder ColumnPayment" role="cell">
-              1st May 2022
-            </td>
-            <td headers="RowOrder ColumnFulfillment" role="cell">
-              3 x Sonhador<br />
-              3 x Alvarinho
-            </td>
-            <td headers="RowOrder ColumnTotal" role="cell">
-              &pound;200.00 GBP</td>
           </tr>
         </tbody>
       </table>   
