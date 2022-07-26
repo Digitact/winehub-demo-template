@@ -52,9 +52,15 @@
     }); 
   
   function updateList() {
-   
+    {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
+      var app_domain = 'https://wineclub-demo.digitact.co.uk';
+    {% else %}
+      var app_domain = 'https://howards-folly-wine.digitact.co.uk';
+    {% endif %}
+
+    
       $.ajax({
-        url: 'https://howards-folly-wine.digitact.co.uk/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
+        url: app_domain+'/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
