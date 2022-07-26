@@ -117,8 +117,8 @@
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
-    		  row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Edit Subscription</button>';
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button>';
+    		  row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="editSubscription(\''+data[index].contract_shopify_id+'\');">Edit Subscription</button><br />';
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="pauseSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button><br />';
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
@@ -138,6 +138,16 @@
     
     
   }
+
+  function editSubscription(id) {
+    if (confirm("Are you sure you wish to edit this contract?") == true) {
+    }   
+  }
+
+  function pauseSubscription(id) {
+    if (confirm("Are you sure you wish to pause this contract?") == true) {
+    }   
+  }    
   
   function cancelSubscription(id) {
     if (confirm("Are you sure you wish to cancel this contract?") == true) {
