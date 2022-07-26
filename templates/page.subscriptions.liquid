@@ -57,10 +57,10 @@
     {% else %}
       var app_domain = 'https://howards-folly-wine.digitact.co.uk';
     {% endif %}
-
     
       $.ajax({
-        url: app_domain+'/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
+        //url: app_domain+'/api/subscription_contracts?page=1&customer.shopifyId={{customer.id}}',
+        url: app_domain+'/app/api/subscription_contracts/{{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -89,19 +89,19 @@
               row += '    data-label=""';
               row += '    >';
               //row += '  <a href="#" class="open-modal" data-open="modal1">';
-              row += data[index].productName;
+              row += data[index].product_name;
               row += '  <br />';
               //row += data[index].sellingPlanGroupName;
               //row += '  <br />';
-              row += data[index].sellingPlanName;
+              row += data[index].selling_plan_name;
               //row += '  <br />';
               //row += '  </a>';
               row += '</td>';
               row += '<td headers="RowOrder ColumnDate" role="cell">';
-              row += new Date(data[index].created).toDateString();
+              row += new Date(data[index].signed_up).toDateString();
               row += '</td>';
               row += '<td headers="RowOrder ColumnPayment" role="cell">';
-              row += new Date(data[index].nextBillingDate).toDateString();
+              row += new Date(data[index].signed_up).toDateString();
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += data[index].status.toUpperCase();
@@ -110,7 +110,7 @@
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
-    		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].shopifyId+'\');">Cancel Subscription</button>';
+    		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
