@@ -117,7 +117,9 @@
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
-    		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button>';
+    		  row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Edit Subscription</button><br />';
+              row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button><br />';
+              row += '<button class="button button--primary" style="margin:0;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button>';
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
