@@ -369,10 +369,10 @@
     function makeCase() {
       //remove bottles from cart
         
-        var line = -1;
+        var line = "";
         cart.items.forEach((element, index, array) => { 
             if (element.variant_id=="43127762977025") {
-              line=index+1;
+              line=element.key;
             }
         });
         var formData = {};
