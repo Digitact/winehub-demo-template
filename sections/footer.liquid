@@ -318,14 +318,16 @@
     <span id="loosewine">
     
     </span>
-    <button id="make-a-case" class="product-form__submit button button--primary w-100" style="display:none;" onClick="console.log(window.goCartInstance);">Make it a case!</button>
+    <button id="make-a-case" class="product-form__submit button button--primary w-100" style="display:none;" onClick="makeCase();">Make it a case!</button>
   </div>  
   <script>
+    var cart;
     //Listen for the event
     window.addEventListener("CartUpdateEvent", function(evt) {
         //alert(evt.detail);
         //console.log(evt);
         var data = evt.detail;
+        cart = data;
         var loosewine = 0;
         data.items.forEach((element, index, array) => { 
             if (element.variant_id=="43127762977025") {
@@ -355,6 +357,48 @@
         document.getElementById("loosewine").innerHTML = content; 
         
     }, false);
+
+    function makeCase() {
+      //remove bottles from cart
+      //add case to cart
+
+        var properties = {};
+        properties["Wine 1"] = "12 x Freshco?";
+       
+        let formData = {
+            'items': [{
+                'id': 43101868884225,
+                'quantity': 1,
+                'properties': properties
+            }]
+        };
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            if (response.status) {
+                this.handleErrorMessage(response.description);
+                return;
+            }
+        
+            console.log("goCartInstance:", window.goCartInstance);
+            if (window.goCartInstance) {
+                window.goCartInstance.addItemToCartHandler(response);
+            } else {
+                this.cartNotification.renderContents(response);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });      
+      
+    }
+    
     /*
     //console.log(window.goCartInstance);
     function updateModule() {
