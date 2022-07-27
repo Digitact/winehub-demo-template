@@ -322,16 +322,17 @@
   <script>
     //Listen for the event
     window.addEventListener("CartUpdateEvent", function(evt) {
-        alert(evt.detail);
+        //alert(evt.detail);
+        console.log(evt);
     }, false);
     
-    console.log(window.goCartInstance);
+    //console.log(window.goCartInstance);
     function updateModule() {
       var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
         .then(response => response.json())
         .then(data => { 
-          console.log(data);
-          console.log(data.items);
+          //console.log(data);
+          //console.log(data.items);
           var loosewine = 0;
           data.items.forEach((element, index, array) => { 
             if (element.variant_id=="43127762977025") {
@@ -347,10 +348,10 @@
             }              
           }
           var remaining = 12-loosewine;
-          console.log(remaining);
+          //console.log(remaining);
           document.getElementById("loosewine").innerHTML = remaining; 
           //$('#loosewine').html(remaining);
-          console.log(data["items"]);
+          //console.log(data["items"]);
           return data 
         });
       
