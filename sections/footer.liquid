@@ -390,8 +390,17 @@
             body: JSON.stringify(formData)
         })
             .then((response) => response.json())
-            .then(() => {
-
+            .then((response) => {
+              if (window.goCartInstance) {
+                  window.goCartInstance.fetchCart();
+              } else {
+                  this.cartNotification.renderContents(response);
+              }
+            })
+            .catch((error) => {
+                this.ajaxRequestFail();
+                throw new Error(error);
+            });            
 
       //add case to cart
 
@@ -429,16 +438,7 @@
         })
         .catch((error) => {
             console.error('Error:', error);
-        });     
-
-              
-            })
-            .catch((error) => {
-                this.ajaxRequestFail();
-                throw new Error(error);
-            });            
-
- 
+        });      
       
     }
     
