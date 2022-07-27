@@ -368,6 +368,27 @@
 
     function makeCase() {
       //remove bottles from cart
+
+        const quantity = 0;
+        console.log(cart);
+        var line = 0;
+        console.log(line);
+      /*
+        window.fetch(window.Shopify.routes.root + 'cart/change.js', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: JSON.stringify({quantity, line}),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            //.then(() => this.fetchCart())
+            .catch((error) => {
+                this.ajaxRequestFail();
+                throw new Error(error);
+            });            
+      */
       //add case to cart
 
         var properties = {};
