@@ -320,6 +320,11 @@
     <button class="product-form__submit button button--primary w-100" onClick="console.log(window.goCartInstance);">Make it a case!</button>
   </div>  
   <script>
+    //Listen for the event
+    window.addEventListener("CartUpdateEvent", function(evt) {
+        alert(evt.detail);
+    }, false);
+    
     console.log(window.goCartInstance);
     function updateModule() {
       var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
