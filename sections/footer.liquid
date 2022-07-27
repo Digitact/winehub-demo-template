@@ -323,9 +323,27 @@
     //Listen for the event
     window.addEventListener("CartUpdateEvent", function(evt) {
         //alert(evt.detail);
-        console.log(evt);
+        //console.log(evt);
+        var cart = evt.detail;
+        var loosewine = 0;
+        data.items.forEach((element, index, array) => { 
+            if (element.variant_id=="43127762977025") {
+              loosewine+=element.quantity;
+            }
+        });
+        for (var i=0; i<12; i++) {
+          var bottleid = "bottle-12-"+i;
+          if (i<loosewine) {
+            document.getElementById(bottleid).style.display = "block"; 
+          } else {
+            document.getElementById(bottleid).style.display = "none"; 
+          }              
+        }
+        var remaining = 12-loosewine;
+        //console.log(remaining);
+        document.getElementById("loosewine").innerHTML = remaining; 
     }, false);
-    
+    /*
     //console.log(window.goCartInstance);
     function updateModule() {
       var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
@@ -354,8 +372,9 @@
           //console.log(data["items"]);
           return data 
         });
-      
+
     }
+          */
   </script>
   <div style="width: 300px;height: 300px;">
   <div class="case-diagram case-12 row">
