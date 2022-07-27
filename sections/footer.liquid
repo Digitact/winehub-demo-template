@@ -324,7 +324,7 @@
     window.addEventListener("CartUpdateEvent", function(evt) {
         //alert(evt.detail);
         //console.log(evt);
-        var cart = evt.detail;
+        var data = evt.detail;
         var loosewine = 0;
         data.items.forEach((element, index, array) => { 
             if (element.variant_id=="43127762977025") {
