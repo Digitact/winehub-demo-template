@@ -315,7 +315,7 @@
 <div style="position: fixed; bottom:0; left:0; width: 330px; height: 500px; background: white; border: 1px solid grey;">
 
   <div style="padding:10px;">
-    It looks like you've got some loose bottles of wine in your cart, buy {X} more and make it a case and save 10%
+    It looks like you've got some loose bottles of wine in your cart, buy <span id="loosewine">{X}</span> more and make it a case and save 10%
     <button class="product-form__submit button button--primary w-100" onClick="updateModule();">Update</button>
     <button class="product-form__submit button button--primary w-100" onClick="console.log(window.goCartInstance);">Make it a case!</button>
   </div>  
@@ -327,6 +327,14 @@
         .then(data => { 
           console.log(data);
           console.log(data.items);
+          var loosewine = 0;
+          data.items.forEach((element, index, array) => { 
+            if (element.variant_id=="43127762977025") {
+              loosewine+=element.quantity;
+            }
+          });
+          var remaining = 12-loosewine;
+          $('#loosewine').html(remaining);
           console.log(data["items"]);
           return data 
         });
