@@ -390,11 +390,8 @@
             body: JSON.stringify(formData)
         })
             .then((response) => response.json())
-            //.then(() => this.fetchCart())
-            .catch((error) => {
-                this.ajaxRequestFail();
-                throw new Error(error);
-            });            
+            .then(() => {
+
 
       //add case to cart
 
@@ -432,7 +429,16 @@
         })
         .catch((error) => {
             console.error('Error:', error);
-        });      
+        });     
+
+              
+            })
+            .catch((error) => {
+                this.ajaxRequestFail();
+                throw new Error(error);
+            });            
+
+ 
       
     }
     
