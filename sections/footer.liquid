@@ -322,7 +322,8 @@
   <script>
     //Listen for the event
     window.addEventListener("CartUpdateEvent", function(evt) {
-        alert(evt.detail);
+        //alert(evt.detail);
+        console.log(evt.cart);
     }, false);
     
     console.log(window.goCartInstance);
