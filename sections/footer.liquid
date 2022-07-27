@@ -369,14 +369,15 @@
     function makeCase() {
       //remove bottles from cart
         
-        var line = "";
+        var line = -1;
         cart.items.forEach((element, index, array) => { 
             if (element.variant_id=="43127762977025") {
-              line=element.key;
+              line=index;
             }
         });
         var formData = {};
-        formData[line] = 0;
+        formData["line"] = line;
+        formData["quantity"] = 0;
         console.log(formData);
         
         window.fetch(window.Shopify.routes.root + 'cart/change.js', {
