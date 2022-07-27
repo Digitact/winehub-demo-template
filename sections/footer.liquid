@@ -324,8 +324,13 @@
     function updateModule() {
       var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
         .then(response => response.json())
-        .then(data => { return data });
-      console.log(cartContents.items);
+        .then(data => { 
+          console.log(data);
+          console.log(data.items);
+          console.log(data["items"]);
+          return data 
+        });
+      
     }
   </script>
   <div style="width: 300px;height: 300px;">
