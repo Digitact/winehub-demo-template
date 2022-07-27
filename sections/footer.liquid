@@ -335,7 +335,8 @@
           });
           var remaining = 12-loosewine;
           alert(remaining);
-          $('#loosewine').html(remaining);
+          document.getElementById("loosewine").innerHTML = remaining; 
+          //$('#loosewine').html(remaining);
           console.log(data["items"]);
           return data 
         });
