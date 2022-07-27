@@ -325,7 +325,7 @@
       var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
         .then(response => response.json())
         .then(data => { return data });
-      console.log(cartContents);
+      console.log(cartContents.items);
     }
   </script>
   <div style="width: 300px;height: 300px;">
