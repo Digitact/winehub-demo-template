@@ -367,40 +367,7 @@
     }, false);
 
     function makeCase() {
-      //remove bottles from cart
-        
-        var line = "";
-        cart.items.forEach((element, index, array) => { 
-            if (element.variant_id=="43127762977025") {
-              //line=element.key;
-              line=""+(index+1);
-            }
-        });
-        var formData = {};
-        formData["line"] = line;
-        formData["quantity"] = 0;
-        console.log(formData);
-        
-        window.fetch(window.Shopify.routes.root + 'cart/change.js', {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-            .then((response) => response.json())
-            //.then((response) => {
-            //  if (window.goCartInstance) {
-            //      window.goCartInstance.fetchCart();
-            //  } else {
-            //      this.cartNotification.renderContents(response);
-            //  }
-            //})
-            .catch((error) => {
-                this.ajaxRequestFail();
-                throw new Error(error);
-            });            
+         
 
       //add case to cart
 
@@ -431,14 +398,52 @@
         
             console.log("goCartInstance:", window.goCartInstance);
             if (window.goCartInstance) {
-                window.goCartInstance.fetchCart(); //.addItemToCartHandler(response);
+                window.goCartInstance.addItemToCartHandler(response);
             } else {
                 this.cartNotification.renderContents(response);
             }
         })
         .catch((error) => {
             console.error('Error:', error);
-        });      
+        });     
+
+
+
+      //remove bottles from cart
+        
+        var line = "";
+        cart.items.forEach((element, index, array) => { 
+            if (element.variant_id=="43127762977025") {
+              //line=element.key;
+              line=""+(index+1);
+            }
+        });
+        var formData = {};
+        formData["line"] = line;
+        formData["quantity"] = 0;
+        console.log(formData);
+        
+        window.fetch(window.Shopify.routes.root + 'cart/change.js', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((response) => response.json())
+            .then((response) => {
+              if (window.goCartInstance) {
+                  window.goCartInstance.fetchCart();
+              } else {
+                  this.cartNotification.renderContents(response);
+              }
+            })
+            .catch((error) => {
+                this.ajaxRequestFail();
+                throw new Error(error);
+            });   
+      
       
     }
     
