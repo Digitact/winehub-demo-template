@@ -390,13 +390,13 @@
             body: JSON.stringify(formData)
         })
             .then((response) => response.json())
-            .then((response) => {
-              if (window.goCartInstance) {
-                  window.goCartInstance.fetchCart();
-              } else {
-                  this.cartNotification.renderContents(response);
-              }
-            })
+            //.then((response) => {
+            //  if (window.goCartInstance) {
+            //      window.goCartInstance.fetchCart();
+            //  } else {
+            //      this.cartNotification.renderContents(response);
+            //  }
+            //})
             .catch((error) => {
                 this.ajaxRequestFail();
                 throw new Error(error);
@@ -431,7 +431,7 @@
         
             console.log("goCartInstance:", window.goCartInstance);
             if (window.goCartInstance) {
-                window.goCartInstance.addItemToCartHandler(response);
+                window.goCartInstance.fetchCart(); //.addItemToCartHandler(response);
             } else {
                 this.cartNotification.renderContents(response);
             }
