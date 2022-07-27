@@ -9,6 +9,7 @@
     "colors_background_2": "#F3F3F3",
     "type_header_font": "garamond_n4",
     "type_body_font": "garamond_n4",
+    "page_width": "1200",
     "social_facebook_link": "https:\/\/www.facebook.com\/howardsfolly\/",
     "social_instagram_link": "https:\/\/instagram.com\/howardsfollywine\/",
     "sections": {
@@ -45,7 +46,6 @@
         "type": "header",
         "settings": {
           "color_scheme": "accent-1",
-          "logo": "shopify:\/\/shop_images\/HFlogo.png",
           "logo_width": 100,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -85,6 +85,11 @@
           "enable_country_selector": true,
           "enable_language_selector": true,
           "payment_enable": true
+        }
+      },
+      "go-cart": {
+        "type": "go-cart",
+        "settings": {
         }
       }
     },
