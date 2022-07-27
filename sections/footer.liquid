@@ -316,10 +316,17 @@
 
   <div style="padding:10px;">
     It looks like you've got some loose bottles of wine in your cart, buy {X} more and make it a case and save 10%
+    <button class="product-form__submit button button--primary w-100" onClick="updateModule();">Update</button>
     <button class="product-form__submit button button--primary w-100" onClick="console.log(window.goCartInstance);">Make it a case!</button>
   </div>  
   <script>
     console.log(window.goCartInstance);
+    function updateModule() {
+      var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
+        .then(response => response.json())
+        .then(data => { return data });
+      console.log(cartContents);
+    }
   </script>
   <div style="width: 300px;height: 300px;">
   <div class="case-diagram case-12 row"><img class="case-background" src="https://wineclub-demo.digitact.co.uk/case-builder/static/media/TwelveFrameBackground.b73d570808260a6007d2.png"><img class="bottle-12-0" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-1" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-2" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-3" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-4" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-5" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-6" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-7" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-8" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-9" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-10" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="bottle-12-11" src="https://wineclub-demo.digitact.co.uk/images/WineRed.png"><img class="case-foreground" src="https://wineclub-demo.digitact.co.uk/case-builder/static/media/TwelveFrameForeground.d86344b6884ffc481008.png"></div>
