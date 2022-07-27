@@ -312,7 +312,7 @@
   </div>
 </footer>
 
-<div style="position: fixed; bottom:0; left:0; width: 330px; height: 500px; background: white; border: 1px solid grey;">
+<div id="cart-promo" style="position: fixed; bottom:0; left:0; width: 330px; height: 500px; background: white; border: 1px solid grey;">
 
   <div style="padding:10px;">
     <span id="loosewine">
@@ -334,6 +334,13 @@
               loosewine+=element.quantity;
             }
         });
+
+        if (loosewine==0) {
+          document.getElementById("cart-promo").style.display = "none"; 
+        } else {
+          document.getElementById("cart-promo").style.display = "block"; 
+        } 
+      
         for (var i=0; i<12; i++) {
           var bottleid = "bottle-12-"+i;
           if (i<loosewine) {
@@ -342,6 +349,7 @@
             document.getElementById(bottleid).style.display = "none"; 
           }              
         }
+
         var remaining = 12-loosewine;        
         //console.log(remaining);
         var content = "";
