@@ -19,6 +19,7 @@
 
 .price .price-item {
   margin: 0 1rem 0 0;
+  color: #fff;
 }
 
 .price:not(.price--show-badge) .price-item--last:last-of-type {
