@@ -90,7 +90,7 @@
                             </svg>
 
                             </svg>
-                            {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}mL{% endif %} ({{ value.count }})
+                            {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}ml{% endif %} ({{ value.count }})
                           </label>
                         </li>
                       {%- endfor -%}
@@ -175,7 +175,7 @@
                 <facet-remove>
                   <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                     <span class="active-facets__button-inner button button--tertiary">
-                      {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}mL{% endif %}
+                      {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}ml{% endif %}
                       {% render 'icon-close-small' %}
                       <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                     </span>
@@ -460,7 +460,7 @@
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
             <span class="active-facets__button-inner button button--tertiary">
-              {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}mL{% endif %}
+              {{ value.label | escape }}{% if value.param_name=="filter.p.m.wine_fields.bottle_size" %}ml{% endif %}
               {% render 'icon-close-small' %}
               <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
             </span>
