@@ -19,6 +19,9 @@
 
 .price .price-item {
   margin: 0 1rem 0 0;
+}
+
+.wine-product-page-header .price .price-item {
   color: #fff;
 }
 
