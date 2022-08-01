@@ -145,6 +145,16 @@
         <span class="product-form__error-message"></span>
       </div>
 
+      {%- if product.tags contains 'members-only' -%}
+
+      <span style="margin: 0; color: #fff; border-color: #232323" class="product-form__submit button button--primary">
+          <span>
+            Members Only - Sign In To Purchase
+          </span>
+      </span>
+
+      {%- else -%}
+
       {%- form 'product', product_card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
         <input type="hidden" name="id" value="{{ product_card_product.first_available_variant.id }}">
 
@@ -178,6 +188,8 @@
         </div>
         {% endif %}
       {%- endform -%}
+
+      {%- endif -%}
     </product-form>
   </div>
 {% endif %}
