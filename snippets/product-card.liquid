@@ -145,9 +145,13 @@
         <span class="product-form__error-message"></span>
       </div>
 
-      {% assign activemember = customer.tags contains 'wineclub-member' %}
+      {%- if customer.tags contains 'wineclub-member' -%}
+      {% assign nonmember = false %}
+      {%- else -%}
+      {% assign nonmember = true %}
+      {%- endif -%}
 
-      {%- if product_card_product.tags contains 'members-only' and !activemember -%}
+      {%- if product_card_product.tags contains 'members-only' and nonmember -%}
 
       <div style="margin: 0; color: #fff; border-color: #232323; width:100%;" class="product-form__submit button button--primary">
           <span>
