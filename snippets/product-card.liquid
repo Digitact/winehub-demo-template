@@ -153,7 +153,7 @@
           </span>
       </div>
 
-      {%- else -%}
+      {%- elsif product_card_product.first_available_variant.available -%}
 
       {%- form 'product', product_card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
         <input type="hidden" name="id" value="{{ product_card_product.first_available_variant.id }}">
@@ -172,11 +172,7 @@
               {% if product_card_product.first_available_variant.available == false %}disabled{% endif %}
             >
                 <span>
-                  {%- if product_card_product.first_available_variant.available -%}
                     {{ 'products.product.add_to_cart' | t }}
-                  {%- else -%}
-                    {{ 'products.product.sold_out' | t }}
-                  {%- endif -%}
                 </span>
                 <div class="loading-overlay__spinner hidden">
                   <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -186,8 +182,17 @@
             </button>
         {% if show_quantity_picker %}
         </div>
+
         {% endif %}
       {%- endform -%}
+
+      {%- else -%}
+
+      <div style="margin: 0; color: #fff; border-color: #232323; width:100%;" class="product-form__submit button button--primary">
+          <span>
+            {{ 'products.product.sold_out' | t }}
+          </span>
+      </div>      
 
       {%- endif -%}
     </product-form>
