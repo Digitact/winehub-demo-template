@@ -78,8 +78,8 @@
           if (data.length) {
             $(data).each(function (index, item) {
               //console.log(data[index].shopifyId);
-/*
-              currencyCode = data[index].deliveryPriceCurrencyCode;
+
+              currencyCode = data[index].current_price_currency;
         	  if (currencyCode===undefined) currencyCode = 'EUR';
 
               var formatter = new Intl.NumberFormat('en-US', {
@@ -89,7 +89,7 @@
                 //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
                 //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
               });         
-
+/*
 <tr role="row">
             <td
                 id="RowOrder"
@@ -156,13 +156,13 @@
               }
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-              row += data[index].items_price;
+              row += formatter.format(data[index].items_price);
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-              row += data[index].shipping_price;
+              row += formatter.format(data[index].shipping_price);
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-              row += data[index].total_price;
+              row += formatter.format(data[index].total_price);
               row += '</td>';
               //row += '<td headers="RowOrder ColumnTotal" role="cell">';
               //row += formatter.format(data[index].deliveryPriceAmount);
