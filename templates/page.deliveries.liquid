@@ -145,7 +145,7 @@
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].process_date).toDateString();
               row += '</td>';
-              row += '<td headers="RowOrder ColumnPayment" role="cell" style="font-size:0.8rem;">';
+              row += '<td headers="RowOrder ColumnPayment" role="cell">';
               if (data[index].wines.length) {
                 $(data[index].wines).each(function (index, item) {
                   row += item.quantity+' x '+item.title+'<br />';
