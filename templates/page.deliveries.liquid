@@ -16,7 +16,7 @@
 
       <h2>Upcoming Deliveries</h2>
       
-      <h3>Next Dispatch Date: {next_date}</h3>
+      <h3>Next Dispatch Date: <span id="nextDispatchDate">Loading...</span></h3>
       
       <table role="table" class="order-history">
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
@@ -69,8 +69,10 @@
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        success: function (data) {
+        success: function (response) {
           $('#subscription_tbody').html("");
+          $('#nextDispatchDate').html(response.nextDelivery);
+          data = response.deliveries
           console.log(data);
           console.log(data.length);
           if (data.length) {
@@ -143,7 +145,17 @@
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].process_date).toDateString();
               row += '</td>';
-              row += '<td headers="RowOrder ColumnPayment" role="cell">Pending Selection By Winery</td>';
+              row += '<td headers="RowOrder ColumnPayment" role="cell">';
+              if (data[index].wines.length) {
+                $(data[index].wines).each(function (index, item) {
+                  row += item.quantity+' x '+item.title+'<br />';
+                }
+              }
+              else {
+                row += 'Pending Selection By Winery';
+              }
+              row += new Date(data[index].process_date).toDateString();
+              row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += data[index].items_price;
               row += '</td>';
