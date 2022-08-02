@@ -91,8 +91,7 @@
     {% endif %}
     
       $.ajax({
-        //url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
-        url: 'http://127.0.0.1:8000/app/api/upcoming_deliveries/6371063562497',
+        url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
