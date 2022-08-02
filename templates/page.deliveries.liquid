@@ -22,6 +22,7 @@
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
         <thead role="rowgroup">
           <tr role="row">
+            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            
             <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
             <th id="ColumnFulfillment" scope="col" role="columnheader">Products</th>
@@ -144,15 +145,19 @@
               row += '</td>';
               row += '<td headers="RowOrder ColumnPayment" role="cell">Pending Selection By Winery</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
-              row += data[index].status.toUpperCase();
+              row += data[index].items_price;
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += data[index].shipping_price;
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += data[index].total_price;
               row += '</td>';
               //row += '<td headers="RowOrder ColumnTotal" role="cell">';
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
-    		  row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="editSubscription(\''+data[index].contract_shopify_id+'\');">Edit Subscription</button><br />';
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="pauseSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button><br />';
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button>';
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
