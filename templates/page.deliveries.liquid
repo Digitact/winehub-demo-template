@@ -145,7 +145,7 @@
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].process_date).toDateString();
               row += '</td>';
-              row += '<td headers="RowOrder ColumnPayment" role="cell">';
+              row += '<td headers="RowOrder ColumnPayment" role="cell" style="font-size:0.8rem;">';
               if (data[index].wines.length) {
                 $(data[index].wines).each(function (index, item) {
                   row += item.quantity+' x '+item.title+'<br />';
@@ -154,7 +154,6 @@
               else {
                 row += 'Pending Selection By Winery';
               }
-              row += new Date(data[index].process_date).toDateString();
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += data[index].items_price;
