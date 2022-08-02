@@ -71,7 +71,7 @@
         contentType: "application/json; charset=utf-8",
         success: function (response) {
           $('#subscription_tbody').html("");
-          $('#nextDispatchDate').html(response.nextDelivery);
+          $('#nextDispatchDate').html(new Date(response.nextDelivery).toDateString());
           data = response.deliveries
           console.log(data);
           console.log(data.length);
