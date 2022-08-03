@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
     entry: {
-        'case-picker': "./scripts/case-picker.js"
+        //'case-picker': "./scripts/case-picker.js"
     },
     module: {
 
