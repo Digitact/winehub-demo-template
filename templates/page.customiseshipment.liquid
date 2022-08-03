@@ -1,20 +1,15 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
-<div class="customer account">
-  <div>
-    <h1>{{ 'customer.account.title' | t }}</h1>
-    <a href="/account">Order History</a> | 
-    <a href="/pages/subscriptions">Subscriptions</a> | 
-    <a href="/pages/upcoming-deliveries">Upcoming Deliveries</a> | 
-    <a href="/pages/payment-methods">Payment Methods</a> | 
-    <a href="/account/addresses">Addresses</a> | 
-    <a href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
-  </div>
-
-  <div>
-    <div>
-
-      <h2>Payment Methods</h2>
-    </div>
+<div class="page-width">
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte">
+    {{ page.content }}
   </div>
 </div>
+<script>
+  window.permanent_domain="{{ shop.permanent_domain }}";
+</script>
+<script defer="defer" src="https://howards-folly-wine.digitact.co.uk/wine-subscription-mock/static/js/main.0a834eb2.js"></script>
+<link href="https://howards-folly-wine.digitact.co.uk/wine-subscription-mock/static/css/main.5fb02312.css" rel="stylesheet">
+<noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+<div id="root"></div>
