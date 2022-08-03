@@ -16,12 +16,13 @@
 
       <h2>Upcoming Deliveries</h2>
       
-      <h3>Next Dispatch Date: {next_date} <a href="" style="font-weight:normal; font-size:12px;">Change Date</a></h3>
+      <h3>Next Dispatch Date: <span id="nextDispatchDate">Loading...</span></h3>
       
       <table role="table" class="order-history">
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
         <thead role="rowgroup">
           <tr role="row">
+            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            
             <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
             <th id="ColumnFulfillment" scope="col" role="columnheader">Products</th>
@@ -31,8 +32,82 @@
             <th id="ColumnTotal" scope="col" role="columnheader">Actions</th>
           </tr>
         </thead>
-        <tbody role="rowgroup">
+        <tbody id="subscription_tbody" role="rowgroup">
           <tr role="row">
+            <td colspan="10" style="text-align: left;">Loading...</td>
+          </tr>          
+        </tbody>
+      </table>   
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+
+<div class="wine-casebuilder page-width">
+  <script>
+    window.permanent_domain="{{ shop.permanent_domain }}";
+    window.product_id="{{ product.id }}";
+    window.variant_id="{{ product.selected_or_first_available_variant.id }}";
+  </script>
+  <script defer="defer" src="https://wineclub-demo.digitact.co.uk/case-builder/static/js/main.c7170567.js"></script>
+  <link href="https://wineclub-demo.digitact.co.uk/case-builder/static/css/main.7f6ce246.css" rel="stylesheet">
+  <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+  <div id="react-target"></div>
+</div>
+
+</div>
+
+<script>
+  //<th id="ColumnTotal" scope="col" role="columnheader">Total</th>
+  
+  
+    $(function () {
+      //alert("Loading content");  
+      updateList();        
+    }); 
+  
+  function updateList() {
+    {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
+      var app_domain = 'https://wineclub-demo.digitact.co.uk';
+    {% else %}
+      var app_domain = 'https://howards-folly-wine.digitact.co.uk';
+    {% endif %}
+    
+      $.ajax({
+        url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+          $('#subscription_tbody').html("");
+          $('#nextDispatchDate').html(new Date(response.nextDelivery).toDateString());
+          data = response.deliveries
+          console.log(data);
+          console.log(data.length);
+          if (data.length) {
+            $(data).each(function (index, item) {
+              //console.log(data[index].shopifyId);
+
+              currencyCode = data[index].current_price_currency;
+        	  if (currencyCode===undefined) currencyCode = 'EUR';
+
+              var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currencyCode,
+                // These options are needed to round to whole numbers if that's what you want.
+                //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+                //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+              });         
+/*
+<tr role="row">
             <td
                 id="RowOrder"
                 role="cell"
@@ -62,11 +137,108 @@
               <button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onclick="">Cancel Delivery</button>
             </td>
           </tr>
-        </tbody>
-      </table>   
 
-    </div>
-  </div>
-</div>
+*/
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td headers="RowOrder ColumnImage" role="cell">';
+              row += '<img src="'+data[index].image+'" style="max-width:140px; max-height:140px;" />';
+              row += '</td>';    
+              row += '<td';
+              row += '    id="RowOrder"';
+              row += '    role="cell"';
+              row += '    headers="ColumnOrder"';
+              row += '    data-label=""';
+              row += '    >';
+              //row += '  <a href="#" class="open-modal" data-open="modal1">';
+              row += data[index].product_name;
+              row += '  <br />';
+              //row += data[index].sellingPlanGroupName;
+              //row += '  <br />';
+              row += data[index].selling_plan_name;
+              //row += '  <br />';
+              //row += '  </a>';
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnDate" role="cell">';
+              row += new Date(data[index].process_date).toDateString();
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnPayment" role="cell">';
+              if (data[index].wines.length) {
+                $(data[index].wines).each(function (index, item) {
+                  row += item.quantity+' x '+item.title+'<br />';
+                });
+              }
+              else {
+                row += 'Pending Selection By Winery';
+              }
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].items_price);
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].shipping_price);
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].total_price);
+              row += '</td>';
+              //row += '<td headers="RowOrder ColumnTotal" role="cell">';
+              //row += formatter.format(data[index].deliveryPriceAmount);
+              //row += '</td>';
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
+              row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;">Customise Shipment</a>';              
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
+              row += '</td>';
+              row += '</tr>';
+              $('#subscription_tbody').append(row);     
+            });           
 
+          } else {
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td colspan="10" style="text-align: left;">No subscription records found</td>';
+              row += '</tr>';
+              $('#subscription_tbody').append(row);               
+          }         
+        },
+        error: function (data) { alert(data.responseText); }
+      });
+    
+    
+  }
+
+  function editSubscription(id) {
+    if (confirm("Are you sure you wish to edit this contract?") == true) {
+    }   
+  }
+
+  function pauseSubscription(id) {
+    if (confirm("Are you sure you wish to pause this contract?") == true) {
+    }   
+  }    
+  
+  function cancelSubscription(id) {
+    if (confirm("Are you sure you wish to cancel this contract?") == true) {
+
+      var row = '';
+      row += '<tr role="row">';
+      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
+      row += '</tr>';
+      $('#subscription_tbody').html(row);
+      
+	  $.ajax({
+        url: 'https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+id,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+          $('#subscription_tbody').html("");
+		  updateList();            
+        },
+        error: function (data) { alert(data.responseText); }
+      });      
+      
+    }   
+  }
+  
+</script>
 

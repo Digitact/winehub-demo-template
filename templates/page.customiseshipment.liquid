@@ -1,0 +1,19 @@
+<div class="page-width">
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte">
+    {{ page.content }}
+  </div>
+</div>
+<div class="wine-casebuilder page-width">
+  <script>
+    window.permanent_domain="{{ shop.permanent_domain }}";
+    window.product_id="{{ product.id }}";
+    window.variant_id="{{ product.selected_or_first_available_variant.id }}";
+  </script>
+  <script defer="defer" src="https://wineclub-demo.digitact.co.uk/case-builder/static/js/main.c7170567.js"></script>
+  <link href="https://wineclub-demo.digitact.co.uk/case-builder/static/css/main.7f6ce246.css" rel="stylesheet">
+  <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+  <div id="react-target"></div>
+</div>
