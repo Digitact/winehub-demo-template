@@ -43,45 +43,32 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-<button type="button" class="btn btn-primary" onClick="var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), { keyboard: false }); myModal.show();">
-  Launch demo modal
-</button>
 
+<modal-opener class="no-js-hidden" data-modal="#PopupModal-case-picker">
+  <div class="deferred-media">
+    <button class="collage-content collage-card__image-wrapper media deferred-media__poster full-unstyled-link" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
+      Modal opener button?
+    </button>
+  </div>
+</modal-opener>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Customise Case</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-<div class="wine-casebuilder">
-  <script>
-    window.permanent_domain="{{ shop.permanent_domain }}";
-    window.product_id="{{ product.id }}";
-    window.variant_id="{{ product.selected_or_first_available_variant.id }}";
-  </script>
-  <script defer="defer" src="https://wineclub-demo.digitact.co.uk/case-builder/static/js/main.c7170567.js"></script>
-  <link href="https://wineclub-demo.digitact.co.uk/case-builder/static/css/main.7f6ce246.css" rel="stylesheet">
-  <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
-  <div id="react-target"></div>
-</div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<modal-dialog id="PopupModal-case-picker" class="collage-video__modal media-modal">
+  <div class="collage-video__modal-content" role="dialog" aria-label="{{ block.settings.description | escape }}" aria-modal="true" tabindex="-1">
+    <button id="ModalClose-case-picker" type="button" class="collage-video__modal-toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+    <div class="collage-video__modal-content-info">
+      <deferred-media class="collage-video__modal-video template-popup">
+        <template>
+          {%- if block.settings.video_url.type == 'youtube' -%}
+            <iframe src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ block.settings.description | escape }}"></iframe>
+          {%- else -%}
+            <iframe src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}" class="js-vimeo" allow="autoplay; encrypted-media" allowfullscreen title="{{ block.settings.description | escape }}"></iframe>
+          {%- endif -%}
+        </template>
+      </deferred-media>
     </div>
   </div>
-</div>
+</modal-dialog>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
