@@ -47,7 +47,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
-<button type="button" class="btn btn-primary" onClick="$('#exampleModal').modal('open');">
+<button type="button" class="btn btn-primary" onClick="var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), { keyboard: false }); myModal.show();">
   Launch demo modal
 </button>
 
