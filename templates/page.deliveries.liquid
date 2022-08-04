@@ -162,7 +162,19 @@
   <div class="casepicker__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
     <button id="ModalClose-CasePick" type="button" class="casepicker__modal-toggle" aria-label="Close">Close</button>
     <div class="casepicker__modal-content-info">
-      Case picker goes here
+      
+    <div class="wine-casebuilder">
+      <script>
+        window.permanent_domain="{{ shop.permanent_domain }}";
+        window.product_id="{{ product.id }}";
+        window.variant_id="{{ product.selected_or_first_available_variant.id }}";
+      </script>
+      <script defer="defer" src="https://wineclub-demo.digitact.co.uk/case-builder/static/js/main.c7170567.js"></script>
+      <link href="https://wineclub-demo.digitact.co.uk/case-builder/static/css/main.7f6ce246.css" rel="stylesheet">
+      <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+      <div id="react-target"></div>
+    </div>
+
     </div>
   </div>
 </modal-dialog>
