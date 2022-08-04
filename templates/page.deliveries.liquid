@@ -43,6 +43,114 @@
   </div>
 </div>
 
+<style>
+
+
+/* Video modal testing */
+.casepicker__modal.casepicker__modal {
+  box-sizing: border-box;
+  opacity: 0;
+  position: fixed;
+  visibility: hidden;
+  z-index: -1;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  width: 100%;
+  background: rgba(var(--color-foreground), 0.2);
+  height: 100%;
+}
+
+.casepicker__modal[open].casepicker__modal[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+.casepicker__modal-content {
+  background-color: rgb(var(--color-background));
+  overflow: auto;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  padding: 0;
+}
+
+.casepicker__modal-toggle {
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: fixed;
+  padding: 1.2rem;
+  z-index: 2;
+  top: 2rem;
+  right: 0.5rem;
+  width: 4rem;
+  margin: 0 0 0 auto;
+}
+
+@media screen and (min-width: 750px) {
+  .casepicker__modal-toggle {
+    right: 4.8rem;
+    top: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .casepicker__modal-toggle {
+    right: 4.3rem;
+    top: 3rem;
+  }
+}
+
+.casepicker__modal-toggle .icon {
+  height: auto;
+  margin: 0;
+  width: 2.2rem;
+}
+
+.casepicker__modal-content-info {
+  width: calc(100% - 1rem);
+  height: calc(100% - 6rem);
+  margin: 0 auto;
+  padding-top: 8rem;
+}
+
+@media screen and (min-width: 750px) {
+  .casepicker__modal-content-info {
+    width: calc(100% - 9.6rem);
+    height: calc(100% - 7.5rem);
+    padding-top: 9.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .casepicker__modal-content-info {
+    width: calc(100% - 8.6rem);
+    height: calc(100% - 7rem);
+    padding-top: 9rem;
+  }
+}
+
+.casepicker__modal-video,
+.casepicker__modal-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.casepicker__modal-video iframe {
+  position: static;
+}
+
+
+</style>
 
 <modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">
     <button class="btn" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
