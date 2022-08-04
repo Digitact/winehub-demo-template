@@ -184,7 +184,7 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (response) {
-          $('#subscription_tbody').html("");
+          $('#subscription_tbody').html('<tr role="row"><td colspan="10" style="text-align: left;">Loading...</td></tr>');
           $('#nextDispatchDate').html(new Date(response.nextDelivery).toDateString());
           data = response.deliveries
           console.log(data);
