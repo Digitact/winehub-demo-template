@@ -140,12 +140,6 @@
 
 </style>
 
-<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">
-    <button class="btn" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
-      Modal opener button?
-    </button>
-</modal-opener>
-
 <modal-dialog id="PopupModal-CasePick" class="casepicker__modal">
   <div class="casepicker__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
     <button id="ModalClose-CasePick" type="button" class="casepicker__modal-toggle" aria-label="Close">Close</button>
@@ -291,7 +285,10 @@
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
-              row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;">Customise Shipment</a>';              
+              //row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;"></a>';              
+              row += '<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">';              
+              row += '    <button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">Customise Shipment</button>';              
+              row += '</modal-opener>';              
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
               row += '</td>';
               row += '</tr>';
