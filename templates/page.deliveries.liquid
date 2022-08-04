@@ -290,7 +290,8 @@
               //row += '<td headers="RowOrder ColumnTotal" role="cell">';
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
-    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
               row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;">Customise Shipment</a>';              
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
               row += '</td>';
@@ -350,6 +351,17 @@
       });
     
     
+  }
+
+
+  function showDetails(button,id) {
+    if ($(button).html()=="Show Details") {
+      $(button).html("Hide Details");      
+      $(id).show();
+    } else {
+      $(button).html("Show Details");
+      $(id).hide();
+    }
   }
 
   function editSubscription(id) {
