@@ -45,22 +45,18 @@
 
 
 <modal-opener class="no-js-hidden" data-modal="#PopupModal-case-picker">
-  <div class="deferred-media">
-    <button class="collage-content collage-card__image-wrapper media deferred-media__poster full-unstyled-link" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
+    <button class="btn" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
       Modal opener button?
     </button>
-  </div>
 </modal-opener>
 
 <modal-dialog id="PopupModal-case-picker" class="collage-video__modal media-modal">
   <div class="collage-video__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
     <button id="ModalClose-case-picker" type="button" class="collage-video__modal-toggle" aria-label="Close">Close</button>
     <div class="collage-video__modal-content-info">
-      <deferred-media class="collage-video__modal-video template-popup">
-        <template>
-          Modal content here
-        </template>
-      </deferred-media>
+      <template>
+        Modal content here
+      </template>
     </div>
   </div>
 </modal-dialog>
