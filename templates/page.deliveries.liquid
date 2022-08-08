@@ -23,13 +23,12 @@
         <thead role="rowgroup">
           <tr role="row">
             <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            
-            <th id="ColumnOrder" scope="col" role="columnheader">Subscription</th>
+            <th id="ColumnOrder" scope="col" role="columnheader" style="width:25%;">Subscription</th>
             <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
-            <th id="ColumnFulfillment" scope="col" role="columnheader">Products</th>
             <th id="ColumnTotal" scope="col" role="columnheader">Product Price</th>
             <th id="ColumnTotal" scope="col" role="columnheader">Shipping Price</th>
             <th id="ColumnTotal" scope="col" role="columnheader">Total Price</th>
-            <th id="ColumnTotal" scope="col" role="columnheader">Actions</th>
+            <th id="ColumnTotal" scope="col" role="columnheader" style="width:5%;">Actions</th>
           </tr>
         </thead>
         <tbody id="subscription_tbody" role="rowgroup">
@@ -141,24 +140,17 @@
 
 </style>
 
-<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">
-    <button class="btn" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">
-      Modal opener button?
-    </button>
-</modal-opener>
-
 <modal-dialog id="PopupModal-CasePick" class="casepicker__modal">
   <div class="casepicker__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
     <button id="ModalClose-CasePick" type="button" class="casepicker__modal-toggle" aria-label="Close">Close</button>
     <div class="casepicker__modal-content-info">
-      
+
     <div class="wine-casebuilder">
       <script>
         window.permanent_domain="{{ shop.permanent_domain }}";
-        window.product_id="{{ product.id }}";
-        window.variant_id="{{ product.selected_or_first_available_variant.id }}";
+        window.shipment_id=1;
       </script>
-      <script defer="defer" src="https://wineclub-demo.digitact.co.uk/shipment-picker/static/js/main.14657a5a.js"></script>
+      <script defer="defer" src="https://wineclub-demo.digitact.co.uk/shipment-picker/static/js/main.493da82a.js"></script>
       <link href="https://wineclub-demo.digitact.co.uk/shipment-picker/static/css/main.748c59ef.css" rel="stylesheet">
       <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
       <div id="react-case-builder-module"></div>
@@ -192,7 +184,7 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (response) {
-          $('#subscription_tbody').html("");
+          $('#subscription_tbody').html('<tr role="row"><td colspan="10" style="text-align: left;">Loading...</td></tr>');
           $('#nextDispatchDate').html(new Date(response.nextDelivery).toDateString());
           data = response.deliveries
           console.log(data);
@@ -267,6 +259,7 @@
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].process_date).toDateString();
               row += '</td>';
+/*
               row += '<td headers="RowOrder ColumnPayment" role="cell">';
               if (data[index].wines.length) {
                 $(data[index].wines).each(function (index, item) {
@@ -277,6 +270,7 @@
                 row += 'Pending Selection By Winery';
               }
               row += '</td>';
+*/
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += formatter.format(data[index].items_price);
               row += '</td>';
@@ -289,11 +283,55 @@
               //row += '<td headers="RowOrder ColumnTotal" role="cell">';
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
-    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
-              row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;">Customise Shipment</a>';              
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
+              //row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;"></a>';              
+              row += '<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">';              
+              row += '    <button class="button button--primary" style="padding:0; margin:0 0 3px 3px; width: 210px;" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">Customise Shipment</button>';              
+              row += '</modal-opener>';              
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
               row += '</td>';
               row += '</tr>';
+
+              row += '<tr role="row" id="details-'+data[index].subscription_contract_shipment_id+'" style="display:none;">';
+              row += '<td headers="RowOrder ColumnImage" role="cell" colspan="10">';
+              row += '      <table role="table" class="order-history">';
+              row += '        <caption class="visually-hidden">Wine Club Subscriptions</caption>';
+              row += '        <thead role="rowgroup">';
+              row += '          <tr role="row">';
+              row += '            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            ';
+              row += '            <th id="ColumnOrder" scope="col" role="columnheader" style="text-align:left;">Product</th>';
+              row += '            <th id="ColumnPayment" scope="col" role="columnheader">Quantity</th>';
+              row += '          </tr>';
+              row += '        </thead>';
+              row += '        <tbody id="subscription_tbody" role="rowgroup">';
+              if (data[index].wines.length) {
+                $(data[index].wines).each(function (index, item) {
+                  row += '          <tr role="row">';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+                  row += '<img src="'+item.image+'" style="max-width:100px; max-height:100px;" />';
+                  row += '</td>';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell" style="text-align:left;">';
+                  row += item.title;
+                  row += '</td>';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+                  row += item.quantity;
+                  row += '</td>';
+                  row += '          </tr>          ';
+                });
+              }
+              else {
+                row += '          <tr role="row">';
+                row += '<td headers="RowOrder ColumnFulfillment" role="cell" colspan="10" style="text-align:left;">';
+                row += 'Pending Selection By Winery';
+                row += '</td>';
+                row += '          </tr>          ';
+              }	  
+              row += '        </tbody>';
+              row += '      </table>  ';
+              row += '</td>';
+              row += '</tr>';
+
               $('#subscription_tbody').append(row);     
             });           
 
@@ -309,6 +347,16 @@
       });
     
     
+  }
+
+  function toggleDetails(button,id) {
+    if ($(button).html()=="Show Details") {
+      $(button).html("Hide Details");      
+      $(id).show();
+    } else {
+      $(button).html("Show Details");
+      $(id).hide();
+    }
   }
 
   function editSubscription(id) {
