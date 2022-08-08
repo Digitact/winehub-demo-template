@@ -283,13 +283,13 @@
               //row += '<td headers="RowOrder ColumnTotal" role="cell">';
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
-    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
+    		      row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
               row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
               //row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;"></a>';              
               row += '<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">';              
               row += '    <button class="button button--primary" style="padding:0; margin:0 0 3px 3px; width: 210px;" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">Customise Shipment</button>';              
               row += '</modal-opener>';              
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Shipment</button>';
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelDelivery(\''+data[index].subscription_contract_shipment_id+'\');">Cancel Delivery</button>';
               row += '</td>';
               row += '</tr>';
 
@@ -369,8 +369,8 @@
     }   
   }    
   
-  function cancelSubscription(id) {
-    if (confirm("Are you sure you wish to cancel this contract?") == true) {
+  function cancelDelivery(id) {
+    if (confirm("Are you sure you wish to cancel this delivery and pause your subscription?") == true) {
 
       var row = '';
       row += '<tr role="row">';
@@ -379,7 +379,7 @@
       $('#subscription_tbody').html(row);
       
 	  $.ajax({
-        url: 'https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+id,
+        url: 'https://howards-folly-wine.digitact.co.uk/canceldelivery/'+id,
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
