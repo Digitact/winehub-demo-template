@@ -45,6 +45,8 @@
           alt="{{ wine_picture.preview_image.alt | escape }}"
         >
         
+      {% if product.images.size > 1 %}
+
       <slider-component class="slider-mobile-gutter">
         <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
           {{ "accessibility.skip_to_product_info" | t }}
@@ -76,6 +78,8 @@
           <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
         </div>
       </slider-component>
+
+      {% endif %}
 
       </div>
       <div class="wine-product-page-header-description">
