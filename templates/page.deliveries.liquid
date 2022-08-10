@@ -225,18 +225,6 @@
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].process_date).toDateString();
               row += '</td>';
-/*
-              row += '<td headers="RowOrder ColumnPayment" role="cell">';
-              if (data[index].wines.length) {
-                $(data[index].wines).each(function (index, item) {
-                  row += item.quantity+' x '+item.title+'<br />';
-                });
-              }
-              else {
-                row += 'Pending Selection By Winery';
-              }
-              row += '</td>';
-*/
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += formatter.format(data[index].items_price);
               row += '</td>';
@@ -246,10 +234,7 @@
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += formatter.format(data[index].total_price);
               row += '</td>';
-              //row += '<td headers="RowOrder ColumnTotal" role="cell">';
-              //row += formatter.format(data[index].deliveryPriceAmount);
-              //row += '</td>';
-    		      row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
               if (data[index].wines.length) {
                 row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
               }
