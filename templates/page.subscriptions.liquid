@@ -119,8 +119,14 @@
               //row += '</td>';
     		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';
     		  //row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="editSubscription(\''+data[index].contract_shopify_id+'\');">Edit Subscription</button><br />';
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="pauseSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button><br />';
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button><br />';
+              if (data[index].status.toUpperCase()=='ACTIVE') {
+                row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="pauseSubscription(\''+data[index].contract_shopify_id+'\');">Pause Subscription</button><br />';  
+              } else if (data[index].status.toUpperCase()=='PAUSED') {
+                row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="unpauseSubscription(\''+data[index].contract_shopify_id+'\');">Unpause Subscription</button><br />';  
+              }      
+              if (data[index].status.toUpperCase()!='CANCELLED') {
+                row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelSubscription(\''+data[index].contract_shopify_id+'\');">Cancel Subscription</button><br />';
+              }
               row += '</td>';
               row += '</tr>';
               $('#subscription_tbody').append(row);     
@@ -147,6 +153,25 @@
 
   function pauseSubscription(id) {
     if (confirm("Are you sure you wish to pause this contract?") == true) {
+
+      var row = '';
+      row += '<tr role="row">';
+      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
+      row += '</tr>';
+      $('#subscription_tbody').html(row);
+      
+	  $.ajax({
+        url: app_domain+'/pausesubscription/'+id,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+          $('#subscription_tbody').html("");
+		  updateList();            
+        },
+        error: function (data) { alert(data.responseText); }
+      });   
+      
     }   
   }    
   
