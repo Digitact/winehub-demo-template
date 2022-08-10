@@ -160,7 +160,7 @@
       $('#subscription_tbody').html(row);
       
 	  $.ajax({
-        url: 'https://howards-folly-wine.digitact.co.uk/cancelsubscription/'+id,
+        url: app_domain+'/cancelsubscription/'+id,
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
