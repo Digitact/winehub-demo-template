@@ -107,9 +107,13 @@
               row += '</td>';
               row += '<td headers="RowOrder ColumnDate" role="cell">';
               row += new Date(data[index].signed_up).toDateString();
-              row += '</td>';
+              row += '</td>';              
               row += '<td headers="RowOrder ColumnPayment" role="cell">';
-              row += new Date(data[index].signed_up).toDateString();
+              if (data[index].status.toUpperCase()=='PAUSED') {
+                row += '-';  
+              } else {
+                row += new Date(data[index].signed_up).toDateString();
+              }
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
               row += data[index].status.toUpperCase();
