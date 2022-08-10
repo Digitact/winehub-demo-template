@@ -164,7 +164,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   //<th id="ColumnTotal" scope="col" role="columnheader">Total</th>
-  
+  {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
+    var app_domain = 'https://wineclub-demo.digitact.co.uk';
+  {% else %}
+    var app_domain = 'https://howards-folly-wine.digitact.co.uk';
+  {% endif %}
   
     $(function () {
       //alert("Loading content");  
@@ -172,12 +176,6 @@
     }); 
   
   function updateList() {
-    {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
-      var app_domain = 'https://wineclub-demo.digitact.co.uk';
-    {% else %}
-      var app_domain = 'https://howards-folly-wine.digitact.co.uk';
-    {% endif %}
-    
       $.ajax({
         url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
         type: "GET",
@@ -284,8 +282,11 @@
               //row += formatter.format(data[index].deliveryPriceAmount);
               //row += '</td>';
     		      row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
-              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
+              if (data[index].wines.length) {
+                row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
+              }
               //row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;"></a>';              
+              if (data[index].wines.length) {
               row += '<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">';              
               row += '    <button class="button button--primary" style="padding:0; margin:0 0 3px 3px; width: 210px;" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">Customise Shipment</button>';              
               row += '</modal-opener>';              
@@ -379,7 +380,7 @@
       $('#subscription_tbody').html(row);
       
 	  $.ajax({
-        url: 'https://howards-folly-wine.digitact.co.uk/canceldelivery/'+id,
+        url: app_domain+'/canceldelivery/'+id,
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
