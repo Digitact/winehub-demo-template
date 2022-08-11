@@ -9,8 +9,16 @@
 <script>
   window.permanent_domain="{{ shop.permanent_domain }}";
 
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  console.log(urlSearchParams.entries());
-  const params = Object.fromEntries(urlSearchParams.entries());
-  console.log(params);
+  //const urlSearchParams = new URLSearchParams(window.location.search);
+  //console.log(urlSearchParams.entries());
+  //const params = Object.fromEntries(urlSearchParams.entries());
+  //console.log(params);
+
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+  let value = params.shipment_key; // "some_value"
+  console.log(value);
+  
 </script>
