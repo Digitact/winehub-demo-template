@@ -6,19 +6,18 @@
     {{ page.content }}
   </div>
 </div>
-<script>
-  window.permanent_domain="{{ shop.permanent_domain }}";
+<div class="wine-casebuilder">
+  <script>
+    window.permanent_domain="{{ shop.permanent_domain }}";
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+    window.shipment_key = params.shipment_key; // "some_value"
+  </script>
+  <script defer="defer" src="https://wineclub-demo.digitact.co.uk/shipment-picker/static/js/main.493da82a.js"></script>
+  <link href="https://wineclub-demo.digitact.co.uk/shipment-picker/static/css/main.748c59ef.css" rel="stylesheet">
+  <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+  <div id="react-case-builder-module"></div>
+</div>
 
-  //const urlSearchParams = new URLSearchParams(window.location.search);
-  //console.log(urlSearchParams.entries());
-  //const params = Object.fromEntries(urlSearchParams.entries());
-  //console.log(params);
-
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
-  // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-  let value = params.shipment_key; // "some_value"
-  console.log(value);
-  
-</script>
