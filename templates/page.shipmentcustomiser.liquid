@@ -1,4 +1,4 @@
-<div class="" style="max-width: 1320px; margin: 0 auto;">
+<div class="page-width">
   <h1 class="main-page-title page-title h0">
     {{ page.title | escape }}
   </h1>
@@ -6,7 +6,7 @@
     {{ page.content }}
   </div>
 </div>
-<div class="wine-casebuilder">
+<div class="wine-casebuilder page-width">
   <script>
     window.permanent_domain="{{ shop.permanent_domain }}";
     const params = new Proxy(new URLSearchParams(window.location.search), {
