@@ -181,6 +181,7 @@
           labelCartIsEmpty: '{{ 'sections.cart.empty' | t }}',
           labelQuantity: '{{ 'sections.cart.headings.quantity' | t }}:',
           labelRemove: '{{ 'sections.cart.remove_title' | t }}'.split(' ')[0],
+          appliedDiscount: 0.8
         });
       });
     </script>
@@ -199,6 +200,8 @@
       i.onload = function() { i.parentNode.removeChild(i); };
       i.src=discountApplyUrl;
       document.body.appendChild(i);
+
+      window.wineclubDiscount = 0.8;
     </script>
     {%- endif -%}
   </body>
