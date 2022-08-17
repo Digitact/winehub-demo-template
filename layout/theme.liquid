@@ -185,5 +185,21 @@
       });
     </script>
     {%- section 'go-cart' -%}
+
+    {%- if customer.tags contains 'wineclub-member' -%}
+    <script>
+      // Setup the Apply Discount Code URL
+      let shopDomain = "{{ shop.permanent_domain }}";
+      let discountCode = "MembersOnly20";
+      let discountApplyUrl = "https://" + shopDomain + "/discount/" + discountCode;
+      	
+      // Applies discount using hidden iframe to the checkout session
+      let i = document.createElement('iframe');
+      i.style.display = 'none';
+      i.onload = function() { i.parentNode.removeChild(i); };
+      i.src=discountApplyUrl;
+      document.body.appendChild(i);
+    </script>
+    {%- endif -%}
   </body>
 </html>
