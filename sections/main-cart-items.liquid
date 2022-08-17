@@ -228,15 +228,23 @@
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
                           <dd class="price price--end">
-                            {{ item.final_line_price | money }}
+                            {% if customer.tags contains 'wineclub-member' %}
+                            {{ item.final_line_price | times:0.8 | money }}
+                            {% else %}
+                            {{ item.final_line_price | times:1.8 | money }}
+                            {% endif %}
                           </dd>
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
-                          {{ item.original_line_price | money }}
+                          {% if customer.tags contains 'wineclub-member' %}
+                          {{ item.original_line_price | times:0.8 | money }}
+                          {% else %}
+                          {{ item.original_line_price | times:1.8 | money }}
+                          {% endif %}
                         </span>
                       {%- endif -%}
-
+                     
                       {%- if item.variant.available and item.unit_price_measurement -%}
                         <div class="unit-price caption">
                           <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
