@@ -24,6 +24,20 @@
   {% endif %}
   <!-- item info end -->
 {% endfor %}
+<!-- discount start -->
+Subtotal: {{ cart.items_subtotal_price | money }}
+{% if cart.cart_level_discount_applications.size > 0 %}
+  Discounts:
+  <ul>
+    {% for discount_application in cart.cart_level_discount_applications %}
+      <li>
+        {{ discount_application.title }}-{{ discount_application.total_allocated_amount | money }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+Total: {{ cart.total_price | money }}
+<!-- discount end -->
 
 <cart-items class="page-width{% if cart == empty %} is-empty{% endif %}">
   <div class="title-wrapper-with-link">
