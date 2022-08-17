@@ -21,8 +21,10 @@
   assign price = target.price | default: 1999
   assign available = target.available | default: false
   assign money_price = price | money
+  assign member_price = price | times:0.8 | money
   if settings.currency_code_enabled
     assign money_price = price | money_with_currency
+    assign member_price = price | times:0.8 | money_with_currency
   endif
 
   if target == product and product.price_varies
@@ -43,10 +45,18 @@
         - div.price__sale: Displayed when a variant is a sale
     {%- endcomment -%}
     <div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-      <span class="price-item price-item--regular">
-        {{ money_price }}
-      </span>
+      <div>
+        <span class="">{{ 'products.product.price.regular_price' | t }}</span>
+        <span class="price-item price-item--regular">
+          {{ money_price }}
+        </span>
+      </div>
+      <div>
+        <span class="">Member Price</span>
+        <span class="price-item price-item--regular">
+          {{ money_price }}
+        </span>
+      </div>
     </div>
     <div class="price__sale">
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
