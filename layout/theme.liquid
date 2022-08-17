@@ -181,7 +181,7 @@
           labelCartIsEmpty: '{{ 'sections.cart.empty' | t }}',
           labelQuantity: '{{ 'sections.cart.headings.quantity' | t }}:',
           labelRemove: '{{ 'sections.cart.remove_title' | t }}'.split(' ')[0],
-          appliedDiscount: 0.8
+          appliedDiscount: window.wineclubDiscount ?? 1.0
         });
       });
     </script>
