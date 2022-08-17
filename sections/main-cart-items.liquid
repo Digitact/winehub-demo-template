@@ -141,7 +141,11 @@
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
                           <dd class="price price--end">
+                            {% if customer.tags contains 'wineclub-member' %}
+                            {{ item.final_line_price | times:0.8 | money }}
+                            {% else %}
                             {{ item.final_line_price | money }}
+                            {% endif %}
                           </dd>
                         </dl>
                       {%- else -%}
