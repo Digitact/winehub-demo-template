@@ -21,7 +21,7 @@
   margin: 0 1rem 0 0;
 }
 
-.price__regular {
+.card-price .price__regular {
   display: flex; width:250px;
 }
 .wine-product-page-header .price__regular {
