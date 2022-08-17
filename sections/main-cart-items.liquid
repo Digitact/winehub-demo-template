@@ -7,38 +7,6 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
-
-{% for item in cart.items %}
-  <!-- item info start -->
-   <p>ORIGINAL: {{ item.original_price | money }}</p>
-   <p>FINAL: {{ item.final_price | money }}</p>
-  {% if item.line_level_discount_allocations.size > 0 %}
-    Discounts:
-    <ul>
-      {% for discount_allocation in item.line_level_discount_allocations %}
-        <li>
-          {{ discount_allocation.discount_application.title }}-{{ discount_allocation.amount | money }}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-  <!-- item info end -->
-{% endfor %}
-<!-- discount start -->
-Subtotal: {{ cart.items_subtotal_price | money }}
-{% if cart.cart_level_discount_applications.size > 0 %}
-  Discounts:
-  <ul>
-    {% for discount_application in cart.cart_level_discount_applications %}
-      <li>
-        {{ discount_application.title }}-{{ discount_application.total_allocated_amount | money }}
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
-Total: {{ cart.total_price | money }}
-<!-- discount end -->
-
 <cart-items class="page-width{% if cart == empty %} is-empty{% endif %}">
   <div class="title-wrapper-with-link">
     <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
@@ -178,7 +146,11 @@ Total: {{ cart.total_price | money }}
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
+                          {% if customer.tags contains 'wineclub-member' %}
+                          {{ item.original_line_price | times:0.8 | money }}
+                          {% else %}
                           {{ item.original_line_price | money }}
+                          {% endif %}
                         </span>
                       {%- endif -%}
 
