@@ -7,6 +7,25 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
+
+{% for item in cart.items %}
+  <!-- item info -->
+  {% if item.original_price > item.final_price %}
+    <s>{{ item.original_price | money }}</s>
+  {% endif %}
+  {{ item.final_price | money }})
+  {% if item.line_level_discount_allocations.size > 0 %}
+    Discounts:
+    <ul>
+      {% for discount_allocation in item.line_level_discount_allocations %}
+        <li>
+          {{ discount_allocation.discount_application.title }}-{{ discount_allocation.amount | money }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+
 <cart-items class="page-width{% if cart == empty %} is-empty{% endif %}">
   <div class="title-wrapper-with-link">
     <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
