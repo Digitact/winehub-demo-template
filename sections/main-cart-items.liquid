@@ -144,7 +144,7 @@
                             {% if customer.tags contains 'wineclub-member' %}
                             {{ item.final_line_price | times:0.8 | money }}
                             {% else %}
-                            {{ item.final_line_price | money }}
+                            {{ item.final_line_price | times:1.8 | money }}
                             {% endif %}
                           </dd>
                         </dl>
@@ -153,7 +153,7 @@
                           {% if customer.tags contains 'wineclub-member' %}
                           {{ item.original_line_price | times:0.8 | money }}
                           {% else %}
-                          {{ item.original_line_price | money }}
+                          {{ item.original_line_price | times:1.8 | money }}
                           {% endif %}
                         </span>
                       {%- endif -%}
