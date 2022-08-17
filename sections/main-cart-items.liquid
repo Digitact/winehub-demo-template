@@ -142,18 +142,18 @@
                           </dt>
                           <dd class="price price--end">
                             {% if customer.tags contains 'wineclub-member' %}
-                            {{ item.final_line_price | times:0.8 | money }}
+                            Member Price: {{ item.final_line_price | times:0.8 | money }}
                             {% else %}
-                            {{ item.final_line_price | times:1.8 | money }}
+                            {{ item.final_line_price | money }}
                             {% endif %}
                           </dd>
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
                           {% if customer.tags contains 'wineclub-member' %}
-                          {{ item.original_line_price | times:0.8 | money }}
+                          Member Price: {{ item.original_line_price | times:0.8 | money }}
                           {% else %}
-                          {{ item.original_line_price | times:1.8 | money }}
+                          {{ item.original_line_price | money }}
                           {% endif %}
                         </span>
                       {%- endif -%}
@@ -229,18 +229,18 @@
                           </dt>
                           <dd class="price price--end">
                             {% if customer.tags contains 'wineclub-member' %}
-                            {{ item.final_line_price | times:0.8 | money }}
+                            Member Price: {{ item.final_line_price | times:0.8 | money }}
                             {% else %}
-                            {{ item.final_line_price | times:1.8 | money }}
+                            {{ item.final_line_price | money }}
                             {% endif %}
                           </dd>
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
                           {% if customer.tags contains 'wineclub-member' %}
-                          {{ item.original_line_price | times:0.8 | money }}
+                          Member Price: {{ item.original_line_price | times:0.8 | money }}
                           {% else %}
-                          {{ item.original_line_price | times:1.8 | money }}
+                          {{ item.original_line_price | money }}
                           {% endif %}
                         </span>
                       {%- endif -%}
