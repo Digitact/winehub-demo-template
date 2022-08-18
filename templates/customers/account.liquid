@@ -110,7 +110,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-<form method="POST" action="/add_referrer">
+<form id="referralForm" method="POST" action="/add_referrer">
       <h3>Howard's Folly Referrals</h3>                   
       <p>If you refer a friend and they sign up for a subscription you will both recieve a discount code for a free case, share your code below with friends and have them enter it on the form when they are logged into their account</p>
       <div>
@@ -119,8 +119,8 @@
       </div>    
       <div>
         <strong>Enter the code of the friend that referred you: </strong>
-        <input type="hidden" id="customer_id" name="customer_id" value="{{customer.id}}">
-        <input type="text" name="referrerCode">
+        <input id="customer_id" type="hidden" name="customer_id" value="{{customer.id}}">
+        <input id="referrer_code" type="text" name="referrerCode">
         <button type="submit">Submit</button>       
       </div> 
 </form>        
@@ -134,7 +134,26 @@
 
   $(function () {
     //alert("Loading content");  
-    updateReferralCode();        
+    updateReferralCode();    
+
+    $("#referralForm").submit(function (event) {
+      var formData = {
+        customer_id: $("#customer_id").val(),
+        referrer_code: $("#referrer_code").val(),
+      };
+  
+      $.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: formData,
+        dataType: "json",
+        encode: true,
+      }).done(function (data) {
+        console.log(data);
+      });
+  
+      event.preventDefault();
+    });
   }); 
   
   function updateReferralCode() {
