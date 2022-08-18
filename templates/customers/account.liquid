@@ -110,7 +110,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-<form id="referralForm" method="POST" action="/add_referrer/{{customer.id}}">
+<form id="referralForm" method="POST" action="{% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}https://wineclub-demo.digitact.co.uk{% else %}https://howards-folly-wine.digitact.co.uk{% endif %}/add_referrer/{{customer.id}}">
       <h3>Howard's Folly Referrals</h3>                   
       <p>If you refer a friend and they sign up for a subscription you will both recieve a discount code for a free case, share your code below with friends and have them enter it on the form when they are logged into their account</p>
       <div>
