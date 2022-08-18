@@ -138,6 +138,7 @@
     updateReferralCode();    
 
     $("#referralForm").submit(function (event) {
+      $("#referralError").html("");
       var formData = {
         customer_id: $("#customer_id").val(),
         referrer_code: $("#referrer_code").val(),
