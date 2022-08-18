@@ -118,6 +118,7 @@
         <span id="referralCodeText">Loading...</span>
       </div>    
       <div>
+        <div id="referralError" style="color:red;"></div>
         <strong>Enter the code of the friend that referred you: </strong>
         <input id="customer_id" type="hidden" name="customer_id" value="{{customer.id}}">
         <input id="referrer_code" type="text" name="referrerCode">
@@ -150,6 +151,9 @@
         encode: true,
       }).done(function (data) {
         console.log(data);
+        if (data.error!==undefined) {
+          $("#referralError").html(data.error);
+        }
       });
   
       event.preventDefault();
