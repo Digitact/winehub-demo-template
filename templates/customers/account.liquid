@@ -109,13 +109,22 @@
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-                         
-                          
+
+                          <form method="POST" action="/add_referrer">
+      <h3>Howard's Folly Referrals</h3>                   
+      <p>If you refer a friend and they sign up for a subscription you will both recieve a discount code for a free case, share your code below with friends and have them enter it on the form when they are logged into their account</p>
       <div>
         <strong>Your Referral Code: </strong>
-        <span id="referralCode">Loading...</span>
-      </div>      
-
+        <span id="referralCodeText">Loading...</span>
+      </div>    
+      <div>
+        <strong>Enter the code of the friend that referred you: </strong>
+        <input type="hidden" id="referralCode" name="referralCode">
+        <input type="text" name="referrerCode">
+          <button type="submit">Submit</button>
+        
+      </div> 
+</form>        
       <script>
 
   {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
@@ -137,7 +146,8 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-          $('#referralCode').html(data.referralCode); 
+          $('#referralCodeText').html(data.referralCode); 
+          $('#referralCode').val(data.referralCode); 
         },
         error: function (data) { 
           console.log(data.responseText); 
