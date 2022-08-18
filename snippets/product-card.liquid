@@ -145,7 +145,7 @@
         <span class="product-form__error-message"></span>
       </div>
 
-      {%- if customer.tags contains 'wineclub-member' -%}
+      {%- if customer.tags contains 'active_wine_club' -%}
       {% assign nonmember = false %}
       {%- else -%}
       {% assign nonmember = true %}

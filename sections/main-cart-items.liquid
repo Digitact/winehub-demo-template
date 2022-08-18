@@ -141,7 +141,7 @@
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
                           <dd class="price price--end">
-                            {% if customer.tags contains 'wineclub-member' %}
+                            {% if customer.tags contains 'active_wine_club' %}
                             Member Price: {{ item.final_line_price | times:0.8 | money }}
                             {% else %}
                             {{ item.final_line_price | money }}
@@ -150,7 +150,7 @@
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
-                          {% if customer.tags contains 'wineclub-member' %}
+                          {% if customer.tags contains 'active_wine_club' %}
                           Member Price: {{ item.original_line_price | times:0.8 | money }}
                           {% else %}
                           {{ item.original_line_price | money }}
@@ -228,7 +228,7 @@
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
                           <dd class="price price--end">
-                            {% if customer.tags contains 'wineclub-member' %}
+                            {% if customer.tags contains 'active_wine_club' %}
                             Member Price: {{ item.final_line_price | times:0.8 | money }}
                             {% else %}
                             {{ item.final_line_price | money }}
@@ -237,7 +237,7 @@
                         </dl>
                       {%- else -%}
                         <span class="price price--end">
-                          {% if customer.tags contains 'wineclub-member' %}
+                          {% if customer.tags contains 'active_wine_club' %}
                           Member Price: {{ item.original_line_price | times:0.8 | money }}
                           {% else %}
                           {{ item.original_line_price | money }}

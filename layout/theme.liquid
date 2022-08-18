@@ -187,7 +187,7 @@
     </script>
     {%- section 'go-cart' -%}
 
-    {%- if customer.tags contains 'wineclub-member' -%}
+    {%- if customer.tags contains 'active_wine_club' -%}
     <script>
       // Setup the Apply Discount Code URL
       let shopDomain = "{{ shop.permanent_domain }}";

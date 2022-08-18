@@ -23,7 +23,7 @@
                 <div class="totals">
                   <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>
                   <p class="totals__subtotal-value">
-                    {% if customer.tags contains 'wineclub-member' %}
+                    {% if customer.tags contains 'active_wine_club' %}
                     Member Price: {{ cart.total_price | times:0.8 | money_with_currency }}
                     {% else %}
                     {{ cart.total_price | money_with_currency }}
