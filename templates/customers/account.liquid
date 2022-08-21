@@ -131,6 +131,9 @@
           <thead>
             <tr>
               <th>
+                Source
+              </th>
+              <th>
                 Discount Code
               </th>
               <th>
@@ -202,7 +205,7 @@
           if (data.discountCodes) {
             var row = "";
             data.discountCodes.each(function() {
-              row += '<tr><td>'+this['discountCode']+'</td><td>'+this['discountCode']+'</td><td>'+this['products']+'</td></tr>';
+              row += '<tr><td>'+this['source']+'</td><td>'+this['discountCode']+'</td><td>'+this['expires']+'</td><td></td></tr>';
             });
             if (row!="") $("#discountCodes").html(row);
           }
