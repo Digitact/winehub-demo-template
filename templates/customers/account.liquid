@@ -205,7 +205,7 @@
           if (data.discountCodes) {
             var row = "";
             for (i = 0; i < data.discountCodes.length; i++) {
-              row += '<tr><td>'+data.discountCodes[i].source+'</td><td>'+data.discountCodes[i].discountCode+'</td><td>'+data.discountCodes[i].expires+'</td><td>'+data.discountCodes[i].products+'</td></tr>';
+              row += '<tr><td style="padding: 2.4rem;">'+data.discountCodes[i].source+'</td><td>'+data.discountCodes[i].discountCode+'</td><td>'+data.discountCodes[i].expires+'</td><td style="padding-bottom: 2.4rem;">'+data.discountCodes[i].products+'</td></tr>';
             }
             //data.discountCodes.each(function() {
             //  row += '<tr><td>'+data.discountCodes[i].source+'</td><td>'+this['discountCode']+'</td><td>'+this['expires']+'</td><td></td></tr>';
