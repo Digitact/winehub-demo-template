@@ -199,6 +199,13 @@
           if (data.referredBy!==undefined) {
             $("#referralFormArea").html("You were referred by: "+data.referredBy);
           }
+          if (data.discountCodes) {
+            var row = "";
+            data.discountCodes.each(function() {
+              row += '<tr><td>'+this['discountCode']+'</td><td>'+this['discountCode']+'</td><td>'+this['products']+'</td></tr>';
+            });
+            if (row!="") $("#discountCodes").html(row);
+          }
         },
         error: function (data) { 
           console.log(data.responseText); 
