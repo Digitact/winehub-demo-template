@@ -116,7 +116,7 @@
         <strong>Your Referral Code: </strong>
         <span id="referralCodeText">Loading...</span>
       </div>    
-      <div>
+      <div id="referralFormArea">
 <form id="referralForm" method="POST" action="{% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}https://wineclub-demo.digitact.co.uk{% else %}https://howards-folly-wine.digitact.co.uk{% endif %}/add_referrer/{{customer.id}}">
         <div id="referralError" style="color:red;"></div>
         <strong>Enter the code of the friend that referred you: </strong>
@@ -125,6 +125,7 @@
         <button type="submit">Submit</button>       
 </form>        
       </div> 
+      
 
       <script>
 
@@ -152,6 +153,9 @@
         encode: true,
       }).done(function (data) {
         console.log(data);
+        if (data.referredBy!==undefined) {
+          $("#referralFormArea").html("You were referred by: "+data.referredBy);
+        }
         if (data.error!==undefined) {
           $("#referralError").html(data.error);
         }
