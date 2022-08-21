@@ -152,10 +152,7 @@
         dataType: "json",
         encode: true,
       }).done(function (data) {
-        console.log(data);
-        if (data.referredBy!==undefined) {
-          $("#referralFormArea").html("You were referred by: "+data.referredBy);
-        }
+        console.log(data);        
         if (data.error!==undefined) {
           $("#referralError").html(data.error);
         }
@@ -175,6 +172,9 @@
         success: function (data) {
           $('#referralCodeText').html(data.referralCode); 
           $('#referralCode').val(data.referralCode); 
+          if (data.referredBy!==undefined) {
+            $("#referralFormArea").html("You were referred by: "+data.referredBy);
+          }
         },
         error: function (data) { 
           console.log(data.responseText); 
