@@ -16,7 +16,7 @@
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient">
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
-    <div class="footer__content-top page-width" style='background-color: #ebebeb; margin:0px; max-width:100%;'>
+    <div class="footer__content-top page-width" style='background-color: #ebebeb; padding:0px; margin:0px; max-width:100%;'>
       {%- if section.blocks.size > 0 -%}
         {%- liquid
           if section.blocks.size == 9
@@ -123,7 +123,7 @@
         {%- endif -%}
       </div>
       {%- if section.settings.show_social -%}
-        <div class='footer-block' style='display:inline; background-color: #262626;'>
+        <div style='display:flex; background-color: #262626;'>
           <div style='display:inline; width:24%'>
             <h4>HOWARD'S FOLLY</h4>
           </div>
