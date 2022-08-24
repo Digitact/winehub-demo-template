@@ -252,14 +252,14 @@
         {%- endif -%}
     
         <div style='display:flex; background-color: #262626; padding: 20px;'>
-          <div style='display: inline; width:48%;'>
+          <div style='display: inline; width:48%; text-align:right;'>
             <p style='display: block; color: #6D6D6D'>You must be of legal drinking age to purchase alcohol.</p>
             <span style='display: block;'>
               <i class='pfa pfa-copyright' style='display: inline; color: #6D6D6D;'></i>
               <small class="copyright__content" style='display:inline; color: #6D6D6D;'>&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
             </span>
           </div>
-          <div style='display: inline; width: 48%;'>
+          <div style='display: inline; width: 48%; text-align:left;'>
             <span>
               <a href="/pages/faq-howards-folly" target="_self" style="color: rgb(136, 136, 136);">
                 FAQ
