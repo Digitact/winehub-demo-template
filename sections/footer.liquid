@@ -124,8 +124,8 @@
       </div>
       {%- if section.settings.show_social -%}
         <div style='display:flex; background-color: #262626; padding: 20px;'>
-          <div style='color: #FFFFFF; display:inline; width:24%'>
-            <h4>HOWARD'S FOLLY</h4>
+          <div style='display:inline; width:24%'>
+            <h4 style="color: #FFFFFF;">HOWARD'S FOLLY</h4>
           </div>
           <div style='display:inline; width:24%'>
             <ul style="--text-indent:0; --line-spacing:10px; list-style-type: none;">
@@ -223,24 +223,24 @@
               </li>
             {%- endif -%}
             {%- if settings.social_snapchat_link != blank -%}
-              <li class="list-social__item" style='color:#FFFFFF;'>
-                <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
+              <li class="list-social__item">
+                <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" style="color: #FFFFFF;">
                   {%- render 'icon-snapchat' -%}
                   <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
             {%- if settings.social_youtube_link != blank -%}
-              <li class="list-social__item" style='color:#FFFFFF;'>
-                <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
+              <li class="list-social__item" >
+                <a href="{{ settings.social_youtube_link }}" class="link list-social__link" style="color: #FFFFFF;">
                   {%- render 'icon-youtube' -%}
                   <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
             {%- if settings.social_vimeo_link != blank -%}
-              <li class="list-social__item" style='color:#FFFFFF;'>
-                <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
+              <li class="list-social__item" >
+                <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" style="color: #FFFFFF;">
                   {%- render 'icon-vimeo' -%}
                   <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                 </a>
