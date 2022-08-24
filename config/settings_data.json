@@ -80,8 +80,8 @@
         ],
         "settings": {
           "color_scheme": "background-1",
-          "newsletter_enable": false,
-          "newsletter_heading": "Subscribe to our emails",
+          "newsletter_enable": true,
+          "newsletter_heading": "SUBSCRIBE TO OUR MAILING LIST",
           "show_social": false,
           "enable_country_selector": true,
           "enable_language_selector": true,
