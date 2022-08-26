@@ -14,9 +14,9 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient">
+<footer class="footer color-{{ section.settings.color_scheme }} gradient" style='background-color: #ebebeb; padding: 0px; margin: 0px;'>
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
-    <div class="footer__content-top page-width" style='background-color: #ebebeb; padding: 0px; margin: 0px; max-width: 100%;'>
+    <div class="footer__content-top page-width" style='margin: 0 auto;'>
       {%- if section.blocks.size > 0 -%}
         {%- liquid
           if section.blocks.size == 9
@@ -122,8 +122,11 @@
           </div>
         {%- endif -%}
       </div>
+    </div>
+    <div style="background-color: #262626; ">
+
       {%- if section.settings.show_social -%}
-        <div style='display:flex; background-color: #262626; padding: 20px; padding-left:60px; padding-right:60px'>
+        <div style='display:flex; padding: 20px; padding-left:60px; padding-right:60px'>
           <div style='display:inline; width:24%; margin:auto;'>
             <a href="/" style="text-decoration:none;"><img src="{{ 'logo.png' | asset_url }}" alt="Howards Folly" loading="lazy" /></a>
           </div>
