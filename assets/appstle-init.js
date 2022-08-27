@@ -17,7 +17,7 @@
       };
 
 
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0654/1728/1793/t/2/assets/appstle-subscription.js?v=1660828678");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0654/1728/1793/t/2/assets/appstle-subscription.js?v=1661607649");
 
 
       window.RS = Window.RS || {};
@@ -207,7 +207,7 @@
 {{/showStaticTooltip}}
     </div>{% endraw %}`,
         "bundle": {},
-        "labels": null,
+        "labels": "{\"appstle.subscription.wg.oneTimePurchaseTextV2\":\"One Time Purchase\"}",
         "css": {
             "appstle_subscription_widget": {
                 "margin-top": "" ,
