@@ -1,0 +1,353 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="customer account">
+  <div>
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    <a href="/account">Order History</a> | 
+    <a href="/pages/subscriptions">Subscriptions</a> | 
+    <a href="/pages/upcoming-shipments">Upcoming Shipments</a> | 
+    <a href="/pages/payment-methods">Payment Methods</a> | 
+    <a href="/account/addresses">Addresses</a> | 
+    <a href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+  </div>
+
+  <div>
+    <div>
+
+      <h2>Upcoming Deliveries</h2>
+      
+      <h3>Next Dispatch Date: <span id="nextDispatchDate">Loading...</span></h3>
+      
+      <table role="table" class="order-history">
+        <caption class="visually-hidden">Wine Club Subscriptions</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            
+            <th id="ColumnOrder" scope="col" role="columnheader" style="width:25%;">Subscription</th>
+            <th id="ColumnPayment" scope="col" role="columnheader">Next Shipment</th>
+            <th id="ColumnTotal" scope="col" role="columnheader">Product Price</th>
+            <th id="ColumnTotal" scope="col" role="columnheader">Shipping Price</th>
+            <th id="ColumnTotal" scope="col" role="columnheader">Total Price</th>
+            <th id="ColumnTotal" scope="col" role="columnheader" style="width:5%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="subscription_tbody" role="rowgroup">
+          <tr role="row">
+            <td colspan="10" style="text-align: left;">Loading...</td>
+          </tr>          
+        </tbody>
+      </table>   
+
+    </div>
+  </div>
+</div>
+
+<style>
+
+
+/* Video modal testing */
+.casepicker__modal.casepicker__modal {
+  box-sizing: border-box;
+  opacity: 0;
+  position: fixed;
+  visibility: hidden;
+  z-index: -1;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  width: 100%;
+  background: rgba(var(--color-foreground), 0.2);
+  height: 100%;
+}
+
+.casepicker__modal[open].casepicker__modal[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+.casepicker__modal-content {
+  background-color: rgb(var(--color-background));
+  overflow: auto;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  padding: 0;
+}
+
+.casepicker__modal-toggle {
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: fixed;
+  padding: 1.2rem;
+  z-index: 2;
+  top: 2rem;
+  right: 0.5rem;
+  width: 4rem;
+  margin: 0 0 0 auto;
+}
+
+@media screen and (min-width: 750px) {
+  .casepicker__modal-toggle {
+    right: 4.8rem;
+    top: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .casepicker__modal-toggle {
+    right: 4.3rem;
+    top: 3rem;
+  }
+}
+
+.casepicker__modal-toggle .icon {
+  height: auto;
+  margin: 0;
+  width: 2.2rem;
+}
+
+.casepicker__modal-content-info {
+  width: calc(100% - 1rem);
+  height: calc(100% - 6rem);
+  margin: 0 auto;
+  padding-top: 8rem;
+}
+
+@media screen and (min-width: 750px) {
+  .casepicker__modal-content-info {
+    width: calc(100% - 9.6rem);
+    height: calc(100% - 7.5rem);
+    padding-top: 9.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .casepicker__modal-content-info {
+    width: calc(100% - 8.6rem);
+    height: calc(100% - 7rem);
+    padding-top: 9rem;
+  }
+}
+
+</style>
+
+<modal-dialog id="PopupModal-CasePick" class="casepicker__modal">
+  <div class="casepicker__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
+    <button id="ModalClose-CasePick" type="button" class="casepicker__modal-toggle" aria-label="Close">Close</button>
+    <div class="casepicker__modal-content-info">
+
+    <div class="wine-casebuilder">
+      <script>
+        window.permanent_domain="{{ shop.permanent_domain }}";
+        window.shipment_id=1;
+      </script>
+      <script defer="defer" src="https://wineclub-demo.digitact.co.uk/shipment-picker/static/js/main.493da82a.js"></script>
+      <link href="https://wineclub-demo.digitact.co.uk/shipment-picker/static/css/main.748c59ef.css" rel="stylesheet">
+      <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
+      <div id="react-case-builder-module"></div>
+    </div>
+
+    </div>
+  </div>
+</modal-dialog>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+  {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
+    var app_domain = 'https://wineclub-demo.digitact.co.uk';
+  {% else %}
+    var app_domain = 'https://howards-folly-wine.digitact.co.uk';
+  {% endif %}
+  
+    $(function () {
+      //alert("Loading content");  
+      updateList();        
+    }); 
+  
+  function updateList() {
+      $('#subscription_tbody').html('<tr role="row"><td colspan="10" style="text-align: left;">Loading...</td></tr>');
+      $.ajax({
+        url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+          $('#subscription_tbody').html('');
+          $('#nextDispatchDate').html(new Date(response.nextDelivery).toDateString());
+          data = response.deliveries
+          console.log(data);
+          console.log(data.length);
+          if (data.length) {
+            $(data).each(function (index, item) {
+              //console.log(data[index].shopifyId);
+
+              currencyCode = data[index].current_price_currency;
+        	  if (currencyCode===undefined) currencyCode = 'EUR';
+
+              var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currencyCode,
+                // These options are needed to round to whole numbers if that's what you want.
+                //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+                //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+              });         
+
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td headers="RowOrder ColumnImage" role="cell">';
+              row += '<img src="'+data[index].image+'" style="max-width:140px; max-height:140px;" />';
+              row += '</td>';    
+              row += '<td';
+              row += '    id="RowOrder"';
+              row += '    role="cell"';
+              row += '    headers="ColumnOrder"';
+              row += '    data-label=""';
+              row += '    >';
+              //row += '  <a href="#" class="open-modal" data-open="modal1">';
+              row += data[index].product_name;
+              row += '  <br />';
+              //row += data[index].sellingPlanGroupName;
+              //row += '  <br />';
+              row += data[index].selling_plan_name;
+              //row += '  <br />';
+              //row += '  </a>';
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnDate" role="cell">';
+              row += new Date(data[index].process_date).toDateString();
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].items_price);
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].shipping_price);
+              row += '</td>';
+              row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+              row += formatter.format(data[index].total_price);
+              row += '</td>';
+    		  row += '<td headers="RowOrder ColumnAction" role="cell" style="padding:1.2rem;">';              
+              if (data[index].wines.length) {
+                row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="toggleDetails(this,\'#details-'+data[index].subscription_contract_shipment_id+'\');">Show Details</button>';
+              }
+              //row += '<a href="#ex1" rel="modal:open" class="button button--primary" style="margin:0 0 3px 3px; width: 210px;background:rgb(18, 18, 18);color:#fff;text-decoration:none;display: inline-flex;justify-content: center;align-items: center;"></a>';              
+              if (data[index].wines.length) {
+                row += '<modal-opener class="no-js-hidden" data-modal="#PopupModal-CasePick">';              
+                row += '    <button class="button button--primary" style="padding:0; margin:0 0 3px 3px; width: 210px;" type="button" aria-haspopup="dialog" data-media-id="case-picker-id">Customise Shipment</button>';              
+                row += '</modal-opener>';     
+              }
+              row += '<button class="button button--primary" style="margin:0 0 3px 3px; width: 210px;" onClick="cancelDelivery(\''+data[index].subscription_contract_shipment_id+'\');">Cancel Delivery</button>';
+              row += '</td>';
+              row += '</tr>';
+
+              row += '<tr role="row" id="details-'+data[index].subscription_contract_shipment_id+'" style="display:none;">';
+              row += '<td headers="RowOrder ColumnImage" role="cell" colspan="10">';
+              row += '      <table role="table" class="order-history">';
+              row += '        <caption class="visually-hidden">Wine Club Subscriptions</caption>';
+              row += '        <thead role="rowgroup">';
+              row += '          <tr role="row">';
+              row += '            <th id="ColumnOrder" scope="col" role="columnheader">Image</th>            ';
+              row += '            <th id="ColumnOrder" scope="col" role="columnheader" style="text-align:left;">Product</th>';
+              row += '            <th id="ColumnPayment" scope="col" role="columnheader">Quantity</th>';
+              row += '          </tr>';
+              row += '        </thead>';
+              row += '        <tbody id="subscription_tbody" role="rowgroup">';
+              if (data[index].wines.length) {
+                $(data[index].wines).each(function (index, item) {
+                  row += '          <tr role="row">';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+                  row += '<img src="'+item.image+'" style="max-width:100px; max-height:100px;" />';
+                  row += '</td>';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell" style="text-align:left;">';
+                  row += item.title;
+                  row += '</td>';
+                  row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
+                  row += item.quantity;
+                  row += '</td>';
+                  row += '          </tr>          ';
+                });
+              }
+              else {
+                row += '          <tr role="row">';
+                row += '<td headers="RowOrder ColumnFulfillment" role="cell" colspan="10" style="text-align:left;">';
+                row += 'Pending Selection By Winery';
+                row += '</td>';
+                row += '          </tr>          ';
+              }	  
+              row += '        </tbody>';
+              row += '      </table>  ';
+              row += '</td>';
+              row += '</tr>';
+
+              $('#subscription_tbody').append(row);     
+            });           
+
+          } else {
+              var row = '';
+              row += '<tr role="row">';
+              row += '<td colspan="10" style="text-align: left;">No subscription records found</td>';
+              row += '</tr>';
+              $('#subscription_tbody').append(row);               
+          }         
+        },
+        error: function (data) { alert(data.responseText); }
+      });
+    
+    
+  }
+
+  function toggleDetails(button,id) {
+    if ($(button).html()=="Show Details") {
+      $(button).html("Hide Details");      
+      $(id).show();
+    } else {
+      $(button).html("Show Details");
+      $(id).hide();
+    }
+  }
+
+  function editSubscription(id) {
+    if (confirm("Are you sure you wish to edit this contract?") == true) {
+    }   
+  }
+
+  function pauseSubscription(id) {
+    if (confirm("Are you sure you wish to pause this contract?") == true) {
+    }   
+  }    
+  
+  function cancelDelivery(id) {
+    if (confirm("Are you sure you wish to cancel this delivery and pause your subscription?") == true) {
+
+      var row = '';
+      row += '<tr role="row">';
+      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
+      row += '</tr>';
+      $('#subscription_tbody').html(row);
+      
+	  $.ajax({
+        url: app_domain+'/canceldelivery/'+id,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+          $('#subscription_tbody').html("");
+		  updateList();            
+        },
+        error: function (data) { alert(data.responseText); }
+      });      
+      
+    }   
+  }
+  
+</script>
+
