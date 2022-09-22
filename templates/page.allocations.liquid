@@ -17,7 +17,8 @@
 
       <h2>Exclusive Allocations</h2>
       
-      
+      <div id='customer-allocations-area'>
+      </div>
 
     </div>
   </div>
@@ -41,13 +42,12 @@
   
     $(function () {
       //alert("Loading content");  
-      updateList();        
+      getAllocations();        
     }); 
   
-  function updateList() {
-      $('#subscription_tbody').html('<tr role="row"><td colspan="10" style="text-align: left;">Loading...</td></tr>');
+  function getAllocations() {
       $.ajax({
-        url: app_domain+'/app/api/upcoming_deliveries/{{customer.id}}',
+        url: app_domain+'/app/api/product_allocations/{{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
