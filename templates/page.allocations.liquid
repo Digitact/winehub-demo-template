@@ -15,9 +15,7 @@
   <div>
     <div>
 
-      <h2>Upcoming Deliveries</h2>
-      
-      <h3>Next Dispatch Date: <span id="nextDispatchDate">Loading...</span></h3>
+      <h2>Exclusive Allocations</h2>
       
       <table role="table" class="order-history">
         <caption class="visually-hidden">Wine Club Subscriptions</caption>
@@ -43,126 +41,14 @@
   </div>
 </div>
 
+
 <style>
-
-
-/* Video modal testing */
-.casepicker__modal.casepicker__modal {
-  box-sizing: border-box;
-  opacity: 0;
-  position: fixed;
-  visibility: hidden;
-  z-index: -1;
-  margin: 0 auto;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  width: 100%;
-  background: rgba(var(--color-foreground), 0.2);
-  height: 100%;
-}
-
-.casepicker__modal[open].casepicker__modal[open] {
-  opacity: 1;
-  visibility: visible;
-  z-index: 101;
-}
-
-.casepicker__modal-content {
-  background-color: rgb(var(--color-background));
-  overflow: auto;
-  height: 100%;
-  margin: 0;
-  width: 100%;
-  position: absolute;
-  padding: 0;
-}
-
-.casepicker__modal-toggle {
-  background-color: rgb(var(--color-background));
-  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
-  border-radius: 50%;
-  color: rgba(var(--color-foreground), 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: fixed;
-  padding: 1.2rem;
-  z-index: 2;
-  top: 2rem;
-  right: 0.5rem;
-  width: 4rem;
-  margin: 0 0 0 auto;
-}
-
-@media screen and (min-width: 750px) {
-  .casepicker__modal-toggle {
-    right: 4.8rem;
-    top: 3.5rem;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .casepicker__modal-toggle {
-    right: 4.3rem;
-    top: 3rem;
-  }
-}
-
-.casepicker__modal-toggle .icon {
-  height: auto;
-  margin: 0;
-  width: 2.2rem;
-}
-
-.casepicker__modal-content-info {
-  width: calc(100% - 1rem);
-  height: calc(100% - 6rem);
-  margin: 0 auto;
-  padding-top: 8rem;
-}
-
-@media screen and (min-width: 750px) {
-  .casepicker__modal-content-info {
-    width: calc(100% - 9.6rem);
-    height: calc(100% - 7.5rem);
-    padding-top: 9.5rem;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .casepicker__modal-content-info {
-    width: calc(100% - 8.6rem);
-    height: calc(100% - 7rem);
-    padding-top: 9rem;
-  }
-}
 
 </style>
 
-<modal-dialog id="PopupModal-CasePick" class="casepicker__modal">
-  <div class="casepicker__modal-content" role="dialog" aria-label="description" aria-modal="true" tabindex="-1">
-    <button id="ModalClose-CasePick" type="button" class="casepicker__modal-toggle" aria-label="Close">Close</button>
-    <div class="casepicker__modal-content-info">
-
-    <div class="wine-casebuilder">
-      <script>
-        window.permanent_domain="{{ shop.permanent_domain }}";
-        window.shipment_id=1;
-      </script>
-      <script defer="defer" src="https://wineclub-demo.digitact.co.uk/shipment-picker/static/js/main.493da82a.js"></script>
-      <link href="https://wineclub-demo.digitact.co.uk/shipment-picker/static/css/main.748c59ef.css" rel="stylesheet">
-      <noscript>You need to enable JavaScript to access the wine subscription process.</noscript>
-      <div id="react-case-builder-module"></div>
-    </div>
-
-    </div>
-  </div>
-</modal-dialog>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
 
   {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
@@ -301,53 +187,7 @@
           }         
         },
         error: function (data) { alert(data.responseText); }
-      });
-    
-    
-  }
-
-  function toggleDetails(button,id) {
-    if ($(button).html()=="Show Details") {
-      $(button).html("Hide Details");      
-      $(id).show();
-    } else {
-      $(button).html("Show Details");
-      $(id).hide();
-    }
-  }
-
-  function editSubscription(id) {
-    if (confirm("Are you sure you wish to edit this contract?") == true) {
-    }   
-  }
-
-  function pauseSubscription(id) {
-    if (confirm("Are you sure you wish to pause this contract?") == true) {
-    }   
-  }    
-  
-  function cancelDelivery(id) {
-    if (confirm("Are you sure you wish to cancel this delivery and pause your subscription?") == true) {
-
-      var row = '';
-      row += '<tr role="row">';
-      row += '<td colspan="10" style="text-align: left;">Updating...</td>';
-      row += '</tr>';
-      $('#subscription_tbody').html(row);
-      
-	  $.ajax({
-        url: app_domain+'/canceldelivery/'+id,
-        type: "GET",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-          $('#subscription_tbody').html("");
-		  updateList();            
-        },
-        error: function (data) { alert(data.responseText); }
-      });      
-      
-    }   
+      }); 
   }
   
 </script>
