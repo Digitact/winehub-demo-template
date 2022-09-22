@@ -125,8 +125,12 @@
               row += '<td id="allocation-creation">' + individualAllocations + '</td>'
               row += '</tr>'
 
-              
-              $('#customer-allocations-area').append(row);
+              if(expiresAt > Date()) {
+                $('#upcoming-allocations-area').append(row);
+              }
+              else {
+                $('#expired-allocations-area').append(row);
+              }
           }
         },
         error: function (data) { alert(data.responseText); }
