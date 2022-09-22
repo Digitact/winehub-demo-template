@@ -16,10 +16,31 @@
     <div>
 
       <h2>Exclusive Allocations</h2>
-      
-      <div id='customer-allocations-area'>
-      </div>
 
+      <table>
+        <thead>
+          <tr>
+            <th>
+              
+            </th>
+            <th>
+              Image
+            </th>
+            <th>
+              Product
+            </th>
+            <th>
+              Expires
+            </th>
+            <th>
+              Claimable Allocations
+            </th>
+          </tr>
+        </thead>
+        <tbody id='customer-allocations-area'>
+        
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -58,10 +79,24 @@
           if (data.length) {
             $(data).each(function (index, item) {
 
-            let data = ''
+              let id = item['id'];
+              let featureImage = item['featureImage'];
+              let createdAt = item['createdAt'];
+              let publishedAt = item['publishedAt'];
+              let expiresAt = item['expiresAt'];
+              let published = item['published'];
+              let individualAllocations = item['individualAllocations'];
               
-            $('#customer-allocations-area').append(data);
-          }         
+              let row = '<tr id="allocation-item">'
+              row += '<td id="allocation-id" style="display:none">' + id + '</td>'
+              row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 150px"></td>'
+              row += '<td id="allocation-creation">' + publishedAt["date"] + '</td>'
+              row += '<td id="allocation-creation">' + expiresAt["date"] + '</td>'
+              row += '<td id="allocation-creation">' + individualAllocations + '</td>'
+              row += '</tr>'
+              
+              $('#customer-allocations-area').append(row);
+          }
         },
         error: function (data) { alert(data.responseText); }
       }); 
