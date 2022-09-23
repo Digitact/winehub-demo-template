@@ -96,7 +96,7 @@
   
   function getAllocations() {
       $.ajax({
-        url: app_domain+'/app/api/product_allocations/{{customer.id}}',
+        url: app_domain+'/app/api/customer_product_allocations/{{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
