@@ -18,7 +18,7 @@
       <h2>Exclusive Allocations</h2>
 
       <h4>Currently available</h4>
-      <table>
+      <table id='available-allocations'>
         <thead>
           <tr>
             <th>
@@ -38,13 +38,13 @@
             </th>
           </tr>
         </thead>
-        <tbody id='upcoming-allocations-area'>
+        <tbody id='available-allocations-area'>
         
         </tbody>
       </table>
 
       <h4>Expired</h4>
-      <table>
+      <table id='expired-allocations'>
         <thead>
           <tr>
             <th>
@@ -126,11 +126,12 @@
               row += '</tr>'
 
               if(expiresAt > Date()) {
-                $('#upcoming-allocations-area').append(row);
+                $('#available-allocations-area').append(row);
               }
               else {
                 $('#expired-allocations-area').append(row);
               }
+            }
           }
         },
         error: function (data) { alert(data.responseText); }
