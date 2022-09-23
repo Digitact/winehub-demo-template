@@ -16,59 +16,13 @@
   <div>
     <div>
 
-      <h2>Exclusive Allocations</h2>
+      <h2>Membership Tiers</h2>
 
-      <h4>Currently available</h4>
-      <table id='available-allocations'>
-        <thead>
-          <tr>
-            <th>
-              
-            </th>
-            <th>
-              Image
-            </th>
-            <th>
-              Product
-            </th>
-            <th>
-              Expires
-            </th>
-            <th>
-              Claimable Allocations
-            </th>
-          </tr>
-        </thead>
-        <tbody id='available-allocations-area'>
+      <h4></h4>
+      <ul id='membership-tiers-tree'>
         
-        </tbody>
-      </table>
+      </ul>
 
-      <h4>Expired</h4>
-      <table id='expired-allocations'>
-        <thead>
-          <tr>
-            <th>
-              
-            </th>
-            <th>
-              Image
-            </th>
-            <th>
-              Product
-            </th>
-            <th>
-              Expires
-            </th>
-            <th>
-              Claimable Allocations
-            </th>
-          </tr>
-        </thead>
-        <tbody id='expired-allocations-area'>
-        
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
@@ -96,42 +50,28 @@
   
   function getAllocations() {
       $.ajax({
-        url: app_domain+'/app/api/product_allocations/{{customer.id}}',
+        url: app_domain+'/app/api/customer_membership_tiers/{{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (response) {
-          data = response.customer_allocations;
+          data = response.customer_memberships;
           console.log(data);
           console.log(data.length);
           if (data.length) {
             $(data).each(function (index, item) {
-
-              let id = item['id'];
-              let featureImage = item['featureImage'];
-              let createdAt = item['createdAt'];
-              let createdDate = Date.parse(createdAt["date"])
-              let publishedAt = item['publishedAt'];
-              let publishedDate = Date.parse(publishedAt["date"])
-              let expiresAt = item['expiresAt'];
-              let expiresDate = Date.parse(expiresAt["date"])
-              let published = item['published'];
-              let individualAllocations = item['individualAllocations'];
+              //TODO: Render this as a tree...?
+              //for now just do rows
+              let id = item["id"];
+              let name = item["name"];
+              let image = item["image"];
+              let discountBenefit = item["discountBenefit"];
               
-              let row = '<tr id="allocation-item">'
-              row += '<td id="allocation-id" style="display:none">' + id + '</td>'
-              row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 150px"></td>'
-              row += '<td id="allocation-creation">' + publishedDate + '</td>'
-              row += '<td id="allocation-creation">' + expiresDate + '</td>'
-              row += '<td id="allocation-creation">' + individualAllocations + '</td>'
-              row += '</tr>'
-
-              if(expiresAt > Date()) {
-                $('#available-allocations-area').append(row);
-              }
-              else {
-                $('#expired-allocations-area').append(row);
-              }
+              
+              let row = '<li>';
+              
+              row += '</li>';
+              $('#membership-tiers-tree').append(row)
             }
           }
         },
