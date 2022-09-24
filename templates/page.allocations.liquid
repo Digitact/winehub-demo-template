@@ -105,7 +105,7 @@
           data = response.customer_allocations;
           console.log(data);
           console.log(data.length);
-          if (data.length) {
+          if (data && data.length) {
             $(data).each(function (index, item) {
 
               let id = item['id'];
