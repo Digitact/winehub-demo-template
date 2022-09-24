@@ -76,8 +76,9 @@
               row += '<td id="tier-discount">' + discountBenefit + '</td>';
               row += '<td id="tier-requirements">' + requirements + '</td>';
               row += '</tr></li>';
+              
               $('#membership-tiers-tree').append(row)
-            }
+            })
           }
         },
         error: function (data) { alert(data.responseText); }
