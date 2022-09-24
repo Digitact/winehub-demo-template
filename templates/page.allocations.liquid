@@ -117,9 +117,10 @@
               let expiresDate = Date.parse(expiresAt["date"])
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
-              
+
+              let rowId = 'allocation-id-' + id;
               let row = '<tr id="allocation-item">'
-              row += '<td id="allocation-id" style="display:none">' + id + '</td>'
+              row += '<td id=rowId ></td>'
               row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 150px"></td>'
               row += '<td id="allocation-creation">' + publishedDate + '</td>'
               row += '<td id="allocation-creation">' + expiresDate + '</td>'
