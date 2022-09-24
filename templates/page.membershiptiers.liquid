@@ -66,6 +66,138 @@
       //alert("Loading content");  
       getAllocations();        
     }); 
+
+  function rebuildRequirementsString(requirements) {
+    let pt = ''
+    let ptv = ''
+    let mmp = ''
+    let mtslo = ''
+    let mtp = ''
+    let sota = ''
+    let sotm = ''
+    let nmsota = ''
+    let nmsotm = ''
+    let sau = ''
+    let dota = ''
+    let dotp = ''
+    let ppa = ''
+        const requirements = JSON.parse(requirementStr)
+
+        if(requirements.hasOwnProperty('TierBased'))
+        {
+            const tierBased = requirements['TierBased'];
+            const previousTier = tierBased['PreviousTier'];
+            const minTierPeriod = tierBased['MinTierPeriod'];
+            if(previousTier.hasOwnProperty('Id'))
+            {
+                pt = previousTier['Id']
+                ptv = previousTier['Name']
+            }
+
+            if(minTierPeriod > -1)
+            {
+                mtp = (minTierPeriod);
+            }
+        }
+
+        if(requirements.hasOwnProperty('TimeBased'))
+        {
+            const timeBased = requirements['TimeBased'];
+            const minMembershipPeriod = timeBased['MinMembershipPeriod'];
+            const maxTimeSinceLastOrder = timeBased['MaxTimeSinceLastOrder'];
+
+            if(minMembershipPeriod > -1)
+            {
+                mmp = (minMembershipPeriod);
+            }
+
+            if(maxTimeSinceLastOrder > -1)
+            {
+                mtslo = (maxTimeSinceLastOrder);
+            }
+        }
+
+        if(requirements.hasOwnProperty('SpendingBased'))
+        {
+            const spendingBased = requirements['SpendingBased'];
+            const clubMemberSpendingOverTime = spendingBased['ClubMemberSpendingOverTime'];
+            const nonMemberSpendingOverTime = spendingBased['NonMemberSpendingOverTime'];
+            const spendingAutoUpgrade = spendingBased['SpendingAutoUpgrade'];
+
+            if(clubMemberSpendingOverTime && clubMemberSpendingOverTime.hasOwnProperty('Amount') && clubMemberSpendingOverTime.hasOwnProperty('Months'))
+            {
+                if(clubMemberSpendingOverTime['Amount'] > -1)
+                {
+                    sota = (clubMemberSpendingOverTime['Amount']);
+                }
+
+                if(clubMemberSpendingOverTime['Months'] > -1)
+                {
+                    sotm = (clubMemberSpendingOverTime['Months']);
+                }
+            }
+
+            if(nonMemberSpendingOverTime && nonMemberSpendingOverTime.hasOwnProperty('Amount') && nonMemberSpendingOverTime.hasOwnProperty('Months'))
+            {
+                if(nonMemberSpendingOverTime['Amount'] > -1)
+                {
+                    nmsota = (nonMemberSpendingOverTime['Amount']);
+                }
+
+                if(nonMemberSpendingOverTime['Months'] > -1)
+                {
+                    nmsotm = (nonMemberSpendingOverTime['Months']);
+                }
+            }
+
+            if(spendingAutoUpgrade > -1)
+            {
+                $('#form_spendingAutoUpgrade').val(spendingAutoUpgrade);
+            }
+        }
+
+        if(requirements.hasOwnProperty('FrequencyBased'))
+        {
+            const frequencyBased = requirements['FrequencyBased'];
+            const deliveriesOverTime = frequencyBased['DeliveriesOverTime'];
+            if(deliveriesOverTime && deliveriesOverTime.hasOwnProperty('Amount') && deliveriesOverTime.hasOwnProperty('Months'))
+            {
+                if(deliveriesOverTime['Amount'] > -1)
+                {
+                    dota = (deliveriesOverTime['Amount']);
+                }
+
+                if(deliveriesOverTime['Period'] > -1)
+                {
+                    dotp = (deliveriesOverTime['Period']);
+                }
+            }
+        }
+
+        if(requirements.hasOwnProperty('BuyInBased'))
+        {
+            const buyInBased = requirements['BuyInBased']
+            const premiumPurchaseAmount = buyInBased['PremiumPurchaseAmount'];
+            if(premiumPurchaseAmount > -1)
+            {
+                ppa = (premiumPurchaseAmount);
+            }
+        }
+
+    let breakTag = '<br>'; //could be ' | ' for single line
+    if(pt && pt.length) pt = ptv + " member" + breakTag; else pt = ''
+    if(mmp && mmp.length) mmp += " months min membership" + breakTag; else mmp = ''
+    if(mtslo && mtslo.length) mtslo += " months since last order" + breakTag ; else mtslo = ''
+    if(mtp && mtp.length) mtp += " months in " +  ((pt && pt.length) ? ptv : "current tier") + breakTag; else mtp = ''
+    if(sota && sota.length && sotm && sotm.length) { sota += " spent on subscriptions over "; sotm += " months" + breakTag; } else {sota = ''; sotm = '';}
+    if(nmsota && nmsota.length && nmsotm && nmsotm.length) { nmsota += " spent on general eCommerce over "; nmsotm += " months" + breakTag; } else {nmsota = ''; nmsotm = '';}
+    if(sau && sau.length) sau += " spent will auto-upgrade" + breakTag; else sau = ''
+    if(dota && dota.length && dotp && dotp.length) { dota += " deliveries over "; dotp += " months" + breakTag; } else { dota = ''; dotm = ''; }
+    if(ppa && ppa.length) ppa += " to immediately purchase tier membership" + breakTag; else ppa = ''
+
+
+    return(pt + mtp + mmp + mtslo + sota + sotm + nmsota + nmsotm + sau + dota + dotp + ppa);
+  }
   
   function getAllocations() {
       $.ajax({
