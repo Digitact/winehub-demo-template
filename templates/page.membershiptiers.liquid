@@ -58,8 +58,7 @@
           data = response.customer_memberships;
           console.log(data);
           console.log(data.length);
-          if (data.length) {
-            console.log('%o', data)
+          if (data && data.length) {
             $(data).each(function (index, item) {
               //TODO: Render this as a tree...?
               //for now just do rows
