@@ -56,8 +56,7 @@
         contentType: "application/json; charset=utf-8",
         success: function (response) {
           data = response.customer_memberships;
-          console.log(data);
-          console.log(data.length);
+          
           if (data && data.length) {
             $(data).each(function (index, item) {
               //TODO: Render this as a tree...?
