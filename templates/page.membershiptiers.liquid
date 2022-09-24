@@ -92,7 +92,7 @@
               row += '<td id="tier-image"><img src="' + image + '" style="max-height:120px" /></td>';
               row += '<td id="tier-name">' + name + '</td>';
               row += '<td id="tier-discount">' + discountBenefit + '</td>';
-              row += '<td id="tier-requirements">' + JSON.decode(requirements) + '</td>';
+              row += '<td id="tier-requirements">' + JSON.stringify(requirements) + '</td>';
               row += '</tr>';
               
               $('#membership-tiers-items').append(row)
