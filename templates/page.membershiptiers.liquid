@@ -80,6 +80,9 @@
               $('#membership-tiers-tree').append(row)
             })
           }
+          else {
+            $('#membership-tiers-tree').html('<p>You are not a member of any tiers.</p>');
+          }
         },
         error: function (data) { alert(data.responseText); }
       }); 
