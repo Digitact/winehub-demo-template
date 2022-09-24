@@ -17,58 +17,59 @@
     <div>
 
       <h2>Exclusive Allocations</h2>
-
-      <h4>Currently available</h4>
-      <table id='available-allocations'>
-        <thead>
-          <tr>
-            <th>
-              
-            </th>
-            <th>
-              Image
-            </th>
-            <th>
-              Product
-            </th>
-            <th>
-              Expires
-            </th>
-            <th>
-              Claimable Allocations
-            </th>
-          </tr>
-        </thead>
-        <tbody id='available-allocations-area'>
-        
-        </tbody>
-      </table>
-
-      <h4>Expired</h4>
-      <table id='expired-allocations'>
-        <thead>
-          <tr>
-            <th>
-              
-            </th>
-            <th>
-              Image
-            </th>
-            <th>
-              Product
-            </th>
-            <th>
-              Expired
-            </th>
-            <th>
-              Missed Allocations
-            </th>
-          </tr>
-        </thead>
-        <tbody id='expired-allocations-area'>
-        
-        </tbody>
-      </table>
+      <div id='allocations-tables'>
+        <h4>Currently available</h4>
+        <table id='available-allocations'>
+          <thead>
+            <tr>
+              <th>
+                
+              </th>
+              <th>
+                Image
+              </th>
+              <th>
+                Product
+              </th>
+              <th>
+                Expires
+              </th>
+              <th>
+                Claimable Allocations
+              </th>
+            </tr>
+          </thead>
+          <tbody id='available-allocations-area'>
+          
+          </tbody>
+        </table>
+  
+        <h4>Expired</h4>
+        <table id='expired-allocations'>
+          <thead>
+            <tr>
+              <th>
+                
+              </th>
+              <th>
+                Image
+              </th>
+              <th>
+                Product
+              </th>
+              <th>
+                Expired
+              </th>
+              <th>
+                Missed Allocations
+              </th>
+            </tr>
+          </thead>
+          <tbody id='expired-allocations-area'>
+          
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -139,7 +140,7 @@
             })
           }
         },
-        error: function (data) { alert(data.responseText); }
+        error: function (data) { $('#allocations-tables').html(''); console.log('%o', data) }
       }); 
   }
   
