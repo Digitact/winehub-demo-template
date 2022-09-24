@@ -139,6 +139,9 @@
               }
             })
           }
+          else {
+            $('#allocations-tables').html('<p>You have no current or expired product allocations.</p>');
+          }
         },
         error: function (data) { $('#allocations-tables').html(''); console.log('%o', data) }
       }); 
