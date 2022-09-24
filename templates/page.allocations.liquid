@@ -128,7 +128,7 @@
               row += '<td id="allocation-creation">' + individualAllocations + '</td>'
               row += '</tr>'
 
-              if(expiresAt > Date()) {
+              if(expiresAt > new Date()) {
                 $('#available-allocations-area').append(row);
               }
               else {
