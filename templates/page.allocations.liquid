@@ -109,6 +109,7 @@
 
               let id = item['id'];
               let featureImage = item['featureImage'];
+              let name = item['name'];
               let createdAt = item['createdAt'];
               let createdDate = new Date(Date.parse(createdAt["date"]))
               let publishedAt = item['publishedAt'];
@@ -122,7 +123,7 @@
               let row = '<tr id="allocation-item">'
               row += '<td id=' + rowId + ' ></td>'
               row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 150px"></td>'
-              row += '<td id="allocation-creation">' + publishedDate.getFullYear() + '-' + publishedDate.getMonth() + '-' + publishedDate.getDate() + '</td>'
+              row += '<td id="allocation-creation">' + name + '</td>'
               row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + expiresDate.getMonth() + '-' + expiresDate.getDate() + '</td>'
               row += '<td id="allocation-creation">' + individualAllocations + '</td>'
               row += '</tr>'
