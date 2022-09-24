@@ -68,9 +68,14 @@
               let discountBenefit = item["discountBenefit"];
               let requirements = item["requirements"];
               
-              let row = '<li>';
-              
-              row += '</li>';
+              let rowId = 'tier-item-' + id;
+              let row = '<li><tr id="' + rowId + '">';
+              row += '<td id="tier-id"><p style="display:none">' + id + '</p></td>';
+              row += '<td id="tier-image"><img src="' + image + '" style="max-height:120px" /></td>';
+              row += '<td id="tier-name">' + name + '</td>';
+              row += '<td id="tier-discount">' + discountBenefit + '</td>';
+              row += '<td id="tier-requirements">' + requirements + '</td>';
+              row += '</tr></li>';
               $('#membership-tiers-tree').append(row)
             }
           }
