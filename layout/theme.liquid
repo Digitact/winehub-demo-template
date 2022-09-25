@@ -248,9 +248,9 @@
         <span class="geo-modal-close" onClick='dismissGeoModal()'>&times;</span>
         <div id="geo-modal-message">
         </div>
-        <button class='button' onClick='dismissGeoModal()'>No</button>
+        <button class='button' onClick='dismissGeoModal()'>Cancel</button>
         <!-- this has its href changed in the script below -->
-        <a id='geo-redirect-button' class='button'>Yes</a>
+        <a id='geo-redirect-button' class='button'>Accept</a>
       </div>
     
     </div>
@@ -297,21 +297,21 @@
                       if(!browserCountry.includes('howards-folly-hk')) {
                         redirect = 'https://howards-folly-hk.myshopify.com/';
                         countryName = "Hong Kong";
-                        modalMessage = "<p>We have a local site for " + countryName + "! Would you like to be redirected?</p>"
+                        modalMessage = "<p>In order to comply with tax regulations in " + countryName + ", we are required to redirect you to the local site. Please click below to accept.</p>"
                       }
                       break;
                   case 'gb':
                       if(!browserCountry.includes('howards-folly-uk')) {
                         redirect = 'https://howards-folly-uk.myshopify.com/';
                         countryName = "Great Britain";
-                        modalMessage = "<p>We have a local site for " + countryName + "! Would you like to be redirected?</p>"
+                        modalMessage = "<p>In order to comply with tax regulations in " + countryName + ", we are required to redirect you to the local site. Please click below to accept.</p>"
                       }
                       break;
                   case 'pt':
                       if(!browserCountry.includes('pt.howards-folly')) {
                         redirect = 'https://pt.howards-folly.winehub.io/'
                         countryName = "Portugal"
-                        modalMessage = "<p>We have a local site for " + countryName + "! Would you like to be redirected?</p>"
+                        modalMessage = "<p>In order to comply with tax regulations in " + countryName + ", we are required to redirect you to the local site. Please click below to accept.</p>"
                       }
                       break;
                   default:
