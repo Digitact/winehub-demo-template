@@ -250,6 +250,8 @@
         <span class="geo-modal-close" onClick='dismissGeoModal()'>&times;</span>
         <div class="geo-modal-message">
         </div>
+        <button onclick='dismissGeoModal()'>No</button>
+        <button id='geo-redirect-button' type='button'>Yes</button>
       </div>
     
     </div>
@@ -277,11 +279,33 @@
         if(!geoCookieFound) {
           document.cookie = "geocheck=true"
           
-          let loc = geoplugin_countryCode();
-
-          $('#geo-modal-message').append(loc);
+          fetch('https://get.geojs.io/v1/ip/country')
+          .then(response => response.text())
+          .then(country_code => {     
+              country_code = country_code.trim().toLowerCase();
+              let redirect = ''
             
-          $('#geo-location-modal').css({ display: "block "});
+              switch (country_code) {
+                  case 'hk':
+                      redirect = 'https://howards-folly-hk.myshopify.com/';
+                      break;
+                  case 'gb':
+                      redirect = 'https://howards-folly-uk.myshopify.com/';
+                      break;
+                  case 'pt':
+                      break;
+              };
+
+            if(redirect.length > 0) {
+              $('#geo-redirect-button').attr('href', redirect);
+              $('#geo-modal-message').append(loc);
+              
+              $('#geo-location-modal').css({ display: "block "});
+              
+            }
+          })
+          .catch(err => console.error(err));
+
           
         }
         else {
