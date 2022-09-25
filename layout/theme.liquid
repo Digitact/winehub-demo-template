@@ -28,7 +28,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
 
@@ -158,6 +158,9 @@
     {%- endif -%}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    
   {% render 'weglot_hreftags' %}
 {% render 'weglot_switcher' %}
 </head>
