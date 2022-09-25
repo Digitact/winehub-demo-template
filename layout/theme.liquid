@@ -283,14 +283,20 @@
           .then(response => response.text())
           .then(country_code => {     
               country_code = country_code.trim().toLowerCase();
+              let browserCountry = window.location.origin;
               let redirect = ''
-            
+
+              //only do this if you're not already on this site
               switch (country_code) {
                   case 'hk':
-                      redirect = 'https://howards-folly-hk.myshopify.com/';
+                      if(!browserCountry.includes('howards-folly-hk')) {
+                        redirect = 'https://howards-folly-hk.myshopify.com/';
+                      }
                       break;
                   case 'gb':
-                      redirect = 'https://howards-folly-uk.myshopify.com/';
+                      if(!browserCountry.include('howards-folly-uk')) {
+                        redirect = 'https://howards-folly-uk.myshopify.com/';
+                      }
                       break;
                   case 'pt':
                       break;
