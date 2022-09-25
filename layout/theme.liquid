@@ -250,7 +250,7 @@
         </div>
         <button class='button' onClick='dismissGeoModal()'>No</button>
         <!-- this has its href changed in the script below -->
-        <button id='geo-redirect-button' class='button'>Yes</button>
+        <a id='geo-redirect-button' class='button'>Yes</a>
       </div>
     
     </div>
@@ -324,7 +324,7 @@
               };
 
             if(redirect.length > 0) {
-              $('#geo-redirect-button').attr('onClick', redirect);
+              $('#geo-redirect-button').attr('href', redirect);
               $('#geo-modal-message').html(
                 modalMessage
               );
