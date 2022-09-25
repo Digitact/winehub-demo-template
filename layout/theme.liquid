@@ -101,6 +101,41 @@
         font-weight: var(--font-body-weight);
       }
 
+.geo-modal {
+        display:none;
+        position:fixed;
+        z-index:1;
+        padding-top: 150px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .geo-modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #777;
+        width: 75%;
+      }
+
+      .ge-modal-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .geo-modal-close:hover,
+      .geo-modal-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
       @media screen and (min-width: 750px) {
         body {
           font-size: 1.6rem;
@@ -204,5 +239,52 @@
       window.wineclubDiscount = 0.8;
     </script>
     {%- endif -%}
+
+    {%-  section 'geolocation'-%}
+    
+    <div id="geo-location-modal" class="geo-modal">
+
+      <!-- Modal content -->
+      <div class="geo-modal-content">
+        <span class="geo-modal-close" onClick='dismissGeoModal()'>&times;</span>
+        <p>Location goes here if they're on the wrong site!</p>
+      </div>
+    
+    </div>
+
+    <script>
+      $(document).ready(function(event) {
+        //check the cookies, if it's not in there then display the banner and add it
+        let geoCookieFound = false;
+        let geoCookie = "geocheck=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let cookiesArray = decodedCookie.split(';');
+
+        for(let i = 0; i < cookiesArray.length; i++) {
+          let cookie = cookiesArray[i];
+          while(cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+          }
+
+          if(cookie.indexOf(geoCookie) == 0) {
+            geoCookieFound = true;
+            break;
+          }
+        }
+
+        if(!geoCookieFound) {
+          $('#geo-location-modal').css({ display: "block "});
+          document.cookie = "geocheck=true"
+        }
+        else {
+          dismissGeoModal();
+        }
+      })
+
+      function dismissGeoModal() {
+        $('#geo-location-modal').css({ display: "none" });
+      }
+
+    </script>
   </body>
 </html>
