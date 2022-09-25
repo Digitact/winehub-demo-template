@@ -247,11 +247,14 @@
       <!-- Modal content -->
       <div class="geo-modal-content">
         <span class="geo-modal-close" onClick='dismissGeoModal()'>&times;</span>
-        <p>Location goes here if they're on the wrong site!</p>
+        <div class="geo-modal-message">
+        </div>
       </div>
     
     </div>
 
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    
     <script>
       $(document).ready(function(event) {
         //check the cookies, if it's not in there then display the banner and add it
@@ -273,8 +276,14 @@
         }
 
         if(!geoCookieFound) {
-          $('#geo-location-modal').css({ display: "block "});
           document.cookie = "geocheck=true"
+          
+          let loc = geoplugin_countryCode();
+
+          $('#geo-modal-message').append(loc);
+            
+          $('#geo-location-modal').css({ display: "block "});
+          
         }
         else {
           dismissGeoModal();
