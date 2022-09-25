@@ -8,6 +8,9 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    
+
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
     {%- endif -%}
@@ -253,8 +256,6 @@
     
     </div>
 
-    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
-    
     <script>
       $(document).ready(function(event) {
         //check the cookies, if it's not in there then display the banner and add it
