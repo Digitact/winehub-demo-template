@@ -529,7 +529,17 @@
         {%- endif -%}
       </a>
 
-      <a class='header__icon header__icon--globe link focus-inset fa fa-globe fa-lg' id="globe-icon-bubble"></a>
+      <div class='geo-dropdown'>
+      <a class='header__icon header__icon--globe link focus-inset fa fa-globe fa-lg geo-dropdown' id="globe-icon-bubble">
+      </a>
+        <div class='geo-dropdown-content'>
+          <a href=''>International store</a>
+          <a href=''>UK store</a>
+          <a href=''>Hong Kong store</a>
+          <a href=''>Portugal store</a>
+        </div>
+      </div>
+                    
     </div>
   </header>
 </{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}>
