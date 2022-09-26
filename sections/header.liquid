@@ -64,6 +64,25 @@
       padding-top: 0.5rem;
     }
   }
+
+  .geo-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .geo-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .geo-dropdown:hover .geo-dropdown-content {
+    display: block;
+  }
 </style>
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -510,7 +529,7 @@
         {%- endif -%}
       </a>
 
-      <a class='header__icon header__icon--globe link focus-inset fa fa-globe fa-xl' id="globe-icon-bubble"></a>
+      <a class='header__icon header__icon--globe link focus-inset fa fa-globe fa-lg' id="globe-icon-bubble"></a>
     </div>
   </header>
 </{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}>
