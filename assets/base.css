@@ -2022,14 +2022,6 @@ input[type="checkbox"] {
   margin-right: -1.2rem;
 }
 
-.header__icon--globe {
-  position: relative;
-  margin-left: 1.2rem;
-  margin-right: -1.2rem;
-  text-decoration: none;
-  
-}
-
 @media screen and (max-width: 989px) {
   menu-drawer ~ .header__icons .header__icon--account {
     display: none;
