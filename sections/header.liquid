@@ -65,36 +65,7 @@
     }
   }
 
-  .header__icon--globe {
-    position: relative;
-    margin-left: 1.2rem;
-    margin-right: -1.2rem;
-    text-decoration: none; 
-  }  
-    
-  .geo-dropdown {
-    position: relative;
-    display: inline-block;
-  }
   
-  .geo-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-  }
-
-  .geo-dropdown-link {
-    text-decoration: none;
-    color: #000000;
-  }
-  
-  .geo-dropdown:hover .geo-dropdown-content {
-    display: block;
-  }
 </style>
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -540,17 +511,6 @@
           <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
         {%- endif -%}
       </a>
-
-      <div class='geo-dropdown'>
-      <a class='header__icon header__icon--globe link focus-inset fa fa-globe fa-lg geo-dropdown' id="globe-icon-bubble">
-      </a>
-        <div class='geo-dropdown-content'>
-          <a href='' class='geo-dropdown-link'><p>International store</p></a>
-          <a href='' class='geo-dropdown-link'><p>UK store</p></a>
-          <a href='' class='geo-dropdown-link'><p>Hong Kong store</p></a>
-          <a href='' class='geo-dropdown-link'><p>Portugal store</p></a>
-        </div>
-      </div>
                     
     </div>
   </header>
