@@ -185,6 +185,7 @@
         if (data.error!==undefined) {
           $("#referralError").html(data.error);
         }
+        updateReferralCode();
       });
   
       event.preventDefault();
