@@ -22,7 +22,7 @@
       <table id='membership-tiers-tree'>
         <thead>
           <tr>
-            <th> </th>
+            <th style='display:none'> </th>
             <th>
               Image
             </th>
@@ -219,7 +219,7 @@
               
               let rowId = 'tier-item-' + id;
               let row = '<tr id="' + rowId + '">';
-              row += '<td id="tier-id"><p style="display:none">' + id + '</p></td>';
+              row += '<td id="tier-id" style="display:none"><p style="display:none">' + id + '</p></td>';
               row += '<td id="tier-image"><img src="' + image + '" style="max-height:120px" /></td>';
               row += '<td id="tier-name">' + name + '</td>';
               row += '<td id="tier-discount">' + discountBenefit + '%</td>';
