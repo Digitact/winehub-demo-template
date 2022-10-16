@@ -94,6 +94,30 @@
       //alert("Loading content");  
       getAllocations();        
     }); 
+
+  function incrementCount(max) {
+    let quant = document.querySelector('#quantity-count')
+    if(quant) {
+      let num = parseInt(quant.innerText)
+      if(num < max) {
+        quant.innerText = ++num
+      }
+    }
+  }
+  
+  function decrementCount(min) {
+    let quant = document.querySelector('#quantity-count')
+    if(quant) {
+      let num = parseInt(quant.innerText)
+      if(num > min) {
+        quant.innerText = --num
+      }
+    }
+  }
+
+  function claimAllocation(shopifyVariantId) {
+  
+  }
   
   function getAllocations() {
       $.ajax({
@@ -120,8 +144,19 @@
               let expiresDate = new Date(Date.parse(expiresAt["date"]))
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
+              let shopifyVariantId = item['shopifyId'];
 
-              //TODO: Make this a link to the item!
+              let claimCode = `
+              <div style='max-width:200px'>
+                <p style='text-align:center'>Select quantity</p>
+                <div style='max-width:200px; text-align:center'>
+                  <button class='btn' style='float:left; width:28px' onClick='incrementCount(` + individualAllocations + `)'>+</button>
+                  <div style='display:inline;'><p style='display:inline;' id='quantity-count'>1</p></div>
+                  <button class='btn' style='float:right; width:28px' onClick='decrementCount(1)'>-</button>
+                </div>
+                <button class='btn' style='display:block; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
+              </div>
+              `
               
               let rowId = 'allocation-item-' + id;
               let row = '<tr id="' + rowId + '">';
@@ -129,7 +164,7 @@
               row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 120px" /></td>'
               row += '<td id="allocation-creation">' + name + '</td>'
               row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + expiresDate.getMonth() + '-' + expiresDate.getDate() + '</td>'
-              row += '<td id="allocation-creation">' + individualAllocations + '</td>'
+              row += '<td id="allocation-creation">' + claimCode + '</td>'
               row += '</tr>'
 
               if(expiresAt > new Date()) {
