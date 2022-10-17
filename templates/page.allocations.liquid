@@ -145,16 +145,17 @@
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
               let shopifyVariantId = item['shopifyId'];
+              let current = expiresAt > new Date()
 
               let claimCode = `
               <div style='max-width:200px'>
                 <p style='text-align:center'>Select quantity</p>
                 <div style='max-width:200px; text-align:center'>
-                  <button class='btn' style='float:left; width:28px' onClick='incrementCount(` + individualAllocations + `)'>+</button>
+                  <button style='float:left; width:28px' onClick='incrementCount(` + individualAllocations + `)'>+</button>
                   <div style='display:inline;'><p style='display:inline;' id='quantity-count'>1</p></div>
-                  <button class='btn' style='float:right; width:28px' onClick='decrementCount(1)'>-</button>
+                  <button style='float:right; width:28px' onClick='decrementCount(1)'>-</button>
                 </div>
-                <button class='btn' style='display:block; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
+                <button style='display:block; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
               </div>
               `
               
@@ -164,10 +165,10 @@
               row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 120px" /></td>'
               row += '<td id="allocation-creation">' + name + '</td>'
               row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + expiresDate.getMonth() + '-' + expiresDate.getDate() + '</td>'
-              row += '<td id="allocation-creation">' + claimCode + '</td>'
+              row += '<td id="allocation-creation">' + current ? claimCode : individualAllocations + '</td>'
               row += '</tr>'
 
-              if(expiresAt > new Date()) {
+              if(current) {
                 $('#available-allocations-area').append(row);
                 availableCount++;
               }
