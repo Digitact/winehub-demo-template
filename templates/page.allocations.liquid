@@ -147,7 +147,7 @@
               let current = expiresAt > new Date();
               let shopifyVariantId = item['shopifyId'];
 
-              let claimCode = /*current ?*/ `
+              let claimCode = current ? `
               <div style='max-width:200px; margin-left:auto; margin-right:auto'>
                 <p style='text-align:center'>Select quantity</p>
                 <div style='max-width:200px; text-align:center'>
@@ -157,7 +157,7 @@
                 </div>
                 <button style='display:block; width:100%; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
               </div>
-              ` /*: `<p>`+ individualAllocations +`</p>`*/
+              ` : `<p>`+ individualAllocations +`</p>`
               
               let rowId = 'allocation-item-' + id;
               let row = '<tr id="' + rowId + '">';
