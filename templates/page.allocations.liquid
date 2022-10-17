@@ -145,7 +145,7 @@
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
               let shopifyVariantId = item['shopifyId'];
-              let current = expiresAt > new Date()
+              let current = expiresAt > new Date();
 
               let claimCode = `
               <div style='max-width:200px'>
@@ -163,9 +163,9 @@
               let row = '<tr id="' + rowId + '">';
               row += '<td id="allocation-id" style="display:none"><p style="display:none">' + id + '</p></td>'
               row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 120px" /></td>'
-              row += '<td id="allocation-creation">' + name + '</td>'
+              row += '<td id="allocation-name">' + name + '</td>'
               row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + expiresDate.getMonth() + '-' + expiresDate.getDate() + '</td>'
-              row += '<td id="allocation-creation">' + current ? claimCode : individualAllocations + '</td>'
+              row += '<td id="allocation-claim">' + current ? claimCode : individualAllocations + '</td>'
               row += '</tr>'
 
               if(current) {
