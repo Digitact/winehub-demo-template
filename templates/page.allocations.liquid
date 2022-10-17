@@ -115,8 +115,31 @@
     }
   }
 
-  function claimAllocation(shopifyVariantId) {
   
+  function claimAllocation(allocationId, customerId, quantity) {
+    let bodyData = `{
+      "customerId": "` + customerId + `",
+      "allocationId": "` + allocationId + `",
+      "desiredQuantity": "` + quantity + `"
+    }`
+
+    $.ajax({
+      url: app_domain + '/app/api/claim_product_allocation/' + allocationId,
+      type: "POST",
+      dataType: "json",
+      data: bodyData,
+      contentType: "application/json; charset=utf-8",
+      success: function (response) {
+        let data = response.claim_result;
+
+        if(data && data.length) {
+          //TODO: post the message that returns, change button status
+        }
+      },
+      error: function (response) {
+        //TODO: have some indicator text onscreen
+      }
+    })
   }
   
   function getAllocations() {
@@ -146,6 +169,8 @@
               let individualAllocations = item['individualAllocations'];
               let current = expiresAt > new Date();
               let shopifyVariantId = item['shopifyId'];
+              let quant = document.querySelector('#quantity-count');
+              let num = parseInt(quant.innerText)
 
               let claimCode = current ? `
               <div style='max-width:200px; margin-left:auto; margin-right:auto'>
@@ -155,7 +180,7 @@
                   <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
                   <button style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
                 </div>
-                <button style='display:block; width:100%; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
+                <button class='btn' style='display:block; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + id + `,` + customer.id + `,` + num + `)'>Claim Allocation</button
               </div>
               ` : `<p>`+ individualAllocations +`</p>`
               
