@@ -144,10 +144,10 @@
               let expiresDate = new Date(Date.parse(expiresAt["date"]))
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
-              let shopifyVariantId = item['shopifyId'];
               let current = expiresAt > new Date();
+              let shopifyVariantId = item['shopifyId'];
 
-              let claimCode = `
+              let claimCode = current ? `
               <div style='max-width:200px'>
                 <p style='text-align:center'>Select quantity</p>
                 <div style='max-width:200px; text-align:center'>
@@ -157,7 +157,7 @@
                 </div>
                 <button style='display:block; margin-left:auto; margin-right:auto; margin-top:12px' onClick='claimAllocation(` + shopifyVariantId + `)'>Claim Allocation</button
               </div>
-              `
+              ` : `<p>`+ individualAllocations +`</p>`
               
               let rowId = 'allocation-item-' + id;
               let row = '<tr id="' + rowId + '">';
