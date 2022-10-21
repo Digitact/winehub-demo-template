@@ -19,6 +19,7 @@
       <h2>Exclusive Allocations</h2>
       <div id='allocations-tables'>
         <h4>Currently available</h4>
+        <p id='allocation-status-text' style='display:none;'></p>
         <table id='available-allocations'>
           <thead>
             <tr>
@@ -123,7 +124,6 @@
       "desiredQuantity": "` + quantity + `"
     }`
 
-    /*
     $.ajax({
       url: app_domain + '/app/api/claim_product_allocation/' + allocationId,
       type: "POST",
@@ -141,7 +141,7 @@
         //TODO: have some indicator text onscreen
       }
     })
-    */
+
   }
   
   function getAllocations() {
