@@ -174,7 +174,7 @@ $('#allocation-status-text').css('display:block')
               let published = item['published'];
               let individualAllocations = item['individualAllocations'];
               let today = new Date();
-              let current = expiresAt > new Date();
+              let current = expiresDate > new Date();
               let shopifyVariantId = item['shopifyId'];
               let quant = document.querySelector('#quantity-count');
               if(quant) {
