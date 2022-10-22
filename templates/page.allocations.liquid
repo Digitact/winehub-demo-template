@@ -138,7 +138,7 @@
       data: bodyData,
       contentType: "application/json; charset=utf-8",
       success: function (response) {
-        let data = response.claim_result;
+        let data = response.message;
 $('#allocation-status-text').css('display:block')
         if(data && data.length) {
           //TODO: post the message that returns, change button status
