@@ -118,11 +118,17 @@
 
   
   function claimAllocation(allocationId, customerId, quantity) {
+    let qid = '#quantity-count-'+id;
+    let quant = document.querySelector(qid);
+    let num = 0
+    if(quant) {
+      num = parseInt(quant.innerText)
+    }
     
     let bodyData = `{
       "customerId": "` + customerId + `",
       "allocationId": "` + allocationId + `",
-      "desiredQuantity": "` + quantity + `"
+      "desiredQuantity": "` + num + `"
     }`
 
     $.ajax({
