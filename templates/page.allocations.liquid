@@ -179,7 +179,8 @@ $('#allocation-status-text').css('display:block')
               let today = new Date();
               let current = expiresDate > new Date();
               let shopifyVariantId = item['shopifyId'];
-              let quant = document.querySelector('#quantity-count');
+              let qid = '#quantity-count-'+id;
+              let quant = document.querySelector(qid);
               if(quant) {
                 let num = parseInt(quant.innerText)
               }
