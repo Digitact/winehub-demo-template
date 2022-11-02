@@ -161,8 +161,8 @@
 
       {%- elsif product_card_product.first_available_variant.available -%}
 
-      {%- form 'product', product_card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-        <input type="hidden" name="id" value="{{ product_card_product.first_available_variant.id }}">
+      {%- form 'product', product, data-productid: product.id_card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product_card_product.first_available_variant.id }}">
 
         {% if show_quantity_picker %}
           <div class="hover-quantity-picker">
