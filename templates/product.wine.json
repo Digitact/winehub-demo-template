@@ -44,7 +44,11 @@
         "2e7a3384-3047-43a6-9ea3-dd7d74c46751": {
           "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/app-block\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
           "settings": {
-            "color": "#963636"
+            "inplace": false,
+            "product": "",
+            "accent_color": "#b13333",
+            "background_color": "",
+            "wrapper": "<selector><\/selector>"
           }
         },
         "buy_buttons": {
