@@ -116,6 +116,35 @@
     }
   }
 
+  function rejectAllocation(allocationId, customerId) {
+
+    let bodyData = `{
+      "customerId": "` + customerId + `",
+      "allocationId": "` + allocationId + `"
+    }`
+
+    $.ajax({
+      url: app_domain + '/app/api/reject_product_allocation/' + allocationId,
+      type: "POST",
+      dataType: "json",
+      data: bodyData,
+      contentType: "application/json; charset=utf-8",
+      success: function (response) {
+        let data = response.message;
+        $('#allocation-status-text').css('display:block')
+        if(data && data.length) {
+          //TODO: post the message that returns, change button status
+          $('#allocation-status-text').text(data);
+          $('#allocation-status-text').css('display:block')
+        }
+      },
+      error: function (response) {
+        //TODO: have some indicator text onscreen
+        $('#allocation-status-text').text(response);
+      }
+    })
+
+  }
   
   function claimAllocation(allocationId, customerId, quantity) {
     let qid = '#quantity-count-'+allocationId;
@@ -139,7 +168,7 @@
       contentType: "application/json; charset=utf-8",
       success: function (response) {
         let data = response.message;
-$('#allocation-status-text').css('display:block')
+        $('#allocation-status-text').css('display:block')
         if(data && data.length) {
           //TODO: post the message that returns, change button status
           $('#allocation-status-text').text(data);
