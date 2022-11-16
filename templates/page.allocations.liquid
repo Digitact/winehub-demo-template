@@ -149,9 +149,9 @@
         modal.css({"display" : "block"});
       });
   
-      span.click = function () {
+      span.click(function () {
         modal.css({'display' :'none'});
-      };
+      });
   
       window.onclick = (function (event) {
         if (event.target == modal) {
