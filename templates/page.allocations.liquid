@@ -16,11 +16,11 @@
   <div>
     <div>
 
-    <button id="open-modal-button">Open Modal</button>
+    <button id="allocations-open-modal-button">Open Modal</button>
 
-    <div id="modal-area" class="modal">
-      <div class="modal-content">
-        <span id="close-modal-button" class="close">&times;</span>
+    <div id="allocations-modal-area" class="allocations-modal">
+      <div class="allocations-modal-content">
+        <span id="allocations-close-modal-button" class="allocations-close">&times;</span>
         <p>Some text in the Modal..</p>
       </div>
     </div>
@@ -87,7 +87,7 @@
 
 <style>
 /* The Modal (background) */
-.modal {
+.allocations-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -101,7 +101,7 @@
 }
 
 /* Modal Content/Box */
-.modal-content {
+.allocations-modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
@@ -110,15 +110,15 @@
 }
 
 /* The Close Button */
-.close {
+.allocations-close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.allocations-close:hover,
+.allocations-close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -141,15 +141,15 @@
       //alert("Loading content");  
       getAllocations();
 
-      var modal = $("#modal-area");
-      var btn = $("#open-modal-button");
-      var span = $("#close-modal-button");
+      var modal = $("#allocations-modal-area");
+      var btn = $("#allocations-open-modal-button");
+      var span = $("#allocations-close-modal-button");
   
       btn.click(function () {
         modal.css({"display" : "block"});
       });
   
-      span.onclick = function () {
+      span.click = function () {
         modal.css({'display' :'none'});
       };
   
