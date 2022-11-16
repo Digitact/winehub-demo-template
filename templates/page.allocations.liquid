@@ -179,6 +179,17 @@
       
     }); 
 
+  function getQuantity(allocationId) {
+    let qid = '#quantity-count-'+allocationId;
+    let quant = document.querySelector(qid);
+    let num = 0
+    if(quant) {
+      num = parseInt(quant.innerText)
+    }
+
+    return num;
+  }
+  
   function incrementCount(elementId, max) {
     let quant = document.querySelector(elementId)
     if(quant) {
@@ -189,8 +200,8 @@
     }
   }
 
-  function showAcceptModal(allocationId, customerId, quantity, claimText) {
-    
+  function showAcceptModal(allocationId, customerId, claimText) {
+    let quantity = getQuantity(allocationId)
     let finalText = claimText.replace("_q_", quantity)
     $('#accept-allocations-text').text(finalText)
     
@@ -254,12 +265,7 @@
   
   function claimAllocation(allocationId, customerId, quantity) {
     if(allocationId && customerId) {
-      let qid = '#quantity-count-'+allocationId;
-      let quant = document.querySelector(qid);
-      let num = 0
-      if(quant) {
-        num = parseInt(quant.innerText)
-      }
+      let num = getQuantity(allocationId)
       
       let bodyData = `{
         "customerId": "` + customerId + `",
