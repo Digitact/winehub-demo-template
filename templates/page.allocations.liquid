@@ -24,6 +24,22 @@
         <p>Some text in the Modal..</p>
       </div>
     </div>
+
+    <div id='accept-allocations-modal' class='allocations-modal'>
+      <div class='allocations-modal-content'>
+        <span id='accept-allocations-close-button' class='allocations-close'>&times;</span>
+        <p id='accept-allocations-text'></p>
+      </div>
+      <button id='accept-allocations-button'>Accept</button>
+    </div>
+
+    <div id='reject-allocations-modal' class='allocations-modal'>
+      <div class='allocations-modal-content'>
+        <span id='reject-allocations-close-button' class='allocations-close'>&times;</span>
+        <p id='reject-allocations-text'></p>
+      </div>
+      <button id='reject-allocations-button'>Reject</button>
+    </div>
       
       <h2>Exclusive Allocations</h2>
       <div id='allocations-tables'>
@@ -170,6 +186,22 @@
       }
     }
   }
+
+  function showAcceptModal(allocationId, customerId, quantity) {
+    $('#accept-allocations-button').click(function() {
+      claimAllocation(allocationId, customerId, quantity)
+    })
+
+    $('accept-allocations-modal').css({'display': 'block'})
+  }
+
+  function showRejectModal(allocationId, customerId) {
+    $('#reject-allocations-button').click(function() {
+      rejectAllocation(allocationId, customerId)
+    })
+
+    $('#reject-allocations-modal').css({'display': 'block'})
+  }
   
   function decrementCount(elementId, min) {
     let quant = document.querySelector(elementId)
@@ -201,6 +233,7 @@
             //TODO: post the message that returns, change button status
             $('#allocation-status-text').text(data);
             $('#allocation-status-text').css('display:block')
+            $('#claim-open-button').prop('disabled', true)
           }
         },
         error: function (response) {
@@ -239,6 +272,7 @@
             //TODO: post the message that returns, change button status
             $('#allocation-status-text').text(data);
             $('#allocation-status-text').css('display:block')
+            $('#claim-open-button').prop('disabled', true)
           }
         },
         error: function (response) {
@@ -294,8 +328,8 @@
                   <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
                   <button style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
                 </div>
-                <button class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='claimAllocation(` + id + `,` + customerId + `,` + num + `)'>Claim</button>
-                <button class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='rejectAllocation(` + id + `,` + customerId + `)'>Reject</button>
+                <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + num + `)'>Claim</button>
+                <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `)'>Reject</button>
               </div>
               ` : `<p>`+ individualAllocations +`</p>`
               
