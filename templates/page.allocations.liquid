@@ -16,6 +16,17 @@
   <div>
     <div>
 
+    <button id="open-modal-button">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="modal-area" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span id="close-modal-button" class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div>
+      
       <h2>Exclusive Allocations</h2>
       <div id='allocations-tables'>
         <h4>Currently available</h4>
@@ -267,6 +278,26 @@
         error: function (data) { $('#allocations-tables').html(''); console.log('%o', data) }
       }); 
   }
-  
+
+  (function () {
+    var modal = $("#modal-area");
+    var btn = $("#open-modal-button");
+    var span = $("#close-modal-button");
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  })();
+
 </script>
 
