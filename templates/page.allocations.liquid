@@ -28,7 +28,7 @@
     <div id='accept-allocations-modal' class='allocations-modal'>
       <div class='allocations-modal-content'>
         <span id='accept-allocations-close-button' class='allocations-close'>&times;</span>
-        <p id='accept-allocations-text'></p>
+        <p class='allocations-text' id='accept-allocations-text'></p>
         <button id='accept-allocations-button' class='allocations-button'>Accept</button>
       </div>
     </div>
@@ -36,7 +36,7 @@
     <div id='reject-allocations-modal' class='allocations-modal'>
       <div class='allocations-modal-content'>
         <span id='reject-allocations-close-button' class='allocations-close'>&times;</span>
-        <p id='reject-allocations-text'></p>
+        <p class='allocations-text' id='reject-allocations-text'></p>
         <button id='reject-allocations-button' class='allocations-button'>Reject</button>
       </div>
     </div>
@@ -123,7 +123,7 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-  height:30%;
+  height:fit-content;
 }
 
 /* The Close Button */
