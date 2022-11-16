@@ -321,9 +321,9 @@
     var btn = document.querySelector("#open-modal-button");
     var span = $("#close-modal-button");
 
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
+    $('#open-modal-button').click(function () {
+      $('#modal-area').css({"display" : "block"});
+    });
 
     span.onclick = function () {
       modal.style.display = "none";
