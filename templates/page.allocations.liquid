@@ -316,9 +316,9 @@
       }); 
   }
 
-  (function () {
-    var modal = $("#modal-area");
-    var btn = $("#open-modal-button");
+  $(document).ready(function () {
+    var modal = document.querySelector("#modal-area");
+    var btn = document.querySelector("#open-modal-button");
     var span = $("#close-modal-button");
 
     btn.onclick = function () {
