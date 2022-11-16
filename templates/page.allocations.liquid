@@ -188,7 +188,9 @@
   }
 
   function showAcceptModal(allocationId, customerId, quantity, claimText) {
-    $('#accept-allocations-text').text(claimText)
+    
+    let finalText = claimText.replace("_q_", quantity)
+    $('#accept-allocations-text').text(finalText)
     
     $('#accept-allocations-button').click(function() {
       claimAllocation(allocationId, customerId, quantity)
@@ -324,7 +326,7 @@
                 num = parseInt(quant.innerText)
               }
 
-              let claimText = 'You are choosing to claim ' + quant + ' out of ' + individualAllocations + ' allocated products. Make sure this is correct - any leftovers will no longer be available!'
+              let claimText = 'You are choosing to claim _q_ out of ' + individualAllocations + ' allocated products. Make sure this is correct - any leftovers will no longer be available!'
               let rejectText = 'You are rejecting all ' + individualAllocations + ' of your exclusively allocated products, which means they will no longer be available to you. Are you sure you want to do this?'
               
               let claimCode = current ? `
