@@ -28,6 +28,7 @@
     <div id='accept-allocations-modal' class='allocations-modal'>
       <div class='allocations-modal-content'>
         <span id='accept-allocations-close-button' class='allocations-close'>&times;</span>
+        <h5 class='allocations-header'>Claim Allocation</h5>
         <p class='allocations-text' id='accept-allocations-text'></p>
         <button id='accept-allocations-button' class='allocations-button'>Accept</button>
       </div>
@@ -36,6 +37,7 @@
     <div id='reject-allocations-modal' class='allocations-modal'>
       <div class='allocations-modal-content'>
         <span id='reject-allocations-close-button' class='allocations-close'>&times;</span>
+        <h5 class='allocations-header'>Reject Allocation</h5>
         <p class='allocations-text' id='reject-allocations-text'></p>
         <button id='reject-allocations-button' class='allocations-button'>Reject</button>
       </div>
@@ -127,6 +129,14 @@
   overflow:auto;
 }
 
+.allocations-header {
+  padding: 12px;
+}
+
+.allocations-text {
+  padding: 12px;
+}
+  
 /* The Close Button */
 .allocations-close {
   color: #aaa;
