@@ -29,16 +29,16 @@
       <div class='allocations-modal-content'>
         <span id='accept-allocations-close-button' class='allocations-close'>&times;</span>
         <p id='accept-allocations-text'></p>
+        <button id='accept-allocations-button' class='allocations-button'>Accept</button>
       </div>
-      <button id='accept-allocations-button'>Accept</button>
     </div>
 
     <div id='reject-allocations-modal' class='allocations-modal'>
       <div class='allocations-modal-content'>
         <span id='reject-allocations-close-button' class='allocations-close'>&times;</span>
         <p id='reject-allocations-text'></p>
+        <button id='reject-allocations-button' class='allocations-button'>Reject</button>
       </div>
-      <button id='reject-allocations-button'>Reject</button>
     </div>
       
       <h2>Exclusive Allocations</h2>
@@ -131,6 +131,10 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+.allocations-button {
+  float:right;
 }
 
 .allocations-close:hover,
