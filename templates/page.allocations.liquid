@@ -187,7 +187,9 @@
     }
   }
 
-  function showAcceptModal(allocationId, customerId, quantity) {
+  function showAcceptModal(allocationId, customerId, quantity, claimText) {
+    $('#accept-allocations-text').text(claimText)
+    
     $('#accept-allocations-button').click(function() {
       claimAllocation(allocationId, customerId, quantity)
     })
@@ -195,7 +197,9 @@
     $('accept-allocations-modal').css({'display': 'block'})
   }
 
-  function showRejectModal(allocationId, customerId) {
+  function showRejectModal(allocationId, customerId, rejectText) {
+    $('#reject-allocations-text').text(rejectText)
+    
     $('#reject-allocations-button').click(function() {
       rejectAllocation(allocationId, customerId)
     })
@@ -319,6 +323,9 @@
               if(quant) {
                 num = parseInt(quant.innerText)
               }
+
+              let claimText = 'You are choosing to claim ' + quant + ' out of ' + individualAllocations + ' allocated products. Make sure this is correct - any leftovers will no longer be available!'
+              let rejectText = 'You are rejecting all ' + individualAllocations + ' of your exclusively allocated products, which means they will no longer be available to you. Are you sure you want to do this?'
               
               let claimCode = current ? `
               <div style='max-width:200px; margin-left:auto; margin-right:auto'>
@@ -328,8 +335,8 @@
                   <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
                   <button style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
                 </div>
-                <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + num + `)'>Claim</button>
-                <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `)'>Reject</button>
+                <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + num + `,` + claimText + `)'>Claim</button>
+                <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `,` + rejectText + `)'>Reject</button>
               </div>
               ` : `<p>`+ individualAllocations +`</p>`
               
