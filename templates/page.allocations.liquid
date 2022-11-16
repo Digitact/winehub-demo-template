@@ -158,6 +158,8 @@
       getAllocations();
 
       var modal = $("#allocations-modal-area");
+      var accModal = $('#accept-allocations-modal')
+      var rejModal = $('#reject-allocations-modal')
       var btn = $("#allocations-open-modal-button");
       var span = $("#allocations-close-modal-button");
       var accClose = $('#accept-allocations-close-button');
@@ -170,6 +172,14 @@
       span.click(function () {
         modal.css({'display' :'none'});
       });
+
+      accClose.click(function() {
+        accModal.css({'display' : 'none'});
+      })
+
+      rejModal.click(function() {
+        rejModal.css({'display' : 'none'});
+      })
   
       window.onclick = (function (event) {
         if (event.target == modal) {
