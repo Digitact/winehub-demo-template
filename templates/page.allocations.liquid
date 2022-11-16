@@ -19,9 +19,7 @@
     <button id="open-modal-button">Open Modal</button>
     <div style='display:none' id="test-div">Hello</div>
 
-    <!-- The Modal -->
     <div id="modal-area" class="modal">
-      <!-- Modal content -->
       <div class="modal-content">
         <span id="close-modal-button" class="close">&times;</span>
         <p>Some text in the Modal..</p>
@@ -266,7 +264,7 @@
           if (data && data.length) {
             $(data).each(function (index, item) {
 
-              let customerId = {{ customer.id }}
+              let customerId = `{{ customer.id }}`
               let id = item['id'];
               let featureImage = item['featureImage'];
               let name = item['name'];
