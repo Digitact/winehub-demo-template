@@ -17,7 +17,7 @@
       };
 
 
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0654/1728/1793/t/2/assets/appstle-subscription.js?v=1661607649");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0654/1728/1793/t/3/assets/appstle-subscription.js?v=1668757091");
 
 
       window.RS = Window.RS || {};
@@ -48,7 +48,6 @@
         "sellingPlanSelectTitle": "DELIVERY FREQUENCY",
         "subscriptionPriceDisplayText": "",
         "tooltipTitle": "Subscription detail",
-        "api_key": "",
         "showTooltipOnClick": "false",
         "tooltipDesctiption": "<strong>Have complete control of your subscriptions<\/strong><br\/><br\/>Skip, reschedule, edit, or cancel deliveries anytime, based on your needs.",
         "tooltipDescriptionOnPrepaidPlan": "<b>Prepaid Plan Details<\/b><\/br> Total price: {{totalPrice}} ( Price for every delivery: {{pricePerDelivery}})",
@@ -79,8 +78,8 @@
         "disableLoadingJquery": false,
         "widgetEnabledOnSoldVariant": "false",
         "switchRadioButtonWidget": false,
-        "appstlePlanName": "FREE STARTER",
-        "appstlePlanFeatures": {"subscriptionOrderAmount":500.0,"analytics":true,"enableSubscriptionManagement":true,"enableDunningManagement":true,"enableCustomerPortalSettings":true,"enableShippingProfiles":true,"enableProductSwapAutomation":true,"enableAdvancedSellingPlans":true,"enableSummaryReports":true,"enableCustomEmailDomain":true,"enableWidgetPlacement":true,"enableIntegrations":true,"enableSmsAlert":true,"enableCustomEmailHtml":true,"enableCancellationManagement":true,"enableBundling":true,"enableAutomation":true,"enableQuickActions":true,"enableExternalApi":true,"enableCartWidget":false,"enableAutoSync":false},
+        "appstlePlanName": "FREE",
+        "appstlePlanFeatures": {"accessSplitContract":true,"enableExternalApi":true,"enableQuickActions":true,"enableDunningManagement":true,"enableAutoSync":false,"accessSubscriptionActivityLogs":true,"webhookAccess":false,"accessBundling":true,"analytics":true,"enableCustomEmailHtml":true,"accessAppstleMenu":false,"enableShippingProfiles":true,"accessKlaviyoContactSync":true,"accessCustomWidgetLocations":true,"accessAdvanceSubscriptionPlanOptions":true,"enableSmsAlert":true,"accessOneTimeProductUpsells":true,"accessQuickCheckout":true,"enableCustomEmailDomain":true,"enableSummaryReports":true,"accessManualSubscriptionCreation":true,"subscriptionOrderAmount":500,"enableSubscriptionManagement":true,"enableAutomation":true,"enableBundling":true,"accessResendEmail":true,"enableCartWidget":false,"accessDiscountOnCancellationAttempt":true,"accessWidgetDesignOptions":true,"enableCancellationManagement":true,"accessSubscriberLoyaltyFeatures":true,"enableWidgetPlacement":true,"enableIntegrations":true,"enableCustomerPortalSettings":true,"enableProductSwapAutomation":true,"enableAdvancedSellingPlans":true,"accessBuildABox":true},
         "formMappingAttributeName": "",
         "formMappingAttributeSelector": "",
         "quickViewModalPollingSelector": "",
@@ -207,7 +206,7 @@
 {{/showStaticTooltip}}
     </div>{% endraw %}`,
         "bundle": {},
-        "labels": "{\"appstle.subscription.wg.oneTimePurchaseTextV2\":\"One Time Purchase\"}",
+        "labels": "{\"appstle.subscription.wg.yearsFrequencyTextV2\":\"Years\",\"appstle.subscription.wg.weekFrequencyTextV2\":\"Week\",\"appstle.subscription.wg.oneTimePurchaseTextV2\":\"One Time Purchase\",\"appstle.subscription.wg.unsubscribeFrequencyTextV2\":\"unsubscribe\",\"appstle.subscription.wg.weeksFrequencyTextV2\":\"Weeks\",\"appstle.subscription.wg.oneTimeFrequencyTextV2\":\"One Time\",\"appstle.subscription.wg.dayFrequencyTextV2\":\"day\",\"appstle.subscription.wg.allowFulfilmentCountViaPropertiesV2\":\"true\",\"appstle.subscription.wg.monthsFrequencyTextV2\":\"Months\",\"appstle.subscription.wg.subscribeAndSaveInitalV2\":\"Subscribe & save\",\"appstle.subscription.wg.deliveryEveryFrequencyTextV2\":\"Delivery Every\",\"appstle.subscription.wg.offFrequencyTextV2\":\"Off\",\"appstle.subscription.wg.daysFrequencyTextV2\":\"Days\",\"appstle.subscription.wg.yearFrequencyTextV2\":\"Year\",\"appstle.subscription.wg.subscribeAndSaveSuccessV2\":\"Subscribe success\",\"appstle.subscription.wg.monthFrequencyTextV2\":\"Month\",\"appstle.subscription.wg.selectDeliverOptionV2\":\"select deliver option\"}",
         "css": {
             "appstle_subscription_widget": {
                 "margin-top": "" ,
@@ -278,3 +277,4 @@
     }
   }
 )(window);
+
