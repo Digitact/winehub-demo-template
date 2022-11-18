@@ -63,10 +63,12 @@
             "share_label": "Share"
           }
         },
-        "9ca2db07-0197-4943-ad48-886fcaf0ab8e": {
-          "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
+        "83150ad2-debb-4fa8-b37f-15046ecf1ad6": {
+          "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/app-block\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
           "settings": {
-            "product": "{{product}}"
+            "accent_color": "#4d7fff",
+            "background_color": "#e1f7fa",
+            "inplace": false
           }
         },
         "829a6545-0ac1-4106-9af9-e26336d52787": {
@@ -74,12 +76,10 @@
           "settings": {
           }
         },
-        "83150ad2-debb-4fa8-b37f-15046ecf1ad6": {
-          "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/app-block\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+        "9ca2db07-0197-4943-ad48-886fcaf0ab8e": {
+          "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {
-            "accent_color": "#4d7fff",
-            "background_color": "#e1f7fa",
-            "inplace": false
+            "product": "{{product}}"
           }
         }
       },
@@ -94,9 +94,9 @@
         "buy_buttons",
         "description",
         "share",
-        "9ca2db07-0197-4943-ad48-886fcaf0ab8e",
+        "83150ad2-debb-4fa8-b37f-15046ecf1ad6",
         "829a6545-0ac1-4106-9af9-e26336d52787",
-        "83150ad2-debb-4fa8-b37f-15046ecf1ad6"
+        "9ca2db07-0197-4943-ad48-886fcaf0ab8e"
       ],
       "settings": {
         "enable_sticky_info": true,
