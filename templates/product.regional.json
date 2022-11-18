@@ -54,6 +54,11 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "ba46c0eb-3a90-44d2-b197-983c359e6962": {
+          "type": "shopify:\/\/apps\/appstle-subscriptions\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -65,7 +70,8 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "ba46c0eb-3a90-44d2-b197-983c359e6962"
       ],
       "settings": {
         "enable_sticky_info": true,
