@@ -57,6 +57,11 @@
           "settings": {
           }
         },
+        "829a6545-0ac1-4106-9af9-e26336d52787": {
+          "type": "shopify:\/\/apps\/appstle-subscriptions\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -71,13 +76,9 @@
             "inplace": false
           }
         },
-        "829a6545-0ac1-4106-9af9-e26336d52787": {
-          "type": "shopify:\/\/apps\/appstle-subscriptions\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-          "settings": {
-          }
-        },
         "9ca2db07-0197-4943-ad48-886fcaf0ab8e": {
           "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
           "settings": {
             "product": "{{product}}"
           }
@@ -93,9 +94,9 @@
         "a4afc03a-e48b-4bcf-b99f-61a0aaab90d4",
         "buy_buttons",
         "description",
+        "829a6545-0ac1-4106-9af9-e26336d52787",
         "share",
         "83150ad2-debb-4fa8-b37f-15046ecf1ad6",
-        "829a6545-0ac1-4106-9af9-e26336d52787",
         "9ca2db07-0197-4943-ad48-886fcaf0ab8e"
       ],
       "settings": {
