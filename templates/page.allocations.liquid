@@ -474,7 +474,10 @@
             $(data).each(function (index, item) {
 
               let row = parseAllocationItem(item)
-
+              let expiresAt = item['expiresAt'];
+              let expiresDate = new Date(Date.parse(expiresAt["date"]))
+              let current = expiresDate > new Date();
+              
               if(current) {
                 $('#available-allocations-area').append(row);
                 availableCount++;
