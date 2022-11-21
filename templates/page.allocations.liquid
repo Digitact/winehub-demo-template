@@ -426,6 +426,19 @@
 
     return row;
   }
+
+  function renderAllocationRow(rowAreaTag, rowData) {
+    let count = 0;
+    $(rowData).each(function(index, item) {
+      let row = parseAllocationItem(item)
+      if(row) {
+        $(rowAreaTag).append(row);
+        count++;
+      }
+    })
+
+    return count;
+  }
   
   function getAllocations() {
       $.ajax({
@@ -437,13 +450,26 @@
           let data = response.customer_allocations;
           let availableCount = 0;
           let expiredCount = 0;
+          let acceptedCount = 0;
+          let rejectedCount = 0;
 
           let availableData = response.available_allocations;
           let acceptedData = response.accepted_allocations;
           let rejectedData = response.rejected_allocations;
           let expiredData = response.expired_allocations;
 
-          if (data && data.length) {
+          let available = availableData && availableData.length;
+          let accepted = acceptedData && acceptedData.length;
+          let rejected = rejectedData && rejectedData.length;
+          let expired = expiredData && expiredData.length;
+          
+          if(available || accepted || rejected || expired) {
+            availableCount = renderAllocationRow('#available-allocations-area')
+            acceptedCount = renderAllocationRow('#accepted-allocations-area')
+            rejectedCount = renderAllocationRow('#rejected-allocations-area')
+            expiredCount = renderAllocationRow('#expired-allocations-area')
+          }
+          else if (data && data.length) {
             //old API, can delete once the server code is updated
             $(data).each(function (index, item) {
 
