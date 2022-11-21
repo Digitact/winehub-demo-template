@@ -69,7 +69,59 @@
           
           </tbody>
         </table>
-  
+
+        <h4>Accepted</h4>
+        <table id='accepted-allocations'>
+          <thead>
+            <tr>
+              <th style='display:none'>
+                
+              </th>
+              <th>
+                Image
+              </th>
+              <th>
+                Product
+              </th>
+              <th>
+                Claimed
+              </th>
+              <th>
+                Claimed Allocations
+              </th>
+            </tr>
+          </thead>
+          <tbody id='accepted-allocations-area'>
+            
+          </tbody>
+        </table>
+
+        <h4>Accepted</h4>
+        <table id='rejected-allocations'>
+          <thead>
+            <tr>
+              <th style='display:none'>
+                
+              </th>
+              <th>
+                Image
+              </th>
+              <th>
+                Product
+              </th>
+              <th>
+                Date Rejected
+              </th>
+              <th>
+                Rejected Allocations
+              </th>
+            </tr>
+          </thead>
+          <tbody id='rejected-allocations-area'>
+            
+          </tbody>
+        </table>
+        
         <h4>Expired</h4>
         <table id='expired-allocations'>
           <thead>
@@ -322,6 +374,58 @@
       })
     }
   }
+
+  function parseAllocationItem(item) {
+    let customerId = `{{ customer.id }}`
+    let id = item['id'];
+    let featureImage = item['featureImage'];
+    let name = item['name'];
+    let description = item['description'];
+    let createdAt = item['createdAt'];
+    let createdDate = new Date(Date.parse(createdAt["date"]))
+    let publishedAt = item['publishedAt'];
+    let publishedDate = new Date(Date.parse(publishedAt["date"]))
+    let expiresAt = item['expiresAt'];
+    let expiresDate = new Date(Date.parse(expiresAt["date"]))
+    let published = item['published'];
+    let individualAllocations = item['individualAllocations'];
+    let today = new Date();
+    let current = expiresDate > new Date();
+    let shopifyVariantId = item['shopifyId'];
+    let qid = '#quantity-count-'+id;
+    let quant = document.querySelector(qid);
+    let num = 0
+    if(quant) {
+      num = parseInt(quant.innerText)
+    }
+
+    let claimText = '"You are choosing to claim _q_ out of ' + individualAllocations + ' allocated products. Make sure this is correct - any leftovers will no longer be available!"'
+    let rejectText = '"You are rejecting all ' + individualAllocations + ' of your exclusively allocated products, which means they will no longer be available to you. Are you sure you want to do this?"'
+    
+    let claimCode = current ? `
+    <div style='max-width:200px; margin-left:auto; margin-right:auto'>
+      <p style='text-align:center'>Select quantity</p>
+      <div style='max-width:200px; text-align:center'>
+        <button style='margin-top:4px; float:left; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='incrementCount("#quantity-count-`+id+`", ` + individualAllocations + `)'>+</button>
+        <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
+        <button style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
+      </div>
+      <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + claimText + `)'>Claim</button>
+      <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `,` + rejectText + `)'>Reject</button>
+    </div>
+    ` : `<p>`+ individualAllocations +`</p>`
+    
+    let rowId = 'allocation-item-' + id;
+    let row = '<tr id="' + rowId + '">';
+    row += '<td id="allocation-id" style="display:none"><p style="display:none">' + id + '</p></td>'
+    row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 120px" /></td>'
+    row += '<td id="allocation-name">' + '<p>' + name + '</p>' + '<p>' + description + '</p>' + '</td>'
+    row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + (expiresDate.getMonth()+1) + '-' + expiresDate.getDate() + '</td>'
+    row += '<td id="allocation-claim">' + claimCode + '</td>'
+    row += '</tr>'
+
+    return row;
+  }
   
   function getAllocations() {
       $.ajax({
@@ -333,57 +437,17 @@
           let data = response.customer_allocations;
           let availableCount = 0;
           let expiredCount = 0;
-          
+
+          let availableData = response.available_allocations;
+          let acceptedData = response.accepted_allocations;
+          let rejectedData = response.rejected_allocations;
+          let expiredData = response.expired_allocations;
+
+          //old API, can delete once the server code is updated
           if (data && data.length) {
             $(data).each(function (index, item) {
 
-              let customerId = `{{ customer.id }}`
-              let id = item['id'];
-              let featureImage = item['featureImage'];
-              let name = item['name'];
-              let description = item['description'];
-              let createdAt = item['createdAt'];
-              let createdDate = new Date(Date.parse(createdAt["date"]))
-              let publishedAt = item['publishedAt'];
-              let publishedDate = new Date(Date.parse(publishedAt["date"]))
-              let expiresAt = item['expiresAt'];
-              let expiresDate = new Date(Date.parse(expiresAt["date"]))
-              let published = item['published'];
-              let individualAllocations = item['individualAllocations'];
-              let today = new Date();
-              let current = expiresDate > new Date();
-              let shopifyVariantId = item['shopifyId'];
-              let qid = '#quantity-count-'+id;
-              let quant = document.querySelector(qid);
-              let num = 0
-              if(quant) {
-                num = parseInt(quant.innerText)
-              }
-
-              let claimText = '"You are choosing to claim _q_ out of ' + individualAllocations + ' allocated products. Make sure this is correct - any leftovers will no longer be available!"'
-              let rejectText = '"You are rejecting all ' + individualAllocations + ' of your exclusively allocated products, which means they will no longer be available to you. Are you sure you want to do this?"'
-              
-              let claimCode = current ? `
-              <div style='max-width:200px; margin-left:auto; margin-right:auto'>
-                <p style='text-align:center'>Select quantity</p>
-                <div style='max-width:200px; text-align:center'>
-                  <button style='margin-top:4px; float:left; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='incrementCount("#quantity-count-`+id+`", ` + individualAllocations + `)'>+</button>
-                  <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
-                  <button style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
-                </div>
-                <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + claimText + `)'>Claim</button>
-                <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `,` + rejectText + `)'>Reject</button>
-              </div>
-              ` : `<p>`+ individualAllocations +`</p>`
-              
-              let rowId = 'allocation-item-' + id;
-              let row = '<tr id="' + rowId + '">';
-              row += '<td id="allocation-id" style="display:none"><p style="display:none">' + id + '</p></td>'
-              row += '<td id="allocation-image"><img src="' + featureImage + '" style="max-height: 120px" /></td>'
-              row += '<td id="allocation-name">' + '<p>' + name + '</p>' + '<p>' + description + '</p>' + '</td>'
-              row += '<td id="allocation-creation">' + expiresDate.getFullYear() + '-' + (expiresDate.getMonth()+1) + '-' + expiresDate.getDate() + '</td>'
-              row += '<td id="allocation-claim">' + claimCode + '</td>'
-              row += '</tr>'
+              let row = parseAllocationItem(item)
 
               if(current) {
                 $('#available-allocations-area').append(row);
