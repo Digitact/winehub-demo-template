@@ -443,8 +443,8 @@
           let rejectedData = response.rejected_allocations;
           let expiredData = response.expired_allocations;
 
-          //old API, can delete once the server code is updated
           if (data && data.length) {
+            //old API, can delete once the server code is updated
             $(data).each(function (index, item) {
 
               let row = parseAllocationItem(item)
