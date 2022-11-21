@@ -487,17 +487,25 @@
                 expiredCount++;
               }
             })
-
-            if(availableCount === 0) {
-              $('#available-allocations').html('<p>You have no current product allocations.</p>')
-            }
-
-            if(expiredCount === 0) {
-              $('#expired-allocations').html('<p>You have no expired product allocations.</p>')
-            }
           }
           else {
             $('#allocations-tables').html('<p>You have no current or expired product allocations.</p>');
+          }
+
+          if(availableCount === 0) {
+            $('#available-allocations').html('<p>You have no current product allocations.</p>')
+          }
+
+          if(expiredCount === 0) {
+            $('#expired-allocations').html('<p>You have no expired product allocations.</p>')
+          }
+
+          if(acceptedCount === 0) {
+            $('#accepted-allocations').html('<p>You have no accepted allocations.</p>')
+          }
+
+          if(rejectedCount === 0) {
+            $('#rejected-allocations').html('<p>You have no rejected allocations.</p>')
           }
         },
         error: function (data) { $('#allocations-tables').html(''); console.log('%o', data) }
