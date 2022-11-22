@@ -336,6 +336,7 @@
         error: function (response) {
           //TODO: have some indicator text onscreen
           $('#allocation-status-text').text(response);
+          $('#reject-allocations-modal').css({'display': 'none'})
         }
       })
     }
@@ -372,6 +373,7 @@
         error: function (response) {
           //TODO: have some indicator text onscreen
           $('#allocation-status-text').text(response);
+          $('#accept-allocations-modal').css({'display': 'none'})
         }
       })
     }
