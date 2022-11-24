@@ -327,6 +327,7 @@
           if(data && data.length) {
 
             let quantityAreaId = '#quantity-area-'+allocationId;
+            let quantityCountId = '#quantity-count-'+id;
             let claimButtonId = '#claim-open-button-'+allocationId;
             let rejectButtonId = '#reject-open-button-'+allocationId;
             let incButtonId = '#increment-button-'+allocationId;
@@ -339,7 +340,8 @@
             $('#reject-allocations-modal').css({'display': 'none'})
             $(incButtonId).css({'display':'none'})
             $(decButtonId).css({'display':'none'})
-
+            $(quantityCountId).css({'display':'none'})
+            
             $(quantityAreaId).html(`<p>Allocations rejected</p>`)
           }
         },
@@ -374,6 +376,7 @@
           if(data && data.length) {
             
             let quantityAreaId = '#quantity-area-'+allocationId;
+            let quantityCountId = '#quantity-count-'+id;
             let claimButtonId = '#claim-open-button-'+allocationId;
             let rejectButtonId = '#reject-open-button-'+allocationId;
             let incButtonId = '#increment-button-'+allocationId;
@@ -386,6 +389,7 @@
             $('#accept-allocations-modal').css({'display': 'none'})
             $(incButtonId).css({'display':'none'})
             $(decButtonId).css({'display':'none'})
+            $(quantityCountId).css({'display':'none'})
 
             $(quantityAreaId).html(`<p>`+num+` claimed</p>`)
           }
