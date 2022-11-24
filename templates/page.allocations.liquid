@@ -337,7 +337,7 @@
             $(rejectButtonId).prop('disabled', true)
             $('#reject-allocations-modal').css({'display': 'none'})
             $(incButtonId).css({'display':'none'})
-            $(incButtonId).css({'display':'none'})
+            $(decButtonId).css({'display':'none'})
           }
         },
         error: function (response) {
@@ -378,10 +378,10 @@
             $('#allocation-status-text').text(data);
             $('#allocation-status-text').css('display:block')
             $(claimButtonId).prop('disabled', true)
-            $(claimButtonId).prop('disabled', true)
+            $(rejectButtonId).prop('disabled', true)
             $('#accept-allocations-modal').css({'display': 'none'})
             $(incButtonId).css({'display':'none'})
-            $(incButtonId).css({'display':'none'})
+            $(decButtonId).css({'display':'none'})
           }
         },
         error: function (response) {
