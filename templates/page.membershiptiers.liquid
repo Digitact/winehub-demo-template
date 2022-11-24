@@ -18,6 +18,7 @@
 
       <h2>Membership Tiers</h2>
 
+      <div id='membership-area'> 
       <h4></h4>
       <table id='membership-tiers-tree'>
         <thead>
@@ -41,6 +42,7 @@
           
         </tbody>
       </table>
+      </div>
 
     </div>
   </div>
@@ -233,7 +235,13 @@
             $('#membership-tiers-tree').html('<p>You are not a member of any tiers.</p>');
           }
         },
-        error: function (data) { alert(data.responseText); }
+        error: function (data) { 
+          $('#membership-area').html(`
+            <div>
+              <p>There was an issue retrieving your memberships. Please refresh the page or try again later.</p>
+            </div>
+          `)
+          console.log('%o', data) }
       }); 
   }
   
