@@ -331,6 +331,8 @@
             $('#claim-open-button').prop('disabled', true)
             $('#reject-open-button').prop('disabled', true)
             $('#reject-allocations-modal').css({'display': 'none'})
+            $('#increment-button').css({'display':'none'})
+            $('#decrement-button').css({'display':'none'})
           }
         },
         error: function (response) {
@@ -368,6 +370,8 @@
             $('#claim-open-button').prop('disabled', true)
             $('#reject-open-button').prop('disabled', true)
             $('#accept-allocations-modal').css({'display': 'none'})
+            $('#increment-button').css({'display':'none'})
+            $('#decrement-button').css({'display':'none'})
           }
         },
         error: function (response) {
