@@ -325,14 +325,19 @@
           let data = response.message;
           $('#allocation-status-text').css('display:block')
           if(data && data.length) {
-            //TODO: post the message that returns, change button status
+
+            let claimButtonId = '#claim-open-button-'+allocationId;
+            let rejectButtonId = '#reject-open-button-'+allocationId;
+            let incButtonId = '#increment-button-'+allocationId;
+            let decButtonId = '#decrement-button-'+allocationId;
+            
             $('#allocation-status-text').text(data);
             $('#allocation-status-text').css('display:block')
-            $('#claim-open-button').prop('disabled', true)
-            $('#reject-open-button').prop('disabled', true)
+            $(claimButtonId).prop('disabled', true)
+            $(rejectButtonId).prop('disabled', true)
             $('#reject-allocations-modal').css({'display': 'none'})
-            $('#increment-button').css({'display':'none'})
-            $('#decrement-button').css({'display':'none'})
+            $(incButtonId).css({'display':'none'})
+            $(incButtonId).css({'display':'none'})
           }
         },
         error: function (response) {
@@ -412,17 +417,17 @@
     
     let claimCode = current ? `
     <div style='max-width:200px; margin-left:auto; margin-right:auto'>
-      <div id='quantity-area'>
+      <div id='quantity-area-`+id+`'>
         <p style='text-align:center'>Select quantity</p>
         <p style='text-align:center'>Max `+ individualAllocations +`</p>
       </div>
       <div style='max-width:200px; text-align:center'>
-        <button id='decrement-button' style='margin-top:4px; float:left; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
+        <button id='decrement-button-`+id+`' style='margin-top:4px; float:left; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='decrementCount("#quantity-count-`+id+`", 1)'>-</button>
         <div style='display:inline-block; padding-top:16px'><p style='display:inline;' id='quantity-count-`+ id +`'>1</p></div>
-        <button id='increment-button' style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='incrementCount("#quantity-count-`+id+`", ` + individualAllocations + `)'>+</button>
+        <button id='increment-button-`+id+`' style='margin-top:4px; float:right; padding-left:22px; padding-right:22px; min-width:18px; max-width:18px' onClick='incrementCount("#quantity-count-`+id+`", ` + individualAllocations + `)'>+</button>
       </div>
-      <button id='claim-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + claimText + `)'>Claim</button>
-      <button id='reject-open-button' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `,` + rejectText + `)'>Reject</button>
+      <button id='claim-open-button-`+id+`' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showAcceptModal(` + id + `,` + customerId + `,` + claimText + `)'>Claim</button>
+      <button id='reject-open-button-`+id+`' class='btn' style='display:block; width:100%; margin-left:0px; margin-right:0px; margin-top:12px' onClick='showRejectModal(` + id + `,` + customerId + `,` + rejectText + `)'>Reject</button>
     </div>
     ` : `<p>`+ individualAllocations +`</p>`
     
