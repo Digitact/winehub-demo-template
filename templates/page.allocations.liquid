@@ -326,6 +326,7 @@
           $('#allocation-status-text').css('display:block')
           if(data && data.length) {
 
+            let quantityAreaId = '#quantity-area-'+allocationId;
             let claimButtonId = '#claim-open-button-'+allocationId;
             let rejectButtonId = '#reject-open-button-'+allocationId;
             let incButtonId = '#increment-button-'+allocationId;
@@ -338,6 +339,10 @@
             $('#reject-allocations-modal').css({'display': 'none'})
             $(incButtonId).css({'display':'none'})
             $(decButtonId).css({'display':'none'})
+
+            $(quantityAreaId).html(`
+              <p>Allocations rejected</p>
+            `)
           }
         },
         error: function (response) {
