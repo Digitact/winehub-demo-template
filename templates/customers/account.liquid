@@ -119,7 +119,7 @@
         <span id="referralCodeText">Loading...</span>
       </div>    
       <div id="referralFormArea">
-<form id="referralForm" method="POST" action="{% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}https://wineclub-demo.digitact.co.uk{% else %}https://howards-folly-wine.digitact.co.uk{% endif %}/add_referrer/{{customer.id}}">
+<form id="referralForm" method="POST" action="{% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}https://shopify.winehub.io{% else %}https://howards-folly-wine.digitact.co.uk{% endif %}/add_referrer/{{customer.id}}">
         <div id="referralError" style="color:red;"></div>
         <strong>Enter the code of the friend that referred you: </strong>
         <input id="customer_id" type="hidden" name="customer_id" value="{{customer.id}}">
@@ -159,7 +159,7 @@
       <script>
 
   {% if shop.permanent_domain == 'winehub-demo.myshopify.com' %}
-    var app_domain = 'https://wineclub-demo.digitact.co.uk';
+    var app_domain = 'https://shopify.winehub.io';
   {% else %}
     var app_domain = 'https://howards-folly-wine.digitact.co.uk';
   {% endif %}          

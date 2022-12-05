@@ -52,7 +52,7 @@
   function updateList() {
    
       $.ajax({
-        url: 'https://wineclub-demo.digitact.co.uk/api/customer_payment_methods?page=1&customer.shopifyId={{customer.id}}',
+        url: 'https://shopify.winehub.io/api/customer_payment_methods?page=1&customer.shopifyId={{customer.id}}',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -109,7 +109,7 @@
     if (confirm("Send an email with a link to update your payment details?") == true) {
      
 	  $.ajax({
-        url: 'https://wineclub-demo.digitact.co.uk/updatepaymentmethod/'+id,
+        url: 'https://shopify.winehub.io/updatepaymentmethod/'+id,
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
