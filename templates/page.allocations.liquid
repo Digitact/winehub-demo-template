@@ -495,10 +495,10 @@
           let expired = expiredData && expiredData.length;
           
           if(available || accepted || rejected || expired) {
-            availableCount = renderAllocationRow('#available-allocations-area')
-            acceptedCount = renderAllocationRow('#accepted-allocations-area')
-            rejectedCount = renderAllocationRow('#rejected-allocations-area')
-            expiredCount = renderAllocationRow('#expired-allocations-area')
+            availableCount = renderAllocationRow('#available-allocations-area', availableData)
+            acceptedCount = renderAllocationRow('#accepted-allocations-area', acceptedData)
+            rejectedCount = renderAllocationRow('#rejected-allocations-area', rejectedData)
+            expiredCount = renderAllocationRow('#expired-allocations-area', expiredData)
           }
           else if (data && data.length) {
             //old API, can delete once the server code is updated
