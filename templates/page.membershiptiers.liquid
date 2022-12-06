@@ -222,10 +222,10 @@
               let rowId = 'tier-item-' + id;
               let row = '<tr id="' + rowId + '">';
               row += '<td id="tier-id" style="display:none"><p style="display:none">' + id + '</p></td>';
-              row += '<td id="tier-image"><img src="' + image + '" style="max-height:120px" /></td>';
+              row += '<td id="tier-image"><img src="https://shopify.winehub.io/uploads/' + image + '" style="max-height:120px" /></td>';
               row += '<td id="tier-name">' + name + '</td>';
               row += '<td id="tier-discount">' + discountBenefit + '%</td>';
-              row += '<td id="tier-requirements">' + rebuildRequirementsString(requirements) + '</td>';
+              row += '<td id="tier-requirements">' + rebuildRequirementsString(requirements) + '&nbsp;</td>';
               row += '</tr>';
               
               $('#membership-tiers-items').append(row)
