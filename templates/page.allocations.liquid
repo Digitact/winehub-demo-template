@@ -410,11 +410,11 @@
     let name = item['name'];
     let description = item['description'];
     let createdAt = item['createdAt'];
-    let createdDate = new Date(Date.parse(createdAt["date"]))
+    let createdDate = new Date(Date.parse(createdAt))
     let publishedAt = item['publishedAt'];
-    let publishedDate = new Date(Date.parse(publishedAt["date"]))
+    let publishedDate = new Date(Date.parse(publishedAt))
     let expiresAt = item['expiresAt'];
-    let expiresDate = new Date(Date.parse(expiresAt["date"]))
+    let expiresDate = new Date(Date.parse(expiresAt))
     let published = item['published'];
     let individualAllocations = item['individualAllocations'];
     let today = new Date();
