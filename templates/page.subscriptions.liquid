@@ -99,22 +99,22 @@
               row += '    data-label=""';
               row += '    >';
               //row += '  <a href="#" class="open-modal" data-open="modal1">';
-              row += data[index].product_name;
+              row += data[index].productName;
               row += '  <br />';
               //row += data[index].sellingPlanGroupName;
               //row += '  <br />';
-              row += data[index].selling_plan_name;
+              row += data[index].sellingPlanName;
               //row += '  <br />';
               //row += '  </a>';
               row += '</td>';
               row += '<td headers="RowOrder ColumnDate" role="cell">';
-              row += new Date(data[index].signed_up).toDateString();
+              row += new Date(data[index].signedUp).toDateString();
               row += '</td>';              
               row += '<td headers="RowOrder ColumnPayment" role="cell">';
               if (data[index].status.toUpperCase()=='PAUSED') {
                 row += '-';  
               } else {
-                row += new Date(data[index].signed_up).toDateString();
+                row += new Date(data[index].signedUp).toDateString();
               }
               row += '</td>';
               row += '<td headers="RowOrder ColumnFulfillment" role="cell">';
