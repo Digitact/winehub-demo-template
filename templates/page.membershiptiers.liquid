@@ -218,6 +218,8 @@
               let image = item["image"];
               let discountBenefit = item["discountBenefit"];
               let requirements = item["requirements"];
+              let reqstring = rebuildRequirementsString(requirements);
+              if (reqstring==='') reqstring = 'You were manually added to this tier';
               
               let rowId = 'tier-item-' + id;
               let row = '<tr id="' + rowId + '">';
@@ -225,7 +227,7 @@
               row += '<td id="tier-image"><img src="https://shopify.winehub.io/uploads/membership_tiers/' + image + '" style="max-height:120px" /></td>';
               row += '<td id="tier-name">' + name + '</td>';
               row += '<td id="tier-discount">' + discountBenefit + '%</td>';
-              row += '<td id="tier-requirements">' + rebuildRequirementsString(requirements) + '&nbsp;</td>';
+              row += '<td id="tier-requirements">' + reqstring + '&nbsp;</td>';
               row += '</tr>';
               
               $('#membership-tiers-items').append(row)
