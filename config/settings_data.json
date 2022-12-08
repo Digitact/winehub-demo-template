@@ -95,7 +95,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "17774452785555566604": {
+        "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/customer-page-embed\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
