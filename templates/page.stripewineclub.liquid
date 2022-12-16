@@ -11,7 +11,7 @@
   window.asset_url="https://shopify.winehub.io";
   window.customer_id="{{customer.id}}";
   window.customer_email="{{customer.email}}";
-  window.customer_hash="{{ customer.id | append "WineHub" | append customer.email | md5 }}";
+  window.customer_hash="{{ customer.id | append: "WineHub" | append: customer.email | md5 }}";
 </script>
 <div id="wine-subscription-stripe"></div>
 <script defer="defer" src="https://shopify.winehub.io/wine-subscription-stripe/assets/index.7ff7a580.js"></script>
