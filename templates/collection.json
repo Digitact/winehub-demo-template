@@ -21,10 +21,27 @@
         "enable_sorting": true,
         "collapse_on_larger_devices": false
       }
+    },
+    "16738765561868baba": {
+      "type": "apps",
+      "blocks": {
+        "19aac168-753c-4cfd-9290-9fbd8d8fbd37": {
+          "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/buy-button\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "19aac168-753c-4cfd-9290-9fbd8d8fbd37"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "16738765561868baba"
   ]
 }
