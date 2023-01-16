@@ -59,6 +59,11 @@
           "type": "description",
           "settings": {
           }
+        },
+        "15a30a41-3d74-4688-910c-ab1bfa023d12": {
+          "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/buy-button\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -71,7 +76,8 @@
         "quantity_selector",
         "2e7a3384-3047-43a6-9ea3-dd7d74c46751",
         "buy_buttons",
-        "description"
+        "description",
+        "15a30a41-3d74-4688-910c-ab1bfa023d12"
       ],
       "settings": {
         "enable_sticky_info": true,
