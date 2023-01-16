@@ -57,11 +57,6 @@
           "settings": {
           }
         },
-        "829a6545-0ac1-4106-9af9-e26336d52787": {
-          "type": "shopify:\/\/apps\/appstle-subscriptions\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-          "settings": {
-          }
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -76,11 +71,9 @@
             "inplace": false
           }
         },
-        "9ca2db07-0197-4943-ad48-886fcaf0ab8e": {
-          "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
-          "disabled": true,
+        "12d00fc1-6c9b-4759-9e87-89c64957c2f5": {
+          "type": "shopify:\/\/apps\/winehub-wine-club-demo\/blocks\/buy-button\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
           "settings": {
-            "product": "{{product}}"
           }
         }
       },
@@ -94,10 +87,9 @@
         "a4afc03a-e48b-4bcf-b99f-61a0aaab90d4",
         "buy_buttons",
         "description",
-        "829a6545-0ac1-4106-9af9-e26336d52787",
         "share",
         "83150ad2-debb-4fa8-b37f-15046ecf1ad6",
-        "9ca2db07-0197-4943-ad48-886fcaf0ab8e"
+        "12d00fc1-6c9b-4759-9e87-89c64957c2f5"
       ],
       "settings": {
         "enable_sticky_info": true,
