@@ -46,7 +46,7 @@
         "c017bfa3-edb1-421a-a1d4-3e25cccf6242": {
           "type": "shopify:\/\/apps\/winehub-staging\/blocks\/wine-club\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
           "settings": {
-            "wine_club_id": "1"
+            "wine_club_id": 109
           }
         }
       },
