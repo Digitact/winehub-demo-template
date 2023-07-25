@@ -2,10 +2,107 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "settings": {
+      }
+    },
+    "12a94cc7-b429-4b08-ad96-5205047eb64a": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text"
+          }
+        },
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
+          }
+        },
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-heading-1",
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-text-1",
+        "template--16495146500353__12a94cc7-b429-4b08-ad96-5205047eb64a-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/64bcdafe7f18e_mixed_new_ca5afa76-8e1d-4fa8-8f54-7b1615a69bdd.png",
+        "height": "adapt",
+        "color_scheme": "accent-2",
+        "layout": "image_first"
+      }
+    },
+    "1690265545ebd8e5aa": {
+      "type": "apps",
+      "blocks": {
+        "c017bfa3-edb1-421a-a1d4-3e25cccf6242": {
+          "type": "shopify:\/\/apps\/winehub-staging\/blocks\/wine-club\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+          "settings": {
+            "wine_club_id": "1"
+          }
+        }
+      },
+      "block_order": [
+        "c017bfa3-edb1-421a-a1d4-3e25cccf6242"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
+          }
+        },
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
+          }
+        },
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-1",
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-2",
+        "template--16495146500353__ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e-column-3"
+      ],
+      "settings": {
+        "title": "Multicolumn",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "12a94cc7-b429-4b08-ad96-5205047eb64a",
+    "1690265545ebd8e5aa",
+    "ae4ead9d-fc36-4a7e-8dbb-8ff6a8aaef6e"
   ]
 }
