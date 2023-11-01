@@ -38,6 +38,21 @@
           "settings": {
           }
         },
+        "767cba5e-6357-4d96-bf6f-5aa78cc0ae05": {
+          "type": "shopify:\/\/apps\/winehub-staging\/blocks\/app-block\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+          "settings": {
+            "accent_color": "",
+            "background_color": "",
+            "inplace": false
+          }
+        },
+        "e1f03e9a-f5c4-4955-9d6a-ed704e6ad1a4": {
+          "type": "shopify:\/\/apps\/winehub-staging\/blocks\/buy-button\/9003faec-d0d6-4b89-9475-aa2266c37cb9",
+          "settings": {
+            "products_per_page": 16,
+            "form_selector": "form[action=\"\/cart\/add\"]"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -69,6 +84,8 @@
         "price",
         "variant_picker",
         "quantity_selector",
+        "767cba5e-6357-4d96-bf6f-5aa78cc0ae05",
+        "e1f03e9a-f5c4-4955-9d6a-ed704e6ad1a4",
         "buy_buttons",
         "description",
         "share",
